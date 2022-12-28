@@ -14,6 +14,13 @@ namespace SG
         public int baseDamage = 25;
         public int criticalDamageMuiltiplier = 4;
 
+        [Header("Poise")]
+        public float poiseBreak;
+        public float offensivePoiseBonus;
+
+        [Header("Absorption")]
+        public float physicalDamageAbsorption;
+
         [Header("Idle Animations")]
         public string right_hand_idle;
         public string left_hand_idle;
@@ -25,6 +32,9 @@ namespace SG
         public string th_light_attack_01;
         public string th_light_attack_02;
 
+        [Header("Weapon Art")]
+        public string weapon_art;
+
         [Header("Stamina Costs")]
         public int baseStamina;
         public float lightAttackMultiplier;
@@ -35,5 +45,6 @@ namespace SG
         public bool isFaithCaster;
         public bool isPyroCaster;
         public bool isMeleeWeapon;
+        public bool isShieldWeapon;
     }
 }

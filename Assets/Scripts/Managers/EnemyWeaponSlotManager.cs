@@ -83,8 +83,7 @@ namespace SG
 
         public void CloseDamageCollider()
         {
-            rightHandDamageCollider.DisableDamageCollider();
-            leftHandDamageCollider.DisableDamageCollider();
+            rightHandDamageCollider.DisaleDamageCollider();
         }
 
         public void DrainStaminaLightAttack()

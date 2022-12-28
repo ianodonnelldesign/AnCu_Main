@@ -26,7 +26,6 @@ namespace SG
         public bool canDoCombo;
         public bool isUsingRightHand;
         public bool isUsingLeftHand;
-        public bool isInvulerable;
 
         private void Awake()
         {
@@ -49,9 +48,10 @@ namespace SG
             canDoCombo = anim.GetBool("canDoCombo");
             isUsingRightHand = anim.GetBool("isUsingRightHand");
             isUsingLeftHand = anim.GetBool("isUsingLeftHand");
-            isInvulerable = anim.GetBool("isInvulnerable");
+            isInvulnerable = anim.GetBool("isInvulnerable");
             anim.SetBool("isInAir", isInAir);
             anim.SetBool("isDead", playerStats.isDead);
+            anim.SetBool("isBlocking", isBlocking);
 
             inputHandler.TickInput(delta);
             playerAnimatorManager.canRotate = anim.GetBool("canRotate");
@@ -76,6 +76,7 @@ namespace SG
             inputHandler.rollFlag = false;
             inputHandler.rb_Input = false;
             inputHandler.rt_Input = false;
+            inputHandler.lt_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Left = false;
@@ -97,6 +98,8 @@ namespace SG
                 playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
             }
         }
+
+        #region Player Interactions
 
         public void CheckForInteractableObject()
         {
@@ -134,6 +137,27 @@ namespace SG
                 }
             }
         }
+
+        public void OpenChestInteraction(Transform playerStandsHereWhenOpeningChest)
+        {
+            playerLocomotion.rigidbody.velocity = Vector3.zero; //Stops the player from ice skating
+            transform.position = playerStandsHereWhenOpeningChest.transform.position;
+            playerAnimatorManager.PlayTargetAnimation("Open Chest", true);
+        }
+
+        public void PassThroughFogWallInteraction(Transform fogWallEntrance)
+        {
+            playerLocomotion.rigidbody.velocity = Vector3.zero; //Stops the player from ice skating
+
+            Vector3 rotationDirection = fogWallEntrance.transform.forward;
+            Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);
+            transform.rotation = turnRotation;
+            //Rotate over time so it does not look as rigid
+
+            playerAnimatorManager.PlayTargetAnimation("Pass Through Fog", true);
+        }
+
+        #endregion
 
 
     }

@@ -11,8 +11,8 @@ namespace SG
 
         public WeaponItem attackingWeapon;
 
-        WeaponHolderSlot leftHandSlot;
-        WeaponHolderSlot rightHandSlot;
+        public WeaponHolderSlot leftHandSlot;
+        public WeaponHolderSlot rightHandSlot;
         WeaponHolderSlot backSlot;
 
         public DamageCollider leftHandDamageCollider;
@@ -50,6 +50,12 @@ namespace SG
                     backSlot = weaponSlot;
                 }
             }
+        }
+
+        public void LoadBothWeaponsOnSlots()
+        {
+            LoadWeaponOnSlot(playerInventory.rightWeapon, false);
+            LoadWeaponOnSlot(playerInventory.leftWeapon, true);
         }
 
         public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
@@ -111,12 +117,14 @@ namespace SG
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
+            leftHandDamageCollider.poiseBreak = playerInventory.leftWeapon.poiseBreak;
         }
 
         private void LoadRightWeaponDamageCollider()
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
+            rightHandDamageCollider.poiseBreak = playerInventory.rightWeapon.poiseBreak;
         }
 
         public void OpenDamageCollider()
@@ -133,8 +141,8 @@ namespace SG
 
         public void CloseDamageCollider()
         {
-            rightHandDamageCollider.DisableDamageCollider();
-            leftHandDamageCollider.DisableDamageCollider();
+            rightHandDamageCollider.DisaleDamageCollider();
+            leftHandDamageCollider.DisaleDamageCollider();
         }
 
         #endregion

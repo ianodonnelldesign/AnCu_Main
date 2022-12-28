@@ -158,6 +158,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "LB",
+                    "type": "Button",
+                    "id": "672c1697-df72-4309-a049-94ebd239596f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "RT",
                     "type": "Button",
                     "id": "f36bba84-c554-4c9f-94a1-3ad07c3ce85d",
@@ -224,6 +233,15 @@
                     "name": "Critical Attack",
                     "type": "Button",
                     "id": "35fd9017-61a0-470f-9d4a-c04d97754296",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LT",
+                    "type": "Button",
+                    "id": "f920a12c-57b6-4407-b1b6-be1c853ee7f4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -327,6 +345,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Critical Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31d40405-d47d-4119-ad92-c772ce1d8b00",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95a411d0-52b6-460c-a62f-ff5c7b8895d6",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
