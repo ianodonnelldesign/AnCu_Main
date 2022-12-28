@@ -7,7 +7,6 @@ namespace SG
     public class UIManager : MonoBehaviour
     {
         public PlayerInventory playerInventory;
-        EquipmentWindowUI equipmentWindowUI;
 
         [Header("UI Windows")]
         public GameObject hudWindow;
@@ -18,12 +17,6 @@ namespace SG
         public GameObject weaponInventorySlotPrefab;
         public Transform weaponInventorySlotsParent;
         WeaponInventorySlot[] weaponInventorySlots;
-
-        private void Awake()
-        {
-            equipmentWindowUI = FindObjectOfType<EquipmentWindowUI>();
-        }
-
 
         private void Start()
         {

@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace SG
 {
-    public class CharacterManager : MonoBehaviour
+    public class EnemyAction : ScriptableObject
     {
-        public Transform lockOnTransform;
+        public string actionAnimation;
     }
 }
