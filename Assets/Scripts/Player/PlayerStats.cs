@@ -10,7 +10,7 @@ namespace SG
 
         HealthBar healthBar;
         StaminaBar staminaBar;
-        PlayerAnimatorManager animatorHandler;
+        PlayerAnimatorManager playerAnimatorManager;
 
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
@@ -21,7 +21,7 @@ namespace SG
 
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
-            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         }
 
         void Start()
@@ -35,6 +35,21 @@ namespace SG
             currentStamina = maxStamina;
             staminaBar.SetMaxStamina(maxStamina);
             staminaBar.SetCurrentStamina(currentStamina);
+
+            maxFocusPoints = SetMaxFocusPointsFromFocusLevel();
+            currentFocusPoints = maxFocusPoints;
+        }
+
+        public override void HandlePoiseResetTimer()
+        {
+            if (poiseResetTimer > 0)
+            {
+                poiseResetTimer = poiseResetTimer - Time.deltaTime;
+            }
+            else if (poiseResetTimer <= 0 && !playerManager.isInteracting)
+            {
+                totalPoiseDefence = armorPoiseBonus;
+            }
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -49,25 +64,26 @@ namespace SG
             return maxStamina;
         }
 
+        private float SetMaxFocusPointsFromFocusLevel()
+        {
+            maxFocusPoints = focusLevel * 10;
+            return maxFocusPoints;
+        }
 
-        public void TakeDamage(int damage, string damageAnimation = "Damage_01")
+        public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
             if (playerManager.isInvulnerable)
                 return;
 
-            if (isDead)
-                return;
-
-            currentHealth = currentHealth - damage;
+            base.TakeDamage(damage, damageAnimation = "Damage_01");
             healthBar.SetCurrentHealth(currentHealth);
-
-            animatorHandler.PlayTargetAnimation(damageAnimation, true);
+            playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                animatorHandler.PlayTargetAnimation("Dead_01", true);
                 isDead = true;
+                playerAnimatorManager.PlayTargetAnimation("Dead_01", true);
                 //HANDLE PLAYER DEATH
             }
         }
@@ -117,6 +133,11 @@ namespace SG
             }
 
             healthBar.SetCurrentHealth(currentHealth);
+        }
+
+        public void AddSouls(int souls)
+        {
+            soulCount = soulCount + souls;
         }
     }
 }

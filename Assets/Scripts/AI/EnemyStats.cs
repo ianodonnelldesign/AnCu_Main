@@ -6,18 +6,15 @@ namespace SG
 {
     public class EnemyStats : CharacterStats
     {
-        EnemyManager enemyManager;
         EnemyAnimatorManager enemyAnimatorManager;
         EnemyBossManager enemyBossManager;
         public UIEnemyHealthBar enemyHealthBar;
-        public int soulsAwardedOnDeath = 50;
 
         public bool isBoss;
 
         private void Awake()
         {
-            enemyManager = GetComponent<EnemyManager>();
-            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
             enemyBossManager = GetComponent<EnemyBossManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
@@ -27,7 +24,7 @@ namespace SG
         {
             if (!isBoss)
             {
-                enemyHealthBar.SetMaxHealth(maxHealth);
+                enemyHealthBar.SetHealth(maxHealth);
             }
         }
 
@@ -39,7 +36,7 @@ namespace SG
 
         public void TakeDamageNoAnimation(int damage)
         {
-            currentHealth = currentHealth - damage;
+            TakeDamageNoAnimation(damage);
 
             if (!isBoss)
             {
@@ -49,18 +46,17 @@ namespace SG
             {
                 enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
             }
-
-            if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                isDead = true;
-            }
         }
 
-        public void TakeDamage(int damage, string damageAnimation = "Damage_01")
+        public void BreakGuard()
+        {
+            enemyAnimatorManager.PlayTargetAnimation("Break Guard", true);
+        }
+
+        public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
 
-            TakeDamage(damage, damageAnimation = "Damage_01");
+            base.TakeDamage(damage, damageAnimation = "Damage_01");
 
             if (!isBoss)
             {

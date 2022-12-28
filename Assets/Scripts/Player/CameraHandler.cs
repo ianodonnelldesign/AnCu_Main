@@ -87,7 +87,7 @@ namespace SG
             }
             else
             {
-                float velocity = 0;
+                // float velocity = 0;
 
                 Vector3 dir = currentLockOnTarget.transform.position - transform.position;
                 dir.Normalize();
