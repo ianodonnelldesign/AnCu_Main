@@ -186,10 +186,10 @@ namespace SG
             {
                 playerManager.isBlocking = false;
 
-                if (blockingCollider.enabled)
-                {
-                    blockingCollider.DisableBlockingCollider();
-                }
+                //if (blockingCollider.enabled)
+                //{
+                //    blockingCollider.DisableBlockingCollider();
+                //}
             }
         }
 

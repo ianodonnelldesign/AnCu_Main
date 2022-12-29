@@ -30,7 +30,7 @@ namespace SG
             damageCollider.enabled = true;
         }
 
-        public void DisaleDamageCollider()
+        public void DisableDamageCollider()
         {
             damageCollider.enabled = false;
         }

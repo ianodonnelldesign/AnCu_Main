@@ -7,12 +7,11 @@ namespace SG
     public class WeaponSlotManager : MonoBehaviour
     {
         PlayerManager playerManager;
-        PlayerInventory playerInventory;
 
         public WeaponItem attackingWeapon;
 
-        public WeaponHolderSlot leftHandSlot;
-        public WeaponHolderSlot rightHandSlot;
+        WeaponHolderSlot leftHandSlot;
+        WeaponHolderSlot rightHandSlot;
         WeaponHolderSlot backSlot;
 
         public DamageCollider leftHandDamageCollider;
@@ -28,7 +27,6 @@ namespace SG
         private void Awake()
         {
             playerManager = GetComponentInParent<PlayerManager>();
-            playerInventory = GetComponentInParent<PlayerInventory>();
             animator = GetComponent<Animator>();
             quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
             playerStats = GetComponentInParent<PlayerStats>();
@@ -50,12 +48,6 @@ namespace SG
                     backSlot = weaponSlot;
                 }
             }
-        }
-
-        public void LoadBothWeaponsOnSlots()
-        {
-            LoadWeaponOnSlot(playerInventory.rightWeapon, false);
-            LoadWeaponOnSlot(playerInventory.leftWeapon, true);
         }
 
         public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
@@ -116,15 +108,11 @@ namespace SG
         private void LoadLeftWeaponDamageCollider()
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
-            leftHandDamageCollider.poiseBreak = playerInventory.leftWeapon.poiseBreak;
         }
 
         private void LoadRightWeaponDamageCollider()
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
-            rightHandDamageCollider.poiseBreak = playerInventory.rightWeapon.poiseBreak;
         }
 
         public void OpenDamageCollider()
@@ -141,8 +129,8 @@ namespace SG
 
         public void CloseDamageCollider()
         {
-            rightHandDamageCollider.DisaleDamageCollider();
-            leftHandDamageCollider.DisaleDamageCollider();
+            rightHandDamageCollider.DisableDamageCollider();
+            leftHandDamageCollider.DisableDamageCollider();
         }
 
         #endregion
