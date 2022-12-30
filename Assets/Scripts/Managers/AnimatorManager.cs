@@ -15,7 +15,7 @@ namespace SG
             anim.SetBool("canRotate", canRotate);
             anim.SetBool("isInteracting", isInteracting);
             anim.CrossFade(targetAnim, 0.2f);
-            Debug.Log(targetAnim);
+            // Debug.Log(targetAnim);
         }
 
         public void PlayTargetAnimationWithRootRotation(string targetAnim, bool isInteracting)

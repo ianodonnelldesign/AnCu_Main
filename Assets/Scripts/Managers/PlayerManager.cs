@@ -138,25 +138,6 @@ namespace SG
             }
         }
 
-        public void OpenChestInteraction(Transform playerStandsHereWhenOpeningChest)
-        {
-            playerLocomotion.rigidbody.velocity = Vector3.zero; //Stops the player from ice skating
-            transform.position = playerStandsHereWhenOpeningChest.transform.position;
-            playerAnimatorManager.PlayTargetAnimation("Open Chest", true);
-        }
-
-        public void PassThroughFogWallInteraction(Transform fogWallEntrance)
-        {
-            playerLocomotion.rigidbody.velocity = Vector3.zero; //Stops the player from ice skating
-
-            Vector3 rotationDirection = fogWallEntrance.transform.forward;
-            Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);
-            transform.rotation = turnRotation;
-            //Rotate over time so it does not look as rigid
-
-            playerAnimatorManager.PlayTargetAnimation("Pass Through Fog", true);
-        }
-
         #endregion
 
 

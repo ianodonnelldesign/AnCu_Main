@@ -363,7 +363,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""ff41f56a-53ff-454b-8593-5a8c47e3ee0f"",
                     ""path"": ""<Keyboard>/e"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Hold(duration=0.75)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Critical Attack"",
