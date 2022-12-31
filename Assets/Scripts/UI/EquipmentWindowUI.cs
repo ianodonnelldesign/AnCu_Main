@@ -11,14 +11,14 @@ namespace SG
         public bool leftHandSlot01Selected;
         public bool leftHandSlot02Selected;
 
-        HandEquipmentSlotUI[] handEquipmentSlotUI;
+        public HandEquipmentSlotUI[] handEquipmentSlotUI;
 
         private void Start()
         {
-            handEquipmentSlotUI = GetComponentsInChildren<HandEquipmentSlotUI>();
+
         }
 
-        public void LoadWeaponsOnEquipmentScreen(PlayerInventory playerInventory)
+        public void LoadWeaponsOnEquipmentScreen(PlayerInventoryManager playerInventory)
         {
             for (int i = 0; i < handEquipmentSlotUI.Length; i++)
             {

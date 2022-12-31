@@ -26,6 +26,7 @@ MonoBehaviour:
   th_idle: TH_Idle_01
   oh_light_attack_01: OH_Sword_Attack_01
   oh_light_attack_02: OH_Sword_Attack_02
+  oh_heavy_attack_01: OH_Sword_Attack_03
   th_light_attack_01: TH_Attack_01
   th_light_attack_02: TH_Attack_01
   weapon_art: 

@@ -24,7 +24,7 @@ MonoBehaviour:
   right_hand_idle: Right Arm Empty
   left_hand_idle: Left Arm Empty
   th_idle: 
-  oh_light_attack_01: 
+  oh_light_attack_01: Kick
   oh_light_attack_02: 
   th_light_attack_01: 
   th_light_attack_02: 

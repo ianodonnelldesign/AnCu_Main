@@ -110,6 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4983eecb2ac0f2458653bf39e0f1f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
+  poiseBreak: 0
+  offensivePoiseBonus: 0
   currentWeaponDamage: 20
 --- !u!1 &2498036757919262364
 GameObject:

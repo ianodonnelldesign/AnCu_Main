@@ -6,21 +6,22 @@ namespace SG
 {
     public class PlayerAnimatorManager : AnimatorManager
     {
-        PlayerManager playerManager;
-        PlayerStats playerStats;
         InputHandler inputHandler;
-        PlayerLocomotion playerLocomotion;
+        PlayerManager playerManager;
+        PlayerStatsManager playerStatsManager;
+        PlayerLocomotionManager playerLocomotionManager;
+
         int vertical;
         int horizontal;
 
 
         public void Initialize()
         {
-            playerManager = GetComponentInParent<PlayerManager>();
-            playerStats = GetComponentInParent<PlayerStats>();
-            anim = GetComponent<Animator>();
             inputHandler = GetComponentInParent<InputHandler>();
-            playerLocomotion = GetComponentInParent<PlayerLocomotion>();
+            animator = GetComponentInChildren<Animator>();
+            playerManager = GetComponentInParent<PlayerManager>();
+            playerStatsManager = GetComponentInParent<PlayerStatsManager>();
+            playerLocomotionManager = GetComponentInParent<PlayerLocomotionManager>();
             vertical = Animator.StringToHash("Vertical");
             horizontal = Animator.StringToHash("Horizontal");
         }
@@ -83,64 +84,26 @@ namespace SG
                 h = horizontalMovement;
             }
 
-            anim.SetFloat(vertical, v, 0.1f, Time.deltaTime);
-            anim.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
-        }
-
-        public void CanRotate()
-        {
-            anim.SetBool("canRotate", true);
-        }
-
-        public void StopRotation()
-        {
-            anim.SetBool("canRotate", false);
-        }
-
-        public void EnableCombo()
-        {
-            anim.SetBool("canDoCombo", true);
-        }
-
-        public void DisableCombo()
-        {
-            anim.SetBool("canDoCombo", false);
-        }
-
-        public void EnableIsInvulnerable()
-        {
-            anim.SetBool("isInvulnerable", true);
-        }
-
-        public void DisableIsInvulnerable()
-        {
-            anim.SetBool("isInvulnerable", false);
-        }
-
-        public void EnableIsParrying()
-        {
-            playerManager.isParrying = true;
-        }
-
-        public void DisableIsParrying()
-        {
-            playerManager.isParrying = false;
-        }
-
-        public void EnableCanBeRiposted()
-        {
-            playerManager.canBeRiposted = true;
-        }
-
-        public void DisableCanBeRiposted()
-        {
-            playerManager.canBeRiposted = false;
+            animator.SetFloat(vertical, v, 0.1f, Time.deltaTime);
+            animator.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
         }
 
         public override void TakeCriticalDamageAnimationEvent()
         {
-            playerStats.TakeDamageNoAnimation(playerManager.pendingCriticalDamage);
+            playerStatsManager.TakeDamageNoAnimation(playerManager.pendingCriticalDamage);
             playerManager.pendingCriticalDamage = 0;
+        }
+
+        public void DisableCollision()
+        {
+            playerLocomotionManager.characterCollider.enabled = false;
+            playerLocomotionManager.characterCollisionBlockerCollider.enabled = false;
+        }
+
+        public void EnableCollision()
+        {
+            playerLocomotionManager.characterCollider.enabled = true;
+            playerLocomotionManager.characterCollisionBlockerCollider.enabled = true;
         }
 
         private void OnAnimatorMove()
@@ -149,11 +112,11 @@ namespace SG
                 return;
 
             float delta = Time.deltaTime;
-            playerLocomotion.rigidbody.drag = 0;
-            Vector3 deltaPosition = anim.deltaPosition;
+            playerLocomotionManager.rigidbody.drag = 0;
+            Vector3 deltaPosition = animator.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
-            playerLocomotion.rigidbody.velocity = velocity;
+            playerLocomotionManager.rigidbody.velocity = velocity;
         }
 
     }
