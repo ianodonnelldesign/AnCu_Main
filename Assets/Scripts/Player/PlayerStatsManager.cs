@@ -84,7 +84,7 @@ namespace SG
                 currentHealth = 0;
                 isDead = true;
                 playerAnimatorManager.PlayTargetAnimation("Dead_01", true);
-                //HANDLE PLAYER DEATH
+                // Handle player death
             }
         }
 

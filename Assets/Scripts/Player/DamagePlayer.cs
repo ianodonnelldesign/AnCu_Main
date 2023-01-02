@@ -6,15 +6,17 @@ namespace SG
 {
     public class DamagePlayer : MonoBehaviour
     {
-        public int damage = 5;
+        public int fireDamage;
 
         private void OnTriggerEnter(Collider other)
         {
             PlayerStatsManager playerStats = other.GetComponent<PlayerStatsManager>();
+            Debug.Log("Touched the fire");
 
             if (playerStats != null)
             {
-                playerStats.TakeDamage(damage);
+                Debug.Log("Player took fire damage");
+                playerStats.TakeDamage(fireDamage);
             }
         }
     }

@@ -15,8 +15,10 @@ namespace SG
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Player")
+            Debug.Log("Walked into boss wall");
+            if (other.gameObject.tag == "Player")
             {
+                Debug.Log("Started the boss fight");
                 worldEventManager.ActivateBossFight();
             }
         }
