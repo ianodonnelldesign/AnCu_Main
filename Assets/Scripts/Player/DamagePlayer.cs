@@ -10,7 +10,8 @@ namespace SG
 
         private void OnTriggerEnter(Collider other)
         {
-            PlayerStatsManager playerStats = other.GetComponent<PlayerStatsManager>();
+            PlayerStatsManager playerStats = other.GetComponentInParent<PlayerStatsManager>();
+
             Debug.Log("Touched the fire");
 
             if (playerStats != null)

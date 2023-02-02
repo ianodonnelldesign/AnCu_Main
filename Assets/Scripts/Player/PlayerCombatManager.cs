@@ -84,8 +84,8 @@ namespace SG
             }
             else
             {
-                playerAnimatorManager.PlayTargetAnimation(weapon.oh_light_attack_01, true);
-                lastAttack = weapon.oh_light_attack_01;
+                playerAnimatorManager.PlayTargetAnimation(weapon.oh_heavy_attack_01, true);
+                lastAttack = weapon.oh_heavy_attack_01;
             }
         }
 

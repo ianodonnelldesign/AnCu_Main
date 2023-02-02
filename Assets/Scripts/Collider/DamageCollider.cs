@@ -37,7 +37,8 @@ namespace SG
 
         private void OnTriggerEnter(Collider collision)
         {
-            if (collision.tag == "Player")
+
+            if (collision.CompareTag("Player"))
             {
                 PlayerStatsManager playerStats = collision.GetComponent<PlayerStatsManager>();
                 CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
@@ -80,7 +81,7 @@ namespace SG
                 }
             }
 
-            if (collision.tag == "Enemy")
+            if (collision.CompareTag("Enemy"))
             {
                 EnemyStatsManager enemyStats = collision.GetComponent<EnemyStatsManager>();
                 CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
