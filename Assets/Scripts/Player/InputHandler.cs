@@ -114,7 +114,7 @@ namespace SG
         {
             HandleMoveInput(delta);
             HandleSprintInput(delta);
-            HandleRollInput(delta);
+            HandleRollInput();
             HandleCombatInput(delta);
             HandleQuickSlotsInput();
             HandleInventoryInput();
@@ -136,8 +136,6 @@ namespace SG
         {
             if (sprint_Input)
             {
-                //rollInputTimer += delta;
-
                 if (playerStatsManager.currentStamina <= 0)
                 {
                     sprint_Input = false;
@@ -155,12 +153,10 @@ namespace SG
             }
         }
 
-        private void HandleRollInput(float delta)
+        private void HandleRollInput()
         {
             if(roll_Input)
             {
-                //rollInputTimer = 0.5f;
-
                 if(playerStatsManager.currentStamina <= 0)
                 {
                     roll_Input = false;
@@ -170,12 +166,11 @@ namespace SG
                 {
                     sprintFlag = false;
 
-                    if (playerStatsManager.currentStamina >= playerLocomotionManager.rollStaminaCost)
+                    if (playerStatsManager.currentStamina >= 15f)
                     {
                         rollFlag = true;
+                        roll_Input = false;
                     }
-
-                    //rollInputTimer = 0;
                 }
             }
             else
