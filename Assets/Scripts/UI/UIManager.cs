@@ -12,18 +12,20 @@ namespace SG
         [Header("UI Windows")]
         public GameObject hudWindow;
         public GameObject selectWindow;
-        public GameObject equipmentScreenWindow;
-        public GameObject weaponInventoryWindow;
+        //public GameObject equipmentScreenWindow;
+        public GameObject inventoryWindow;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
         public bool rightHandSlot02Selected;
-        public bool leftHandSlot01Selected;
-        public bool leftHandSlot02Selected;
+        public bool rightHandSlot03Selected;
+        public bool rightHandSlot04Selected;
+        //public bool leftHandSlot01Selected;
+        //public bool leftHandSlot02Selected;
 
         [Header("Weapon Inventory")]
-        public GameObject weaponInventorySlotPrefab;
-        public Transform weaponInventorySlotsParent;
+        public GameObject inventorySlotPrefab;
+        public Transform inventorySlotsParent;
         WeaponInventorySlot[] weaponInventorySlots;
 
         private void Awake()
@@ -33,7 +35,7 @@ namespace SG
 
         private void Start()
         {
-            weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+            weaponInventorySlots = inventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
             equipmentWindowUI.LoadWeaponsOnEquipmentScreen(playerInventory);
         }
 
@@ -46,8 +48,8 @@ namespace SG
                 {
                     if (weaponInventorySlots.Length < playerInventory.weaponsInventory.Count)
                     {
-                        Instantiate(weaponInventorySlotPrefab, weaponInventorySlotsParent);
-                        weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+                        Instantiate(inventorySlotPrefab, inventorySlotsParent);
+                        weaponInventorySlots = inventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
                     }
                     weaponInventorySlots[i].AddItem(playerInventory.weaponsInventory[i]);
                 }
@@ -72,16 +74,18 @@ namespace SG
         public void CloseAllInventoryWindows()
         {
             ResetAllSelectedSlots();
-            weaponInventoryWindow.SetActive(false);
-            equipmentScreenWindow.SetActive(false);
+            inventoryWindow.SetActive(false);
+            //equipmentScreenWindow.SetActive(false);
         }
 
         public void ResetAllSelectedSlots()
         {
             rightHandSlot01Selected = false;
             rightHandSlot02Selected = false;
-            leftHandSlot01Selected = false;
-            leftHandSlot02Selected = false;
+            rightHandSlot03Selected = false;
+            rightHandSlot04Selected = false;
+            //leftHandSlot01Selected = false;
+            //leftHandSlot02Selected = false;
         }
     }
 }

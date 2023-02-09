@@ -8,8 +8,10 @@ namespace SG
     {
         public bool rightHandSlot01Selected;
         public bool rightHandSlot02Selected;
-        public bool leftHandSlot01Selected;
-        public bool leftHandSlot02Selected;
+        public bool rightHandSlot03Selected;
+        public bool rightHandSlot04Selected;
+        //public bool leftHandSlot01Selected;
+        //public bool leftHandSlot02Selected;
 
         public HandEquipmentSlotUI[] handEquipmentSlotUI;
 
@@ -30,14 +32,26 @@ namespace SG
                 {
                     handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[1]);
                 }
-                else if (handEquipmentSlotUI[i].leftHandSlot01)
+                else if (handEquipmentSlotUI[i].rightHandSlot03)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[0]);
+                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[2]);
                 }
-                else
+                else if (handEquipmentSlotUI[i].rightHandSlot04)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[1]);
+                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[3]);
                 }
+                //else if (handEquipmentSlotUI[i].rightHandSlot02)
+                //{
+                //    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[1]);
+                //}
+                //else if (handEquipmentSlotUI[i].leftHandSlot01)
+                //{
+                //    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[0]);
+                //}
+                //else
+                //{
+                //    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[1]);
+                //}
             }
         }
 
@@ -51,14 +65,24 @@ namespace SG
             rightHandSlot02Selected = true;
         }
 
-        public void SelectLeftHandSlot01()
+        public void SelectRightHandSlot03()
         {
-            leftHandSlot01Selected = true;
+            rightHandSlot03Selected = true;
         }
 
-        public void SelectLeftHandSlot02()
+        public void SelectRightHandSlot04()
         {
-            leftHandSlot02Selected = true;
+            rightHandSlot04Selected = true;
         }
+
+        //public void SelectLeftHandSlot01()
+        //{
+        //    leftHandSlot01Selected = true;
+        //}
+
+    //    public void SelectLeftHandSlot02()
+    //    {
+    //        leftHandSlot02Selected = true;
+    //    }
     }
 }

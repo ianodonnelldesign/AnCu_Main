@@ -39,10 +39,10 @@ namespace SG
             {
                 blockingCollider.SetColliderDamageAbsorption(playerInventoryManager.rightWeapon);
             }
-            else
-            {
-                blockingCollider.SetColliderDamageAbsorption(playerInventoryManager.leftWeapon);
-            }
+            //else
+            //{
+            //    blockingCollider.SetColliderDamageAbsorption(playerInventoryManager.leftWeapon);
+            //}
 
             blockingCollider.EnableBlockingCollider();
         }

@@ -12,14 +12,15 @@ namespace SG
         public float mouseX;
         public float mouseY;
 
-        public bool b_Input;
-        public bool a_Input;
+        public bool sprint_Input;
+        public bool roll_Input;
+        public bool interact_Input;
         public bool x_Input;
-        public bool y_Input;
-        public bool rb_Input;
-        public bool rt_Input;
-        public bool lb_Input;
-        public bool lt_Input;
+        public bool twoHandMode_Input;
+        public bool lightAttack_Input;
+        public bool heavyAttack_Input;
+        public bool block_Input;
+        public bool parry_Input;
         public bool critical_Attack_Input;
         public bool jump_Input;
         public bool inventory_Input;
@@ -38,7 +39,7 @@ namespace SG
         public bool comboFlag;
         public bool lockOnFlag;
         public bool inventoryFlag;
-        public float rollInputTimer;
+        //public float rollInputTimer;
 
         public Transform criticalAttackRayCastStartPoint;
 
@@ -52,6 +53,8 @@ namespace SG
         PlayerWeaponSlotManager weaponSlotManager;
         CameraHandler cameraHandler;
         UIManager uiManager;
+
+        PlayerLocomotionManager playerLocomotionManager;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -77,22 +80,25 @@ namespace SG
                 inputActions = new PlayerControls();
                 inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
-                inputActions.PlayerActions.RB.performed += i => rb_Input = true;
-                inputActions.PlayerActions.RT.performed += i => rt_Input = true;
-                inputActions.PlayerActions.LB.performed += i => lb_Input = true;
-                inputActions.PlayerActions.LB.canceled += i => lb_Input = false;
-                inputActions.PlayerActions.LT.performed += i => lt_Input = true;
+                inputActions.PlayerActions.LightAttack.performed += i => lightAttack_Input = true;
+                inputActions.PlayerActions.HeavyAttack.performed += i => heavyAttack_Input = true;
+                inputActions.PlayerActions.Block.performed += i => block_Input = true;
+                inputActions.PlayerActions.Block.canceled += i => block_Input = false;
+                inputActions.PlayerActions.Parry.performed += i => parry_Input = true;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
-                inputActions.PlayerActions.A.performed += i => a_Input = true;
-                inputActions.PlayerActions.Roll.performed += i => b_Input = true;
-                inputActions.PlayerActions.Roll.canceled += i => b_Input = false;
+                inputActions.PlayerQuickSlots.DPadDown.performed += i => d_Pad_Down = true;
+                inputActions.PlayerQuickSlots.DPadUp.performed += i => d_Pad_Up = true;
+                inputActions.PlayerActions.Interact.performed += i => interact_Input = true;
+                inputActions.PlayerActions.Sprint.performed += i => sprint_Input = true;
+                inputActions.PlayerActions.Sprint.canceled += i => sprint_Input = false;
+                inputActions.PlayerActions.Roll.performed += i => roll_Input = true;
                 inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
                 inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
                 inputActions.PlayerMovement.LockOnTargetRight.performed += i => right_Stick_Right_Input = true;
                 inputActions.PlayerMovement.LockOnTargetLeft.performed += i => right_Stick_Left_Input = true;
-                inputActions.PlayerActions.Y.performed += i => y_Input = true;
+                inputActions.PlayerActions.TwoHand.performed += i => twoHandMode_Input = true;
                 inputActions.PlayerActions.CriticalAttack.performed += i => critical_Attack_Input = true;
             }
 
@@ -107,6 +113,7 @@ namespace SG
         public void TickInput(float delta)
         {
             HandleMoveInput(delta);
+            HandleSprintInput(delta);
             HandleRollInput(delta);
             HandleCombatInput(delta);
             HandleQuickSlotsInput();
@@ -125,15 +132,15 @@ namespace SG
             mouseY = cameraInput.y;
         }
 
-        private void HandleRollInput(float delta)
+        private void HandleSprintInput(float delta)
         {
-            if (b_Input)
+            if (sprint_Input)
             {
-                rollInputTimer += delta;
+                //rollInputTimer += delta;
 
                 if (playerStatsManager.currentStamina <= 0)
                 {
-                    b_Input = false;
+                    sprint_Input = false;
                     sprintFlag = false;
                 }
 
@@ -145,30 +152,52 @@ namespace SG
             else
             {
                 sprintFlag = false;
+            }
+        }
 
-                if (rollInputTimer > 0 && rollInputTimer < 0.5f)
+        private void HandleRollInput(float delta)
+        {
+            if(roll_Input)
+            {
+                //rollInputTimer = 0.5f;
+
+                if(playerStatsManager.currentStamina <= 0)
                 {
-                    rollFlag = true;
+                    roll_Input = false;
+                    rollFlag = false;
                 }
+                else
+                {
+                    sprintFlag = false;
 
-                rollInputTimer = 0;
+                    if (playerStatsManager.currentStamina >= playerLocomotionManager.rollStaminaCost)
+                    {
+                        rollFlag = true;
+                    }
+
+                    //rollInputTimer = 0;
+                }
+            }
+            else
+            {
+                rollFlag = false;
             }
         }
 
         private void HandleCombatInput(float delta)
         {
 
-            if (rb_Input)
+            if (lightAttack_Input)
             {
-                playerCombatManager.HandleRBAction();
+                playerCombatManager.HandleLightAttackAction();
             }
 
-            if (rt_Input)
+            if (heavyAttack_Input)
             {
                 playerCombatManager.HandleHeavyAttack(playerInventoryManager.rightWeapon);
             }
 
-            if (lt_Input)
+            if (parry_Input)
             {
                 if (twoHandFlag)
                 {
@@ -176,13 +205,13 @@ namespace SG
                 }
                 else
                 {
-                    playerCombatManager.HandleLTAction();
+                    playerCombatManager.HandleTwoHandAction();
                 }
             }
 
-            if (lb_Input)
+            if (block_Input)
             {
-                playerCombatManager.HandleLBAction();
+                playerCombatManager.HandleBlockAction();
             }
             else
             {
@@ -199,11 +228,19 @@ namespace SG
         {
             if (d_Pad_Right)
             {
-                playerInventoryManager.ChangeRightWeapon();
+                playerInventoryManager.QuickSlotThree();
             }
             else if (d_Pad_Left)
             {
-                playerInventoryManager.ChangeLeftWeapon();
+                playerInventoryManager.QuickSlotTwo();
+            }
+            else if (d_Pad_Up)
+            {
+                playerInventoryManager.QuickSlotOne();
+            }
+            else if (d_Pad_Down)
+            {
+                playerInventoryManager.QuickSlotFour();
             }
         }
 
@@ -211,8 +248,8 @@ namespace SG
         {
             if (inventory_Input)
             {
-                inventoryFlag = !inventoryFlag;
 
+                inventoryFlag = !inventoryFlag;
                 if (inventoryFlag)
                 {
                     uiManager.OpenSelectWindow();
@@ -272,20 +309,20 @@ namespace SG
 
         private void HandleTwoHandInput()
         {
-            if (y_Input)
+            if (twoHandMode_Input)
             {
-                y_Input = false;
+                twoHandMode_Input = false;
 
                 twoHandFlag = !twoHandFlag;
 
                 if (twoHandFlag)
                 {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon);
                 }
                 else
                 {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon);
+                    //weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
                 }
             }
         }

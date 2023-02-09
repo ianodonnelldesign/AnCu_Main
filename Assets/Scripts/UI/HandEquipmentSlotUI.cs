@@ -14,8 +14,10 @@ namespace SG
 
         public bool rightHandSlot01;
         public bool rightHandSlot02;
-        public bool leftHandSlot01;
-        public bool leftHandSlot02;
+        public bool rightHandSlot03;
+        public bool rightHandSlot04;
+        //public bool leftHandSlot01;
+        //public bool leftHandSlot02;
 
         private void Awake()
         {
@@ -48,14 +50,22 @@ namespace SG
             {
                 uiManager.rightHandSlot02Selected = true;
             }
-            else if (leftHandSlot01)
+            else if (rightHandSlot02)
             {
-                uiManager.leftHandSlot01Selected = true;
+                uiManager.rightHandSlot03Selected = true;
             }
             else
             {
-                uiManager.leftHandSlot02Selected = true;
+                uiManager.rightHandSlot04Selected = true;
             }
+            //else if (leftHandSlot01)
+            //{
+            //    uiManager.leftHandSlot01Selected = true;
+            //}
+            //else
+            //{
+            //    uiManager.leftHandSlot02Selected = true;
+            //}
         }
 
     }

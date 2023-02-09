@@ -149,7 +149,7 @@
             "id": "c70eeb8f-711f-45b0-a3c2-b63dd35471bf",
             "actions": [
                 {
-                    "name": "RB",
+                    "name": "LightAttack",
                     "type": "Button",
                     "id": "7ed839b0-f241-44f7-9222-8bc139256427",
                     "expectedControlType": "Button",
@@ -158,7 +158,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LB",
+                    "name": "Block",
                     "type": "Button",
                     "id": "672c1697-df72-4309-a049-94ebd239596f",
                     "expectedControlType": "Button",
@@ -167,7 +167,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RT",
+                    "name": "HeavyAttack",
                     "type": "Button",
                     "id": "f36bba84-c554-4c9f-94a1-3ad07c3ce85d",
                     "expectedControlType": "Button",
@@ -176,7 +176,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Roll",
+                    "name": "Sprint",
                     "type": "Button",
                     "id": "102d0dca-d888-4265-9c99-a00a57418c84",
                     "expectedControlType": "Button",
@@ -185,7 +185,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "A",
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "87352b02-9f62-4647-b6dc-5bc3ce265463",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
                     "type": "Button",
                     "id": "c5995b12-93ce-42d5-864c-a77224ccfa5d",
                     "expectedControlType": "Button",
@@ -221,7 +230,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Y",
+                    "name": "TwoHand",
                     "type": "Button",
                     "id": "fdaca24c-82a4-4445-a310-e87cbb5e5e01",
                     "expectedControlType": "Button",
@@ -239,7 +248,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LT",
+                    "name": "Parry",
                     "type": "Button",
                     "id": "f920a12c-57b6-4407-b1b6-be1c853ee7f4",
                     "expectedControlType": "Button",
@@ -256,7 +265,7 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "RB",
+                    "action": "LightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -267,7 +276,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RT",
+                    "action": "HeavyAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -278,7 +287,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -289,7 +298,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "A",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -333,7 +342,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Y",
+                    "action": "TwoHand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -355,7 +364,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LT",
+                    "action": "Parry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -366,7 +375,18 @@
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "",
-                    "action": "LB",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2fdffa0-bdfa-4e38-81a2-58b2dbd2858d",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

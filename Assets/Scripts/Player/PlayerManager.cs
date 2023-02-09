@@ -66,14 +66,14 @@ namespace SG
         private void LateUpdate()
         {
             inputHandler.rollFlag = false;
-            inputHandler.rb_Input = false;
-            inputHandler.rt_Input = false;
-            inputHandler.lt_Input = false;
+            inputHandler.lightAttack_Input = false;
+            inputHandler.heavyAttack_Input = false;
+            inputHandler.parry_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Left = false;
             inputHandler.d_Pad_Right = false;
-            inputHandler.a_Input = false;
+            inputHandler.interact_Input = false;
             inputHandler.jump_Input = false;
             inputHandler.inventory_Input = false;
 
@@ -109,7 +109,7 @@ namespace SG
                         interactableUI.interactableText.text = interactableText;
                         interactableUIGameObject.SetActive(true);
 
-                        if (inputHandler.a_Input)
+                        if (inputHandler.interact_Input)
                         {
                             hit.collider.GetComponent<Interactable>().Interact(this);
                         }
@@ -123,7 +123,7 @@ namespace SG
                     interactableUIGameObject.SetActive(false);
                 }
 
-                if (itemInteractableGameObject != null && inputHandler.a_Input)
+                if (itemInteractableGameObject != null && inputHandler.interact_Input)
                 {
                     itemInteractableGameObject.SetActive(false);
                 }

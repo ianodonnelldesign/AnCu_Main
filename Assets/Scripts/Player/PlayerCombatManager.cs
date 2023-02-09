@@ -90,7 +90,7 @@ namespace SG
         }
 
         #region Input Actions
-        public void HandleRBAction()
+        public void HandleLightAttackAction()
         {
             if (playerInventoryManager.rightWeapon.isMeleeWeapon)
             {
@@ -98,19 +98,19 @@ namespace SG
             }
         }
 
-        public void HandleLTAction()
+        public void HandleTwoHandAction()
         {
-            if (playerInventoryManager.leftWeapon.isShieldWeapon)
-            {
-                PerformLTWeaponArt(inputHandler.twoHandFlag);
-            }
-            else if (playerInventoryManager.leftWeapon.isMeleeWeapon)
-            {
-                //do a light attack
-            }
+            //if (playerInventoryManager.leftWeapon.isShieldWeapon)
+            //{
+            //    PerformLTWeaponArt(inputHandler.twoHandFlag);
+            //}
+            //else if (playerInventoryManager.leftWeapon.isMeleeWeapon)
+            //{
+            //    //do a light attack
+            //}
         }
 
-        public void HandleLBAction()
+        public void HandleBlockAction()
         {
             PerformLBBlockAction();
         }
@@ -148,10 +148,10 @@ namespace SG
             {
                 //If we are two handing preform weapon art for right weapon
             }
-            else
-            {
-                playerAnimatorManager.PlayTargetAnimation(playerInventoryManager.leftWeapon.weapon_art, true);
-            }
+            //else
+            //{
+            //    playerAnimatorManager.PlayTargetAnimation(playerInventoryManager.leftWeapon.weapon_art, true);
+            //}
         }
 
 
