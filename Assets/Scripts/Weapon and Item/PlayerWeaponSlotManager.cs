@@ -62,7 +62,7 @@ namespace SG
 
         public void LoadBothWeaponsOnSlots()
         {
-            LoadWeaponOnSlot(playerInventoryManager.rightWeapon);
+            LoadWeaponOnSlot(playerInventoryManager.equippedWeapon);
             //LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
         }
 
@@ -86,6 +86,7 @@ namespace SG
                 rightHandSlot.currentWeapon = weaponItem;
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
+                quickSlotsUI.UpdateWeaponQuickSlotsUI(weaponItem);
 
                 //if (isLeft)
                 //{
@@ -138,8 +139,8 @@ namespace SG
         private void LoadRightWeaponDamageCollider()
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-            rightHandDamageCollider.currentWeaponDamage = playerInventoryManager.rightWeapon.baseDamage;
-            rightHandDamageCollider.poiseBreak = playerInventoryManager.rightWeapon.poiseBreak;
+            rightHandDamageCollider.currentWeaponDamage = playerInventoryManager.equippedWeapon.baseDamage;
+            rightHandDamageCollider.poiseBreak = playerInventoryManager.equippedWeapon.poiseBreak;
         }
 
         public void OpenDamageCollider()

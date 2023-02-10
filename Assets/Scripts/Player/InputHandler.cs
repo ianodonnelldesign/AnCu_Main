@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SG
 {
     public class InputHandler : MonoBehaviour
     {
+        [SerializeField] private PlayerInput playerInput;
+
         public float horizontal;
         public float vertical;
         public float moveAmount;
@@ -189,7 +192,7 @@ namespace SG
 
             if (heavyAttack_Input)
             {
-                playerCombatManager.HandleHeavyAttack(playerInventoryManager.rightWeapon);
+                playerCombatManager.HandleHeavyAttack(playerInventoryManager.equippedWeapon);
             }
 
             if (parry_Input)
@@ -312,11 +315,11 @@ namespace SG
 
                 if (twoHandFlag)
                 {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon);
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.equippedWeapon);
                 }
                 else
                 {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon);
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.equippedWeapon);
                     //weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
                 }
             }

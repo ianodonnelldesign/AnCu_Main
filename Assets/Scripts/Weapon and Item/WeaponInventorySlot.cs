@@ -39,30 +39,30 @@ namespace SG
 
         public void EquipThisItem()
         {
-            if (uiManager.rightHandSlot01Selected)
-            {
-                playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[0]);
-                playerInventory.weaponsInRightHandSlots[0] = item;
-                playerInventory.weaponsInventory.Remove(item);
-            }
-            else if (uiManager.rightHandSlot02Selected)
-            {
-                playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[1]);
-                playerInventory.weaponsInRightHandSlots[1] = item;
-                playerInventory.weaponsInventory.Remove(item);
-            }
-            else if (uiManager.rightHandSlot03Selected)
-            {
-                playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[2]);
-                playerInventory.weaponsInRightHandSlots[2] = item;
-                playerInventory.weaponsInventory.Remove(item);
-            }
-            else if (uiManager.rightHandSlot04Selected)
-            {
-                playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[3]);
-                playerInventory.weaponsInRightHandSlots[3] = item;
-                playerInventory.weaponsInventory.Remove(item);
-            }
+            //if (uiManager.rightHandSlot01Selected)
+            //{
+            //    playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[0]);
+            //    playerInventory.weaponsInRightHandSlots[0] = item;
+            //    playerInventory.weaponsInventory.Remove(item);
+            //}
+            //else if (uiManager.rightHandSlot02Selected)
+            //{
+            //    playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[1]);
+            //    playerInventory.weaponsInRightHandSlots[1] = item;
+            //    playerInventory.weaponsInventory.Remove(item);
+            //}
+            //else if (uiManager.rightHandSlot03Selected)
+            //{
+            //    playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[2]);
+            //    playerInventory.weaponsInRightHandSlots[2] = item;
+            //    playerInventory.weaponsInventory.Remove(item);
+            //}
+            //else if (uiManager.rightHandSlot04Selected)
+            //{
+            //    playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[3]);
+            //    playerInventory.weaponsInRightHandSlots[3] = item;
+            //    playerInventory.weaponsInventory.Remove(item);
+            //}
             //else if (uiManager.rightHandSlot02Selected)
             //{
             //    playerInventory.weaponsInventory.Add(playerInventory.weaponsInRightHandSlots[1]);
@@ -81,15 +81,15 @@ namespace SG
             //    playerInventory.weaponsInLeftHandSlots[1] = item;
             //    playerInventory.weaponsInventory.Remove(item);
             //}
-            else
-            {
-                return;
-            }
+            //else
+            //{
+            //    return;
+            //}
 
-            playerInventory.rightWeapon = playerInventory.weaponsInRightHandSlots[playerInventory.currentRightWeaponIndex];
+            playerInventory.equippedWeapon = playerInventory.weaponsInRightHandSlots[playerInventory.currentRightWeaponIndex];
             //playerInventory.leftWeapon = playerInventory.weaponsInLeftHandSlots[playerInventory.currentLeftWeaponIndex];
 
-            weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon);
+            weaponSlotManager.LoadWeaponOnSlot(playerInventory.equippedWeapon);
             //weaponSlotManager.LoadWeaponOnSlot(playerInventory.leftWeapon, true);
 
             uiManager.equipmentWindowUI.LoadWeaponsOnEquipmentScreen(playerInventory);

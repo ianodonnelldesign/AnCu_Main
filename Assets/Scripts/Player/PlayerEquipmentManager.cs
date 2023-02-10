@@ -37,7 +37,7 @@ namespace SG
         {
             if (inputHandler.twoHandFlag)
             {
-                blockingCollider.SetColliderDamageAbsorption(playerInventoryManager.rightWeapon);
+                blockingCollider.SetColliderDamageAbsorption(playerInventoryManager.equippedWeapon);
             }
             //else
             //{

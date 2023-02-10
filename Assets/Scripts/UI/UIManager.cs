@@ -14,6 +14,7 @@ namespace SG
         public GameObject selectWindow;
         //public GameObject equipmentScreenWindow;
         public GameObject inventoryWindow;
+        public GameObject settingsWindow;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
@@ -71,10 +72,21 @@ namespace SG
             selectWindow.SetActive(false);
         }
 
+        public void OpenSettingsWindow()
+        {
+            settingsWindow.SetActive(true);
+        }
+
+        public void CloseSettingsWindow()
+        {
+            settingsWindow.SetActive(false);
+        }
+
         public void CloseAllInventoryWindows()
         {
             ResetAllSelectedSlots();
             inventoryWindow.SetActive(false);
+            settingsWindow.SetActive(false);
             //equipmentScreenWindow.SetActive(false);
         }
 

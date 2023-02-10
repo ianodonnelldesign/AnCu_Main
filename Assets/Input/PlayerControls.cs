@@ -277,6 +277,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rebind Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""3ba29f47-ee38-4fd6-a2e8-d270e22d6a70"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -409,6 +418,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ccf6c464-6598-4075-a4af-0e00bc6f8e9f"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rebind Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -545,6 +565,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""33123bd7-bf54-4b5e-a892-9e1c1752939a"",
+            ""actions"": [],
+            ""bindings"": []
         }
     ],
     ""controlSchemes"": []
@@ -569,12 +595,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_TwoHand = m_PlayerActions.FindAction("TwoHand", throwIfNotFound: true);
         m_PlayerActions_CriticalAttack = m_PlayerActions.FindAction("Critical Attack", throwIfNotFound: true);
         m_PlayerActions_Parry = m_PlayerActions.FindAction("Parry", throwIfNotFound: true);
+        m_PlayerActions_RebindMenu = m_PlayerActions.FindAction("Rebind Menu", throwIfNotFound: true);
         // PlayerQuickSlots
         m_PlayerQuickSlots = asset.FindActionMap("PlayerQuickSlots", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadUp = m_PlayerQuickSlots.FindAction("D-Pad Up", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadDown = m_PlayerQuickSlots.FindAction("D-Pad Down", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadLeft = m_PlayerQuickSlots.FindAction("D-Pad Left", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadRight = m_PlayerQuickSlots.FindAction("D-Pad Right", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -703,6 +732,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_TwoHand;
     private readonly InputAction m_PlayerActions_CriticalAttack;
     private readonly InputAction m_PlayerActions_Parry;
+    private readonly InputAction m_PlayerActions_RebindMenu;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -719,6 +749,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @TwoHand => m_Wrapper.m_PlayerActions_TwoHand;
         public InputAction @CriticalAttack => m_Wrapper.m_PlayerActions_CriticalAttack;
         public InputAction @Parry => m_Wrapper.m_PlayerActions_Parry;
+        public InputAction @RebindMenu => m_Wrapper.m_PlayerActions_RebindMenu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -764,6 +795,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Parry.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnParry;
                 @Parry.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnParry;
                 @Parry.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnParry;
+                @RebindMenu.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRebindMenu;
+                @RebindMenu.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRebindMenu;
+                @RebindMenu.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRebindMenu;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -804,6 +838,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Parry.started += instance.OnParry;
                 @Parry.performed += instance.OnParry;
                 @Parry.canceled += instance.OnParry;
+                @RebindMenu.started += instance.OnRebindMenu;
+                @RebindMenu.performed += instance.OnRebindMenu;
+                @RebindMenu.canceled += instance.OnRebindMenu;
             }
         }
     }
@@ -865,6 +902,31 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public PlayerQuickSlotsActions @PlayerQuickSlots => new PlayerQuickSlotsActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    public struct MenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -886,6 +948,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnTwoHand(InputAction.CallbackContext context);
         void OnCriticalAttack(InputAction.CallbackContext context);
         void OnParry(InputAction.CallbackContext context);
+        void OnRebindMenu(InputAction.CallbackContext context);
     }
     public interface IPlayerQuickSlotsActions
     {
@@ -893,5 +956,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnDPadDown(InputAction.CallbackContext context);
         void OnDPadLeft(InputAction.CallbackContext context);
         void OnDPadRight(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
     }
 }

@@ -92,7 +92,7 @@ namespace SG
         #region Input Actions
         public void HandleLightAttackAction()
         {
-            if (playerInventoryManager.rightWeapon.isMeleeWeapon)
+            if (playerInventoryManager.equippedWeapon.isMeleeWeapon)
             {
                 PerformRBMeleeAction();
             }
@@ -122,7 +122,7 @@ namespace SG
             if (playerManager.canDoCombo)
             {
                 inputHandler.comboFlag = true;
-                HandleWeaponCombo(playerInventoryManager.rightWeapon);
+                HandleWeaponCombo(playerInventoryManager.equippedWeapon);
                 inputHandler.comboFlag = false;
             }
             else
@@ -134,7 +134,7 @@ namespace SG
                     return;
 
                 playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
-                HandleLightAttack(playerInventoryManager.rightWeapon);
+                HandleLightAttack(playerInventoryManager.equippedWeapon);
             }
         }
 
@@ -198,7 +198,7 @@ namespace SG
                     Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                     playerManager.transform.rotation = targetRotation;
 
-                    int criticalDamage = playerInventoryManager.rightWeapon.criticalDamageMuiltiplier * rightWeapon.currentWeaponDamage;
+                    int criticalDamage = playerInventoryManager.equippedWeapon.criticalDamageMuiltiplier * rightWeapon.currentWeaponDamage;
                     enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                     playerAnimatorManager.PlayTargetAnimation("Back Stab", true);
@@ -224,7 +224,7 @@ namespace SG
                     Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                     playerManager.transform.rotation = targetRotation;
 
-                    int criticalDamage = playerInventoryManager.rightWeapon.criticalDamageMuiltiplier * rightWeapon.currentWeaponDamage;
+                    int criticalDamage = playerInventoryManager.equippedWeapon.criticalDamageMuiltiplier * rightWeapon.currentWeaponDamage;
                     enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                     playerAnimatorManager.PlayTargetAnimation("Riposte", true);

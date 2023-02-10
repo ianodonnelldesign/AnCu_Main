@@ -255,6 +255,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Rebind Menu",
+                    "type": "Button",
+                    "id": "3ba29f47-ee38-4fd6-a2e8-d270e22d6a70",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -387,6 +396,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ccf6c464-6598-4075-a4af-0e00bc6f8e9f",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rebind Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -523,6 +543,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Menu",
+            "id": "33123bd7-bf54-4b5e-a892-9e1c1752939a",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": []
