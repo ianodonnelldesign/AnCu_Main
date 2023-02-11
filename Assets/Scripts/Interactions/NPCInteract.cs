@@ -16,7 +16,7 @@ namespace SG
 
         public void InteractWithNPC()
         {
-            interactingWithNPC.Interaction();
+            Debug.Log("You're talking to this NPC");
         }
 
     }
