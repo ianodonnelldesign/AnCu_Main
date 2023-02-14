@@ -97,7 +97,7 @@ namespace SG
         {
             RaycastHit hit;
 
-            if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f))
+            if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 2f, cameraHandler.ignoreLayers))
             {
                 if (hit.collider.tag == "Interactable")
                 {

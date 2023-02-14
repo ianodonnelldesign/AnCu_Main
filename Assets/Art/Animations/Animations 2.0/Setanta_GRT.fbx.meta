@@ -8,7 +8,7 @@ ModelImporter:
     second: setanta_TPose_001.002
   - first:
       74: -3874210868714608397
-    second: setanta_StrafeLeft_001.001
+    second: setanta_StrafeLeft_001
   - first:
       74: -5699612175308055295
     second: setanta_Walk_001
@@ -24,6 +24,18 @@ ModelImporter:
   - first:
       74: 243767649291748232
     second: setanta_Run_001
+  - first:
+      74: 1804252324250163608
+    second: setanta_Run_001 (1)
+  - first:
+      74: -5674924508886690509
+    second: setanta_Jump_002
+  - first:
+      74: -3874210868714608397
+    second: setanta_StrafeLeft_002
+  - first:
+      74: -8076247573731561247
+    second: setanta_StrafeLeft_001
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -54,8 +66,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: setanta_TPose_001.002
-      takeName: setanta_TPose_001.002
+      name: setanta_StrafeLeft_001
+      takeName: setanta_StrafeLeft_001.001
       internalID: 0
       firstFrame: 0
       lastFrame: 29
@@ -67,35 +79,6 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: setanta_StrafeLeft_001.001
-      takeName: setanta_StrafeLeft_001.001
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 29
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -181,14 +164,14 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000

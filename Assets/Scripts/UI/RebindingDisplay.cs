@@ -42,8 +42,8 @@ public class RebindingDisplay : MonoBehaviour
 
         public void StartRebinding()
         {
-        startRebindObject.SetActive(false);
-        waitingForInputObject.SetActive(true);
+            startRebindObject.SetActive(false);
+            waitingForInputObject.SetActive(true);
 
             playerInput.SwitchCurrentActionMap("Menu");
 

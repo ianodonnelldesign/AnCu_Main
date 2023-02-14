@@ -9,11 +9,11 @@ namespace SG
         public float radius = 0.6f;
         public string interactableText;
 
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, radius);
-        }
+        //private void OnDrawGizmosSelected()
+        //{
+        //    Gizmos.color = Color.blue;
+        //    Gizmos.DrawWireSphere(transform.position, radius);
+        //}
 
         public virtual void Interact(PlayerManager playerManager)
         {

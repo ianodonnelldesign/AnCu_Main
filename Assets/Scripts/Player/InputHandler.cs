@@ -246,19 +246,25 @@ namespace SG
         {
             if (inventory_Input)
             {
-
+                
                 inventoryFlag = !inventoryFlag;
                 if (inventoryFlag)
                 {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                     uiManager.OpenSelectWindow();
                     uiManager.UpdateUI();
                     uiManager.hudWindow.SetActive(false);
+                    playerManager.isInteracting = true;
                 }
                 else
                 {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
                     uiManager.CloseSelectWindow();
                     uiManager.CloseAllInventoryWindows();
                     uiManager.hudWindow.SetActive(true);
+                    playerManager.isInteracting = false;
                 }
             }
         }

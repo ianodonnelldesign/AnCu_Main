@@ -28,7 +28,7 @@ namespace SG
         float minimumDistanceNeededToBeginFall = 1f;
         [SerializeField]
         float groundDirectionRayDistance = 0.2f;
-        LayerMask ignoreForGroundCheck;
+        public LayerMask groundLayer;
         public float inAirTimer;
 
         [Header("Movement Stats")]
@@ -41,13 +41,15 @@ namespace SG
         [SerializeField]
         float rotationSpeed = 10;
         [SerializeField]
-        float fallingSpeed = 45;
+        float fallingSpeed = 65;
+        [SerializeField]
+        float jumpHeight = 20;
 
         [Header("Stamina Costs")]
         [SerializeField]
-        public int rollStaminaCost = 15;
-        public int backstepStaminaCost = 15;
-        int sprintStaminaCost = 1;
+        public int rollStaminaCost = 10;
+        public int backstepStaminaCost = 10;
+        public int sprintStaminaCost = 1;
 
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockerCollider;
@@ -70,9 +72,8 @@ namespace SG
             playerAnimatorManager.Initialize();
 
             playerManager.isGrounded = true;
-            ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
+            //groundLayer = ~(1 << 8 | 1 << 11);
             Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
-
         }
 
         #region Movement
@@ -241,7 +242,7 @@ namespace SG
             targetPosition = myTransform.position;
 
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededToBeginFall, Color.red, 0.1f, false);
-            if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck))
+            if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, groundLayer))
             {
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
@@ -301,20 +302,19 @@ namespace SG
             if (playerManager.isInteracting)
                 return;
 
-            if (playerStatsManager.currentStamina <= 0)
-                return;
+            //if (playerStatsManager.currentStamina <= 0)
+            //    return;
 
             if (inputHandler.jump_Input)
-            {
-                if (inputHandler.moveAmount > 0)
-                {
+            {                    
                     moveDirection = cameraObject.forward * inputHandler.vertical;
                     moveDirection += cameraObject.right * inputHandler.horizontal;
-                    playerAnimatorManager.PlayTargetAnimation("Jump", true);
-                    moveDirection.y = 0;
-                    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                    myTransform.rotation = jumpRotation;
-                }
+                    playerAnimatorManager.PlayTargetAnimation("Jump", false);
+                
+                    //moveDirection.y = 0;
+
+                    //Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                    //myTransform.rotation = jumpRotation;
             }
         }
 

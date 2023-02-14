@@ -66,6 +66,11 @@ namespace SG
             HandleCameraCollisions(delta);
         }
 
+        public void CameraFocus()
+        {
+            
+        }
+
         public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
         {
             if (inputHandler.lockOnFlag == false && currentLockOnTarget == null)
