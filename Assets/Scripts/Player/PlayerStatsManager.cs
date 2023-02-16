@@ -12,6 +12,8 @@ namespace SG
         StaminaBar staminaBar;
         PlayerAnimatorManager playerAnimatorManager;
 
+        DeathManager deathManager;
+
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
 
@@ -19,6 +21,7 @@ namespace SG
         {
             playerManager = GetComponent<PlayerManager>();
 
+            deathManager = FindObjectOfType<DeathManager>();
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
@@ -84,7 +87,7 @@ namespace SG
                 currentHealth = 0;
                 isDead = true;
                 playerAnimatorManager.PlayTargetAnimation("Dead_01", true);
-                // Handle player death
+                deathManager.PlayerDeath();
             }
         }
 

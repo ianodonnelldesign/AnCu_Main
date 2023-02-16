@@ -13,7 +13,7 @@ namespace SG
         {
             if(PlayerPrefs.GetString("LastExitName") == lastExitName)
             {
-                PlayerSaver.Instance.transform.eulerAngles = transform.eulerAngles;
+                //PlayerSaver.Instance.transform.eulerAngles = transform.eulerAngles;
 
                 PlayerSaver.Instance.transform.position = transform.position;
             }
