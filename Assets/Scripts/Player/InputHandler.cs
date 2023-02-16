@@ -30,6 +30,7 @@ namespace SG
         public bool lockOnInput;
         public bool right_Stick_Right_Input;
         public bool right_Stick_Left_Input;
+        public bool zTarget_Input;
 
         public bool d_Pad_Up;
         public bool d_Pad_Down;
@@ -103,6 +104,7 @@ namespace SG
                 inputActions.PlayerMovement.LockOnTargetLeft.performed += i => right_Stick_Left_Input = true;
                 inputActions.PlayerActions.TwoHand.performed += i => twoHandMode_Input = true;
                 inputActions.PlayerActions.CriticalAttack.performed += i => critical_Attack_Input = true;
+                inputActions.PlayerActions.ZTarget.performed += i => zTarget_Input = true;
             }
 
             inputActions.Enable();

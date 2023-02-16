@@ -21,7 +21,22 @@ EditorBuildSettings:
     path: Assets/Scenes/Level_02_Intro.unity
     guid: 680fb08bb6ec67b409d7de5e7fcaad2e
   - enabled: 1
+    path: Assets/Scenes/Level_02.5_Cutscene_01.unity
+    guid: 86c00df14f33d85478aecca69253df0c
+  - enabled: 1
     path: Assets/Scenes/Level_03_School.unity
     guid: c7a235bb2be3c4347ab5964a7eb5c5d7
+  - enabled: 1
+    path: Assets/Scenes/Level_04.5_Cutscene_02.unity
+    guid: 8a2cd5f386d4bc14eaa1099e30b1f094
+  - enabled: 1
+    path: Assets/Scenes/Level_04_Forest.unity
+    guid: 348eb67f34203984f8ded08193c8a290
+  - enabled: 1
+    path: Assets/Scenes/Level_05_TigCullan.unity
+    guid: 40e8f431a6459724d955990e16cd6c1a
+  - enabled: 1
+    path: Assets/Scenes/Level_06_Cutscene_03.unity
+    guid: 0ecca1b0aaf197442bbeea41e88edba7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3f0bc18c838a1b149b8894d4fa712ebb, type: 2}

@@ -286,6 +286,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ZTarget"",
+                    ""type"": ""Button"",
+                    ""id"": ""3d3832a1-433d-4f7c-b53c-ce6d90b6e103"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -429,6 +438,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Rebind Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53943823-c59d-4a06-8c56-b05afe05802b"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZTarget"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -596,6 +616,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_CriticalAttack = m_PlayerActions.FindAction("Critical Attack", throwIfNotFound: true);
         m_PlayerActions_Parry = m_PlayerActions.FindAction("Parry", throwIfNotFound: true);
         m_PlayerActions_RebindMenu = m_PlayerActions.FindAction("Rebind Menu", throwIfNotFound: true);
+        m_PlayerActions_ZTarget = m_PlayerActions.FindAction("ZTarget", throwIfNotFound: true);
         // PlayerQuickSlots
         m_PlayerQuickSlots = asset.FindActionMap("PlayerQuickSlots", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadUp = m_PlayerQuickSlots.FindAction("D-Pad Up", throwIfNotFound: true);
@@ -733,6 +754,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_CriticalAttack;
     private readonly InputAction m_PlayerActions_Parry;
     private readonly InputAction m_PlayerActions_RebindMenu;
+    private readonly InputAction m_PlayerActions_ZTarget;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -750,6 +772,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @CriticalAttack => m_Wrapper.m_PlayerActions_CriticalAttack;
         public InputAction @Parry => m_Wrapper.m_PlayerActions_Parry;
         public InputAction @RebindMenu => m_Wrapper.m_PlayerActions_RebindMenu;
+        public InputAction @ZTarget => m_Wrapper.m_PlayerActions_ZTarget;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -798,6 +821,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @RebindMenu.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRebindMenu;
                 @RebindMenu.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRebindMenu;
                 @RebindMenu.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRebindMenu;
+                @ZTarget.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnZTarget;
+                @ZTarget.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnZTarget;
+                @ZTarget.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnZTarget;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -841,6 +867,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @RebindMenu.started += instance.OnRebindMenu;
                 @RebindMenu.performed += instance.OnRebindMenu;
                 @RebindMenu.canceled += instance.OnRebindMenu;
+                @ZTarget.started += instance.OnZTarget;
+                @ZTarget.performed += instance.OnZTarget;
+                @ZTarget.canceled += instance.OnZTarget;
             }
         }
     }
@@ -949,6 +978,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnCriticalAttack(InputAction.CallbackContext context);
         void OnParry(InputAction.CallbackContext context);
         void OnRebindMenu(InputAction.CallbackContext context);
+        void OnZTarget(InputAction.CallbackContext context);
     }
     public interface IPlayerQuickSlotsActions
     {

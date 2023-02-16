@@ -42,8 +42,10 @@ namespace SG
         float rotationSpeed = 10;
         [SerializeField]
         float fallingSpeed = 65;
-        [SerializeField]
-        float jumpHeight = 20;
+
+        //[Header("Jumping")]
+        //[SerializeField] 
+        //float jumpHeight = 20;
 
         [Header("Stamina Costs")]
         [SerializeField]
@@ -302,21 +304,27 @@ namespace SG
             if (playerManager.isInteracting)
                 return;
 
-            //if (playerStatsManager.currentStamina <= 0)
-            //    return;
+            if (playerStatsManager.currentStamina <= 0)
+                return;
 
-            if (inputHandler.jump_Input)
-            {                    
-                    moveDirection = cameraObject.forward * inputHandler.vertical;
-                    moveDirection += cameraObject.right * inputHandler.horizontal;
-                    playerAnimatorManager.PlayTargetAnimation("Jump", false);
-                
-                    //moveDirection.y = 0;
+            //if (inputHandler.jump_Input)
+            //{
+            //    moveDirection = cameraObject.forward * inputHandler.vertical;
+            //    moveDirection += cameraObject.right * inputHandler.horizontal;
+            //    moveDirection.y = 0;
+            //    moveDirection.Normalize();
+            //    moveDirection *= jumpHeight;
 
-                    //Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                    //myTransform.rotation = jumpRotation;
-            }
+            //    rigidbody.AddForce(moveDirection, ForceMode.Impulse);
+
+            //    playerAnimatorManager.PlayTargetAnimation("Jump", false);
+
+            //    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+            //    myTransform.rotation = jumpRotation;
+            //}
         }
+
+
 
 
 

@@ -9,14 +9,23 @@ namespace SG
         InputHandler inputHandler;
         PlayerManager playerManager;
 
+        //the player, what the camera's looking at
         public Transform targetTransform;
+
+        //the actual camera's location
         public Transform cameraTransform;
+
+        //what the camera pivots on
         public Transform cameraPivotTransform;
-        private Transform myTransform;
+        
+        //the transform of the camera holder
+        private Transform cameraHandlerTransform;
         private Vector3 cameraTransformPosition;
         public LayerMask ignoreLayers;
         public LayerMask enviromentLayer;
         private Vector3 cameraFollowVelocity = Vector3.zero;
+        public Camera playerCamera;
+
 
         public float lookSpeed = 0.1f;
         public float followSpeed = 0.1f;
@@ -46,7 +55,7 @@ namespace SG
 
         private void Awake()
         {
-            myTransform = transform;
+            cameraHandlerTransform = transform;
             defaultPosition = cameraTransform.localPosition.z;
             targetTransform = FindObjectOfType<PlayerManager>().transform;
             inputHandler = FindObjectOfType<InputHandler>();
@@ -60,15 +69,15 @@ namespace SG
 
         public void FollowTarget(float delta)
         {
-            Vector3 targetPosition = Vector3.SmoothDamp(myTransform.position, targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
-            myTransform.position = targetPosition;
+            Vector3 targetPosition = Vector3.SmoothDamp(cameraHandlerTransform.position, targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
+            cameraHandlerTransform.position = targetPosition;
 
             HandleCameraCollisions(delta);
         }
 
         public void CameraFocus()
         {
-            
+
         }
 
         public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
@@ -82,7 +91,7 @@ namespace SG
                 Vector3 rotation = Vector3.zero;
                 rotation.y = lookAngle;
                 Quaternion targetRotation = Quaternion.Euler(rotation);
-                myTransform.rotation = targetRotation;
+                cameraHandlerTransform.rotation = targetRotation;
 
                 rotation = Vector3.zero;
                 rotation.x = pivotAngle;

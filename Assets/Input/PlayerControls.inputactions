@@ -264,6 +264,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ZTarget",
+                    "type": "Button",
+                    "id": "3d3832a1-433d-4f7c-b53c-ce6d90b6e103",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -407,6 +416,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Rebind Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53943823-c59d-4a06-8c56-b05afe05802b",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZTarget",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

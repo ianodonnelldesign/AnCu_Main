@@ -30,7 +30,6 @@ namespace SG
             interactableUI = FindObjectOfType<InteractableUI>();
         }
 
-
         void Update()
         {
             float delta = Time.deltaTime;
