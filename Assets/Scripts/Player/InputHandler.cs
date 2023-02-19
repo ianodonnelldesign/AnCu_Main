@@ -194,7 +194,7 @@ namespace SG
 
             if (heavyAttack_Input)
             {
-                playerCombatManager.HandleHeavyAttack(playerInventoryManager.equippedWeapon);
+                playerCombatManager.HandleHeavyAttackAction(playerInventoryManager.equippedItem);
             }
 
             if (parry_Input)
@@ -258,6 +258,8 @@ namespace SG
                     uiManager.UpdateUI();
                     uiManager.hudWindow.SetActive(false);
                     playerManager.isInteracting = true;
+
+                    uiManager.inventoryWindow.SetActive(true);
                 }
                 else
                 {
@@ -323,12 +325,7 @@ namespace SG
 
                 if (twoHandFlag)
                 {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.equippedWeapon);
-                }
-                else
-                {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.equippedWeapon);
-                    //weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.equippedItem);
                 }
             }
         }

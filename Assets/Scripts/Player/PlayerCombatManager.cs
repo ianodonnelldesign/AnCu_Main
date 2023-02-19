@@ -32,69 +32,37 @@ namespace SG
             inputHandler = GetComponent<InputHandler>();
         }
 
-        public void HandleWeaponCombo(WeaponItem weapon)
-        {
-            if (playerStatsManager.currentStamina <= 0)
-                return;
-
-            if (inputHandler.comboFlag)
-            {
-                playerAnimatorManager.animator.SetBool("canDoCombo", false);
-
-                if (lastAttack == weapon.oh_light_attack_01)
-                {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.oh_light_attack_02, true);
-                }
-                else if (lastAttack == weapon.th_light_attack_01)
-                {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.th_light_attack_02, true);
-                }
-            }
-        }
-
-        public void HandleLightAttack(WeaponItem weapon)
-        {
-            if (playerStatsManager.currentStamina <= 0)
-                return;
-
-            playerWeaponSlotManager.attackingWeapon = weapon;
-
-            if (inputHandler.twoHandFlag)
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.th_light_attack_01, true);
-                lastAttack = weapon.th_light_attack_01;
-            }
-            else
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.oh_light_attack_01, true);
-                lastAttack = weapon.oh_light_attack_01;
-            }
-        }
-
-        public void HandleHeavyAttack(WeaponItem weapon)
-        {
-            if (playerStatsManager.currentStamina <= 0)
-                return;
-
-            playerWeaponSlotManager.attackingWeapon = weapon;
-
-            if (inputHandler.twoHandFlag)
-            {
-
-            }
-            else
-            {
-                playerAnimatorManager.PlayTargetAnimation(weapon.oh_heavy_attack_01, true);
-                lastAttack = weapon.oh_heavy_attack_01;
-            }
-        }
-
         #region Input Actions
+
         public void HandleLightAttackAction()
         {
-            if (playerInventoryManager.equippedWeapon.isMeleeWeapon)
+            if (playerInventoryManager.equippedItem.isMeleeWeapon)
             {
-                PerformRBMeleeAction();
+                PerformLightAttackAction();
+            }
+            else if (playerInventoryManager.equippedItem.isConsumable)
+            {
+                PerformConsumableAction();
+            }
+            else if (playerInventoryManager.equippedItem.isGearItem)
+            {
+                PerformGearAction();
+            }
+        }
+
+        public void HandleHeavyAttackAction()
+        {
+            if (playerInventoryManager.equippedItem.isMeleeWeapon)
+            {
+                HandleHeavyAttackAction();
+            }
+            else if (playerInventoryManager.equippedItem.isConsumable)
+            {
+                PerformAlternateConsumableAction();
+            }
+            else if (playerInventoryManager.equippedItem.isGearItem)
+            {
+                PerformAlternateGearAction();
             }
         }
 
@@ -116,13 +84,13 @@ namespace SG
         }
         #endregion
 
-        #region Attack Actions
-        private void PerformRBMeleeAction()
+        #region Actions
+        private void PerformLightAttackAction()
         {
             if (playerManager.canDoCombo)
             {
                 inputHandler.comboFlag = true;
-                HandleWeaponCombo(playerInventoryManager.equippedWeapon);
+                HandleWeaponCombo(playerInventoryManager.equippedItem);
                 inputHandler.comboFlag = false;
             }
             else
@@ -134,26 +102,99 @@ namespace SG
                     return;
 
                 playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
-                HandleLightAttack(playerInventoryManager.equippedWeapon);
+                HandleLightAttack(playerInventoryManager.equippedItem);
+            }
+        }
+        public void HandleLightAttack(ActionItem weapon)
+        {
+            if (playerStatsManager.currentStamina <= 0)
+                return;
+
+            playerWeaponSlotManager.attackingWeapon = weapon;
+
+            if (inputHandler.twoHandFlag)
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.th_action_01, true);
+                lastAttack = weapon.th_action_01;
+            }
+            else
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.light_action_01, true);
+                lastAttack = weapon.light_action_01;
+            }
+        }
+        public void HandleHeavyAttackAction(ActionItem weapon)
+        {
+            if (playerStatsManager.currentStamina <= 0)
+                return;
+
+            playerWeaponSlotManager.attackingWeapon = weapon;
+
+            if (inputHandler.twoHandFlag)
+            {
+
+            }
+            else
+            {
+                playerAnimatorManager.PlayTargetAnimation(weapon.heavy_action_01, true);
+                lastAttack = weapon.heavy_action_01;
+            }
+        }
+
+        public void HandleWeaponCombo(ActionItem weapon)
+        {
+            if (playerStatsManager.currentStamina <= 0)
+                return;
+
+            if (inputHandler.comboFlag)
+            {
+                playerAnimatorManager.animator.SetBool("canDoCombo", false);
+
+                if (lastAttack == weapon.light_action_01)
+                {
+                    playerAnimatorManager.PlayTargetAnimation(weapon.light_action_02, true);
+                }
+                else if (lastAttack == weapon.th_action_01)
+                {
+                    playerAnimatorManager.PlayTargetAnimation(weapon.th_action_02, true);
+                }
             }
         }
 
 
-        private void PerformLTWeaponArt(bool isTwoHanding)
+        private void PerformConsumableAction()
+        {
+            Debug.Log("You ate the item");
+        }
+        private void PerformAlternateConsumableAction()
+        {
+            Debug.Log("You alternately ate the item");
+        }
+
+        private void PerformGearAction()
+        {
+            Debug.Log("You used the gear's action.");
+        }
+        private void PerformAlternateGearAction()
+        {
+            Debug.Log("You alternately used the gear's action.");
+        }
+
+
+        private void PerformTHWeaponArt(bool isTwoHanding)
         {
             if (playerManager.isInteracting)
                 return;
 
             if (isTwoHanding)
             {
-                //If we are two handing preform weapon art for right weapon
+                //If we are two handing perform weapon art for right weapon
             }
             //else
             //{
             //    playerAnimatorManager.PlayTargetAnimation(playerInventoryManager.leftWeapon.weapon_art, true);
             //}
         }
-
 
         #endregion
 
@@ -198,7 +239,7 @@ namespace SG
                     Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                     playerManager.transform.rotation = targetRotation;
 
-                    int criticalDamage = playerInventoryManager.equippedWeapon.criticalDamageMuiltiplier * rightWeapon.currentWeaponDamage;
+                    int criticalDamage = playerInventoryManager.equippedItem.criticalDamageMuiltiplier * rightWeapon.currentWeaponDamage;
                     enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                     playerAnimatorManager.PlayTargetAnimation("Back Stab", true);
@@ -224,7 +265,7 @@ namespace SG
                     Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                     playerManager.transform.rotation = targetRotation;
 
-                    int criticalDamage = playerInventoryManager.equippedWeapon.criticalDamageMuiltiplier * rightWeapon.currentWeaponDamage;
+                    int criticalDamage = playerInventoryManager.equippedItem.criticalDamageMuiltiplier * rightWeapon.currentWeaponDamage;
                     enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                     playerAnimatorManager.PlayTargetAnimation("Riposte", true);

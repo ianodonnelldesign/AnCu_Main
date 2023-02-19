@@ -15,7 +15,7 @@ namespace SG
             blockingCollider = GetComponent<BoxCollider>();
         }
 
-        public void SetColliderDamageAbsorption(WeaponItem weapon)
+        public void SetColliderDamageAbsorption(ActionItem weapon)
         {
             if (weapon != null)
             {

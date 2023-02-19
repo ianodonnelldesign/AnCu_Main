@@ -9,21 +9,15 @@ namespace SG
         PlayerWeaponSlotManager playerWeaponSlotManager;
 
         [Header("Quick Slot Items")]
-        public WeaponItem equippedWeapon;
-        //public WeaponItem leftWeapon;
+        public ActionItem equippedItem;
 
         [Header("Current Equipment")]
+        public List<ActionItem> itemsInRightHandSlots;
 
+        public int currentRightItemIndex = 0;
 
-        public List<WeaponItem> weaponsInRightHandSlots;
-        //public WeaponItem[] weaponsInLeftHandSlots = new WeaponItem[1];
-
-        
-
-        public int currentRightWeaponIndex = 0;
-        //public int currentLeftWeaponIndex = 0;
-
-        public List<WeaponItem> weaponsInventory;
+        [Header("Inventory")]
+        public List<Item> inventory;
 
         private void Awake()
         {
@@ -32,31 +26,29 @@ namespace SG
 
         private void Start()
         {
-            equippedWeapon = weaponsInRightHandSlots[currentRightWeaponIndex];
-            //leftWeapon = weaponsInLeftHandSlots[currentLeftWeaponIndex];
-            playerWeaponSlotManager.LoadWeaponOnSlot(equippedWeapon);
-            //playerWeaponSlotManager.LoadWeaponOnSlot(leftWeapon, true);
+            equippedItem = itemsInRightHandSlots[currentRightItemIndex];
+            playerWeaponSlotManager.LoadWeaponOnSlot(equippedItem);        
         }
 
         public void QuickSlotOne()
         {
-            equippedWeapon = weaponsInRightHandSlots[0];
-            playerWeaponSlotManager.LoadWeaponOnSlot(weaponsInRightHandSlots[0]);
+            equippedItem = itemsInRightHandSlots[0];
+            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[0]);
         }
         public void QuickSlotTwo()
         {
-            equippedWeapon = weaponsInRightHandSlots[1];
-            playerWeaponSlotManager.LoadWeaponOnSlot(weaponsInRightHandSlots[1]);
+            equippedItem = itemsInRightHandSlots[1];
+            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[1]);
         }
         public void QuickSlotThree()
         {
-            equippedWeapon = weaponsInRightHandSlots[2];
-            playerWeaponSlotManager.LoadWeaponOnSlot(weaponsInRightHandSlots[2]);
+            equippedItem = itemsInRightHandSlots[2];
+            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[2]);
         }
         public void QuickSlotFour()
         {
-            equippedWeapon = weaponsInRightHandSlots[3];
-            playerWeaponSlotManager.LoadWeaponOnSlot(weaponsInRightHandSlots[3]);
+            equippedItem = itemsInRightHandSlots[3];
+            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[3]);
         }
 
         //public void ChangeRightWeapon()

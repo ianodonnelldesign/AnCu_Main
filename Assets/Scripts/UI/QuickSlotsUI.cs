@@ -15,20 +15,20 @@ namespace SG
 
         public PlayerInventoryManager playerInventoryManager = null;
 
-        public void UpdateWeaponQuickSlotsUI(WeaponItem weapon)
+        public void UpdateWeaponQuickSlotsUI(ActionItem weapon)
         {
             if (weapon.itemIcon != null)
             {
-                    rightSlot01.sprite = playerInventoryManager.weaponsInRightHandSlots[0].itemIcon;
+                    rightSlot01.sprite = playerInventoryManager.itemsInRightHandSlots[0].itemIcon;
                     rightSlot01.enabled = true;
 
-                    rightSlot02.sprite = playerInventoryManager.weaponsInRightHandSlots[1].itemIcon;
+                    rightSlot02.sprite = playerInventoryManager.itemsInRightHandSlots[1].itemIcon;
                     rightSlot02.enabled = true;
 
-                    rightSlot03.sprite = playerInventoryManager.weaponsInRightHandSlots[2].itemIcon;
+                    rightSlot03.sprite = playerInventoryManager.itemsInRightHandSlots[2].itemIcon;
                     rightSlot03.enabled = true;
 
-                    rightSlot04.sprite = playerInventoryManager.weaponsInRightHandSlots[3].itemIcon;
+                    rightSlot04.sprite = playerInventoryManager.itemsInRightHandSlots[3].itemIcon;
                     rightSlot04.enabled = true;
             }
             else

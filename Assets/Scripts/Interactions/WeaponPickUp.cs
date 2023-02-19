@@ -6,7 +6,7 @@ namespace SG
 {
     public class WeaponPickUp : Interactable
     {
-        public WeaponItem weapon;
+        public ActionItem weapon;
 
         public override void Interact(PlayerManager playerManager)
         {
@@ -27,7 +27,7 @@ namespace SG
 
             playerLocomotion.rigidbody.velocity = Vector3.zero; //Stops the player from moving whilst picking up item
             animatorHandler.PlayTargetAnimation("Pick Up Item", true); //Plays the animation of looting the item
-            playerInventory.weaponsInventory.Add(weapon);
+            playerInventory.inventory.Add(weapon);
             Destroy(gameObject);
 
         }

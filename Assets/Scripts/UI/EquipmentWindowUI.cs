@@ -10,48 +10,37 @@ namespace SG
         public bool rightHandSlot02Selected;
         public bool rightHandSlot03Selected;
         public bool rightHandSlot04Selected;
-        //public bool leftHandSlot01Selected;
-        //public bool leftHandSlot02Selected;
 
         public HandEquipmentSlotUI[] handEquipmentSlotUI;
 
         private void Start()
         {
-
+            handEquipmentSlotUI = GetComponentsInChildren<HandEquipmentSlotUI>();
         }
 
+
+        //to the array in here, add the same things in the player inventory right hand slots array. Techinically this should be the other way around?
+        //Add from here to the Quickslot UI? Not certain if it matters. Might have the same results.
         public void LoadWeaponsOnEquipmentScreen(PlayerInventoryManager playerInventory)
         {
             for (int i = 0; i < handEquipmentSlotUI.Length; i++)
             {
                 if (handEquipmentSlotUI[i].rightHandSlot01)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[0]);
+                    handEquipmentSlotUI[i].AddItem(playerInventory.itemsInRightHandSlots[0]);
                 }
                 else if (handEquipmentSlotUI[i].rightHandSlot02)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[1]);
+                    handEquipmentSlotUI[i].AddItem(playerInventory.itemsInRightHandSlots[1]);
                 }
                 else if (handEquipmentSlotUI[i].rightHandSlot03)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[2]);
+                    handEquipmentSlotUI[i].AddItem(playerInventory.itemsInRightHandSlots[2]);
                 }
                 else if (handEquipmentSlotUI[i].rightHandSlot04)
                 {
-                    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[3]);
+                    handEquipmentSlotUI[i].AddItem(playerInventory.itemsInRightHandSlots[3]);
                 }
-                //else if (handEquipmentSlotUI[i].rightHandSlot02)
-                //{
-                //    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInRightHandSlots[1]);
-                //}
-                //else if (handEquipmentSlotUI[i].leftHandSlot01)
-                //{
-                //    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[0]);
-                //}
-                //else
-                //{
-                //    handEquipmentSlotUI[i].AddItem(playerInventory.weaponsInLeftHandSlots[1]);
-                //}
             }
         }
 
@@ -74,15 +63,5 @@ namespace SG
         {
             rightHandSlot04Selected = true;
         }
-
-        //public void SelectLeftHandSlot01()
-        //{
-        //    leftHandSlot01Selected = true;
-        //}
-
-    //    public void SelectLeftHandSlot02()
-    //    {
-    //        leftHandSlot02Selected = true;
-    //    }
     }
 }

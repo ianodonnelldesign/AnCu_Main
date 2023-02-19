@@ -10,25 +10,23 @@ namespace SG
         UIManager uiManager;
 
         public Image icon;
-        WeaponItem weapon;
+        ActionItem weapon;
 
         public bool rightHandSlot01;
         public bool rightHandSlot02;
         public bool rightHandSlot03;
         public bool rightHandSlot04;
-        //public bool leftHandSlot01;
-        //public bool leftHandSlot02;
 
         private void Awake()
         {
             uiManager = FindObjectOfType<UIManager>();
         }
 
-        public void AddItem(WeaponItem newWeapon)
+        public void AddItem(ActionItem newWeapon)
         {
             weapon = newWeapon;
-            //icon.sprite = weapon.itemIcon;
-            //icon.enabled = true;
+            icon.sprite = weapon.itemIcon;
+            icon.enabled = true; 
             gameObject.SetActive(true);
         }
 
@@ -58,14 +56,6 @@ namespace SG
             {
                 uiManager.rightHandSlot04Selected = true;
             }
-            //else if (leftHandSlot01)
-            //{
-            //    uiManager.leftHandSlot01Selected = true;
-            //}
-            //else
-            //{
-            //    uiManager.leftHandSlot02Selected = true;
-            //}
         }
 
     }

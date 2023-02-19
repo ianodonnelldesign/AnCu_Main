@@ -6,8 +6,8 @@ namespace SG
 {
     public class EnemyWeaponSlotManager : CharacterWeaponSlotManager
     {
-        public WeaponItem rightHandWeapon;
-        public WeaponItem leftHandWeapon;
+        public ActionItem rightHandWeapon;
+        public ActionItem leftHandWeapon;
 
         EnemyStatsManager enemyStatsManager;
 
@@ -38,7 +38,7 @@ namespace SG
             }
         }
 
-        public void LoadWeaponOnSlot(WeaponItem weapon, bool isLeft)
+        public void LoadWeaponOnSlot(ActionItem weapon, bool isLeft)
         {
             if (isLeft)
             {
