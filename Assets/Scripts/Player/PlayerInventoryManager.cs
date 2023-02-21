@@ -13,6 +13,7 @@ namespace SG
 
         [Header("Current Equipment")]
         public List<ActionItem> itemsInRightHandSlots;
+        public List<ActionItem> backSlot;
 
         public int currentRightItemIndex = 0;
 

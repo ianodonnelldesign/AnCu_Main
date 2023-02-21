@@ -9,31 +9,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 300791b05a1346b4e9bac57ec99d38b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e2ced8746d112c4695f83e98cfb31c3, type: 3}
   m_Name: Melon
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: f5d5bf3a125398b4e977d0c3be89ac0e, type: 3}
-  itemName: Melon
+  itemName: 
   modelPrefab: {fileID: 88564160334227877, guid: 5dcf6bf859daf204d9838f1d17e86191, type: 3}
   isUnarmed: 0
-  baseDamage: 0
-  criticalDamageMuiltiplier: 0
+  baseDamage: 25
+  criticalDamageMuiltiplier: 4
   poiseBreak: 0
   offensivePoiseBonus: 0
   physicalDamageAbsorption: 0
   right_hand_idle: 
   left_hand_idle: 
   th_idle: 
-  oh_light_attack_01: 
-  oh_light_attack_02: 
-  oh_heavy_attack_01: 
-  th_light_attack_01: 
-  th_light_attack_02: 
-  weapon_art: 
+  light_action_01: 
+  light_action_02: 
+  heavy_action_01: 
+  th_action_01: 
+  th_action_02: 
+  item_art: 
   baseStamina: 0
   lightAttackMultiplier: 0
   heavyAttackMultiplier: 0
-  isConsumable: 1
-  isGearItem: 0
   isMeleeWeapon: 0
   isShieldItem: 0
+  isConsumable: 1
+  isGearItem: 0

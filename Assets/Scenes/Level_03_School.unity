@@ -9009,6 +9009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1deb6dcbf1a21449e72c35ef81d4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offHandIdleAnimation: Left_Arm_Idle_001
   lastAttack: 
 --- !u!114 &722913699
 MonoBehaviour:
@@ -9039,6 +9040,7 @@ MonoBehaviour:
   attackingWeapon: {fileID: 0}
   unarmedWeapon: {fileID: 11400000, guid: a53d4c242493a4d48bafa81075a32411, type: 2}
   rightHandSlot: {fileID: 0}
+  backSlot: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
 --- !u!114 &722913701
 MonoBehaviour:
@@ -9121,6 +9123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equippedItem: {fileID: 0}
   itemsInRightHandSlots: []
+  backSlot: []
   currentRightItemIndex: 0
   inventory: []
 --- !u!114 &722913704
@@ -9167,6 +9170,7 @@ MonoBehaviour:
   comboFlag: 0
   lockOnFlag: 0
   inventoryFlag: 0
+  interactFlag: 0
   criticalAttackRayCastStartPoint: {fileID: 1000766627}
 --- !u!136 &722913705
 CapsuleCollider:
@@ -22220,7 +22224,7 @@ RectTransform:
   m_Children:
   - {fileID: 1873885990}
   m_Father: {fileID: 1761404695}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -23399,7 +23403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296396780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.26, z: 0}
+  m_LocalPosition: {x: 0, y: 2.221, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27729,6 +27733,7 @@ RectTransform:
   m_Children:
   - {fileID: 2119833636}
   - {fileID: 1482336715}
+  - {fileID: 1946623468}
   - {fileID: 1201777752}
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -28229,7 +28234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -28681,6 +28686,55 @@ Transform:
   m_Father: {fileID: 62610318}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1946623467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946623468}
+  - component: {fileID: 1946623469}
+  m_Layer: 5
+  m_Name: CinematicBars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1946623468
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946623467}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1761404695}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: 0}
+  m_SizeDelta: {x: 1920, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1946623469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946623467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33035a4908e38f54687830d3a91c1390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1951601796
 GameObject:
   m_ObjectHideFlags: 0
@@ -31584,6 +31638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1deb6dcbf1a21449e72c35ef81d4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offHandIdleAnimation: Left_Arm_Idle_001
   lastAttack: 
 --- !u!114 &919132148789174317
 MonoBehaviour:
@@ -31614,6 +31669,7 @@ MonoBehaviour:
   attackingWeapon: {fileID: 0}
   unarmedWeapon: {fileID: 11400000, guid: a53d4c242493a4d48bafa81075a32411, type: 2}
   rightHandSlot: {fileID: 0}
+  backSlot: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
 --- !u!114 &919132148789174321
 MonoBehaviour:
@@ -31663,14 +31719,16 @@ MonoBehaviour:
   equippedItem: {fileID: 0}
   itemsInRightHandSlots:
   - {fileID: 11400000, guid: a53d4c242493a4d48bafa81075a32411, type: 2}
-  - {fileID: 11400000, guid: bd37773b0f6edcf469da27660e327b24, type: 2}
-  - {fileID: 11400000, guid: 4c4f0fa149adf68438a8528f5a39a028, type: 2}
   - {fileID: 11400000, guid: a53d4c242493a4d48bafa81075a32411, type: 2}
+  - {fileID: 11400000, guid: 4c4f0fa149adf68438a8528f5a39a028, type: 2}
+  - {fileID: 11400000, guid: fe75c0fa9e734f649979ddceb69cf71c, type: 2}
+  backSlot:
+  - {fileID: 11400000, guid: bd37773b0f6edcf469da27660e327b24, type: 2}
   currentRightItemIndex: 0
   inventory:
   - {fileID: 11400000, guid: 4c4f0fa149adf68438a8528f5a39a028, type: 2}
   - {fileID: 0}
-  - {fileID: 11400000, guid: bd685c90ff55d764ca5f1cf6a15ab870, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -31692,7 +31750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688cb6616e3ff1d419178c4781f0bb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 5783010937752711720}
   horizontal: 0
   vertical: 0
   moveAmount: 0
@@ -31724,6 +31782,7 @@ MonoBehaviour:
   comboFlag: 0
   lockOnFlag: 0
   inventoryFlag: 0
+  interactFlag: 0
   criticalAttackRayCastStartPoint: {fileID: 229189702}
 --- !u!136 &919132148789174325
 CapsuleCollider:
@@ -40739,6 +40798,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 806335221474091815}
     - target: {fileID: 3488095326966029210, guid: 6e151c5d3022fed44bc8f8fff4e46935, type: 3}
+      propertyPath: lockedPivotPosition
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488095326966029210, guid: 6e151c5d3022fed44bc8f8fff4e46935, type: 3}
+      propertyPath: maximumLockOnDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3488095326966029210, guid: 6e151c5d3022fed44bc8f8fff4e46935, type: 3}
       propertyPath: enviromentLayer.m_Bits
       value: 9
       objectReference: {fileID: 0}
@@ -40861,6 +40928,40 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &3488095327616729575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442163762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 3488095327616729573}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &3506380201768532744
 Transform:
   m_ObjectHideFlags: 0

@@ -14,6 +14,19 @@ namespace SG
         PlayerStatsManager playerStatsManager;
         PlayerInventoryManager playerInventoryManager;
         PlayerWeaponSlotManager playerWeaponSlotManager;
+        
+
+        [Header("Attack Animations")]
+
+        string light_action_01 = "OH_Light_Attack_01";
+        string light_action_02 = "OH_Light_Attack_02";
+        string heavy_action_01 = "OH_Heavy_Attack_01";
+        string th_action_01 = "TH_Attack_01";
+        string th_action_02 = "OH_Light_Attack_03";
+        //string unarmed_action = "Kick";
+        //string weapon_art = 
+
+        public string offHandIdleAnimation = "Left_Arm_Idle_001";
 
         public string lastAttack;
 
@@ -32,39 +45,37 @@ namespace SG
             inputHandler = GetComponent<InputHandler>();
         }
 
-        #region Input Actions
-
         public void HandleLightAttackAction()
         {
-            if (playerInventoryManager.equippedItem.isMeleeWeapon)
+            if (playerInventoryManager.equippedItem.itemType == ItemType.Hurley || playerInventoryManager.equippedItem.itemType == ItemType.Unarmed)
             {
                 PerformLightAttackAction();
             }
-            else if (playerInventoryManager.equippedItem.isConsumable)
+            else if (playerInventoryManager.equippedItem.itemType == ItemType.Consumable)
             {
                 PerformConsumableAction();
             }
-            else if (playerInventoryManager.equippedItem.isGearItem)
+            else if (playerInventoryManager.equippedItem.itemType == ItemType.Gear)
             {
                 PerformGearAction();
             }
         }
-
         public void HandleHeavyAttackAction()
         {
-            if (playerInventoryManager.equippedItem.isMeleeWeapon)
+            if (playerInventoryManager.equippedItem.itemType == ItemType.Hurley)
             {
                 HandleHeavyAttackAction();
             }
-            else if (playerInventoryManager.equippedItem.isConsumable)
+            else if (playerInventoryManager.equippedItem.itemType == ItemType.Consumable)
             {
                 PerformAlternateConsumableAction();
             }
-            else if (playerInventoryManager.equippedItem.isGearItem)
+            else if (playerInventoryManager.equippedItem.itemType == ItemType.Gear)
             {
                 PerformAlternateGearAction();
             }
         }
+
 
         public void HandleTwoHandAction()
         {
@@ -78,13 +89,13 @@ namespace SG
             //}
         }
 
+
         public void HandleBlockAction()
         {
             PerformLBBlockAction();
         }
-        #endregion
 
-        #region Actions
+
         private void PerformLightAttackAction()
         {
             if (playerManager.canDoCombo)
@@ -114,13 +125,13 @@ namespace SG
 
             if (inputHandler.twoHandFlag)
             {
-                playerAnimatorManager.PlayTargetAnimation(weapon.th_action_01, true);
-                lastAttack = weapon.th_action_01;
+                playerAnimatorManager.PlayTargetAnimation(th_action_01, true);
+                lastAttack = th_action_01;
             }
             else
             {
-                playerAnimatorManager.PlayTargetAnimation(weapon.light_action_01, true);
-                lastAttack = weapon.light_action_01;
+                playerAnimatorManager.PlayTargetAnimation(light_action_01, true);
+                lastAttack = light_action_01;
             }
         }
         public void HandleHeavyAttackAction(ActionItem weapon)
@@ -136,11 +147,10 @@ namespace SG
             }
             else
             {
-                playerAnimatorManager.PlayTargetAnimation(weapon.heavy_action_01, true);
-                lastAttack = weapon.heavy_action_01;
+                playerAnimatorManager.PlayTargetAnimation(heavy_action_01, true);
+                lastAttack = heavy_action_01;
             }
         }
-
         public void HandleWeaponCombo(ActionItem weapon)
         {
             if (playerStatsManager.currentStamina <= 0)
@@ -150,13 +160,13 @@ namespace SG
             {
                 playerAnimatorManager.animator.SetBool("canDoCombo", false);
 
-                if (lastAttack == weapon.light_action_01)
+                if (lastAttack == light_action_01)
                 {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.light_action_02, true);
+                    playerAnimatorManager.PlayTargetAnimation(light_action_02, true);
                 }
-                else if (lastAttack == weapon.th_action_01)
+                else if (lastAttack == th_action_01)
                 {
-                    playerAnimatorManager.PlayTargetAnimation(weapon.th_action_02, true);
+                    playerAnimatorManager.PlayTargetAnimation(th_action_02, true);
                 }
             }
         }
@@ -170,6 +180,7 @@ namespace SG
         {
             Debug.Log("You alternately ate the item");
         }
+
 
         private void PerformGearAction()
         {
@@ -192,13 +203,11 @@ namespace SG
             }
             //else
             //{
-            //    playerAnimatorManager.PlayTargetAnimation(playerInventoryManager.leftWeapon.weapon_art, true);
+            //    playerAnimatorManager.PlayTargetAnimation(weapon_art, true);
             //}
         }
 
-        #endregion
 
-        #region Defense Actions
         private void PerformLBBlockAction()
         {
             if (playerManager.isInteracting)
@@ -211,7 +220,7 @@ namespace SG
             playerEquipmentManager.OpenBlockingCollider();
             playerManager.isBlocking = true;
         }
-        #endregion
+
 
         public void AttemptBackStabOrRiposte()
         {

@@ -11,14 +11,11 @@ namespace SG
 
         //the player, what the camera's looking at
         public Transform targetTransform;
-
         //the actual camera's location
         public Transform cameraTransform;
-
         //what the camera pivots on
         public Transform cameraPivotTransform;
-        
-        //the transform of the camera holder
+        //the transform of the cameraHandler script
         private Transform cameraHandlerTransform;
         private Vector3 cameraTransformPosition;
         public LayerMask ignoreLayers;
@@ -26,9 +23,11 @@ namespace SG
         private Vector3 cameraFollowVelocity = Vector3.zero;
         public Camera playerCamera;
 
-
+        //left and right
         public float lookSpeed = 0.1f;
+        //how fast the camera moves to be in line with the player
         public float followSpeed = 0.1f;
+        //up and down
         public float pivotSpeed = 0.03f;
 
         private float targetPosition;
@@ -41,7 +40,7 @@ namespace SG
         public float cameraSphereRadius = 0.2f;
         public float cameraCollisionOffSet = 0.2f;
         public float minimumCollisionOffset = 0.2f;
-        public float lockedPivotPosition = 2.25f;
+        public float lockedPivotPosition = 2f;
         public float unlockedPivotPosition = 1.65f;
 
         public CharacterManager currentLockOnTarget;
@@ -50,7 +49,7 @@ namespace SG
         public CharacterManager nearestLockOnTarget;
         public CharacterManager leftLockTarget;
         public CharacterManager rightLockTarget;
-        public float maximumLockOnDistance = 30;
+        public float maximumLockOnDistance = 15;
 
 
         private void Awake()
@@ -157,6 +156,7 @@ namespace SG
 
                 if (character != null)
                 {
+
                     Vector3 lockTargetDirection = character.transform.position - targetTransform.position;
                     float distanceFromTarget = Vector3.Distance(targetTransform.position, character.transform.position);
                     float viewableAngle = Vector3.Angle(lockTargetDirection, cameraTransform.forward);
@@ -179,6 +179,10 @@ namespace SG
                                 availableTargets.Add(character);
                             }
                         }
+                    }
+                    else if (distanceFromTarget >= maximumLockOnDistance)
+                    {
+                        ClearLockOnTargets();
                     }
                 }
             }

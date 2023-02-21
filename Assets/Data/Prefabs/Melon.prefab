@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 7381236725477752827}
   - component: {fileID: 5672359517955360433}
   - component: {fileID: 9195786168647164453}
+  - component: {fileID: 834644142680731591}
+  - component: {fileID: 3273691509641974932}
   m_Layer: 0
   m_Name: model
   m_TagString: Untagged
@@ -115,6 +117,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &834644142680731591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790537985472933056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4983eecb2ac0f2458653bf39e0f1f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
+  poiseBreak: 0
+  offensivePoiseBonus: 0
+  currentWeaponDamage: 25
+--- !u!65 &3273691509641974932
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790537985472933056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03395958, y: 0.01616924, z: 0.030689713}
+  m_Center: {x: 0.0860434, y: -1.2251314, z: 0.19351105}
 --- !u!1 &6274062552411502225
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 300791b05a1346b4e9bac57ec99d38b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e2ced8746d112c4695f83e98cfb31c3, type: 3}
   m_Name: Boss Longsword
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: d8667b1531c5a9c4fb7111c16f38d109, type: 3}
@@ -24,17 +24,16 @@ MonoBehaviour:
   right_hand_idle: Right_Arm_Idle_001
   left_hand_idle: Left_Arm_Idle_001
   th_idle: TH_Idle_01
-  oh_light_attack_01: OH_Sword_Attack_01
-  oh_light_attack_02: OH_Sword_Attack_02
-  oh_heavy_attack_01: 
-  th_light_attack_01: TH_Attack_01
-  th_light_attack_02: TH_Attack_01
-  weapon_art: 
+  light_action_01: OH_Sword_Attack_01
+  light_action_02: OH_Sword_Attack_02
+  heavy_action_01: OH_Sword_Attack_03
+  th_action_01: OH_Sword_Attack_04
+  th_action_02: OH_Sword_Attack_05
+  item_art: 
   baseStamina: 10
   lightAttackMultiplier: 1.5
   heavyAttackMultiplier: 2
-  isSpellCaster: 0
-  isFaithCaster: 0
-  isPyroCaster: 0
   isMeleeWeapon: 1
-  isShieldWeapon: 0
+  isShieldItem: 0
+  isConsumable: 0
+  isGearItem: 0

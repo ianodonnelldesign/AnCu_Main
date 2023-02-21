@@ -90,7 +90,7 @@ namespace SG
             }
         }
 
-        #region Player Interactions
+
 
         public void CheckForInteractableObject()
         {
@@ -147,8 +147,6 @@ namespace SG
 
             playerAnimatorManager.PlayTargetAnimation("Pass Through Fog", true);
         }
-
-        #endregion
 
 
     }

@@ -12,7 +12,10 @@ namespace SG
         Animator animator;
         PlayerManager playerManager;
         PlayerInventoryManager playerInventoryManager;
+        PlayerAnimatorManager playerAnimatorManager;
         PlayerStatsManager playerStatsManager;
+
+        ActionItem actionItem;
 
         [Header("Attacking Weapon")]
         public ActionItem attackingWeapon;
@@ -22,7 +25,7 @@ namespace SG
 
         [Header("Weapon Slots")]
         public WeaponHolderSlot rightHandSlot;
-        WeaponHolderSlot backSlot;
+        public WeaponHolderSlot backSlot;
 
         [Header("Damage Colliders")]
         public DamageCollider rightHandDamageCollider;
@@ -33,6 +36,7 @@ namespace SG
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerManager = GetComponent<PlayerManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
+            playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             animator = GetComponent<Animator>();
             quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
             LoadWeaponHolderSlots();
@@ -65,19 +69,18 @@ namespace SG
             {
                 if (inputHandler.twoHandFlag)
                 {
-                    animator.CrossFade(weaponItem.th_idle, 0.2f);
                 }
                 else
                 {
                     animator.CrossFade("Both Arms Empty", 0.2f);
                     backSlot.UnloadWeaponAndDestroy();
-                    animator.CrossFade(weaponItem.right_hand_idle, 0.2f);
                 }
 
                 rightHandSlot.currentWeapon = weaponItem;
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(weaponItem);
+                //playerAnimatorManager.animator.runtimeAnimatorController = actionItem.actionItemController;
             }
             else
             {

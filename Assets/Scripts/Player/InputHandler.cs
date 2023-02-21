@@ -45,6 +45,8 @@ namespace SG
         public bool inventoryFlag;
         //public float rollInputTimer;
 
+        public bool interactFlag;
+
         public Transform criticalAttackRayCastStartPoint;
 
         PlayerControls inputActions;
@@ -57,6 +59,7 @@ namespace SG
         PlayerWeaponSlotManager weaponSlotManager;
         CameraHandler cameraHandler;
         UIManager uiManager;
+        CinematicBars cinematicBars;
 
         PlayerLocomotionManager playerLocomotionManager;
 
@@ -75,6 +78,19 @@ namespace SG
             uiManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
+            cinematicBars = FindObjectOfType<CinematicBars>();
+        }
+
+        public void Update()
+        {
+            if (interactFlag == true)
+            {
+                LockInput();
+            }
+            else if (interactFlag == false)
+            {
+                UnlockInput();
+            }
         }
 
         public void OnEnable()
@@ -126,6 +142,22 @@ namespace SG
             HandleLockOnInput();
             HandleTwoHandInput();
             HandleCriticalAttackInput();
+        }
+
+        private void LockInput()
+        {
+            uiManager.hudWindow.SetActive(false);
+            inputActions.PlayerActions.Inventory.Disable();
+            inputActions.PlayerMovement.Movement.Disable();
+            inputActions.PlayerMovement.Camera.Disable();
+        }
+
+        private void UnlockInput()
+        {
+            uiManager.hudWindow.SetActive(true);
+            inputActions.PlayerActions.Inventory.Disable();
+            inputActions.PlayerMovement.Movement.Enable();
+            inputActions.PlayerMovement.Camera.Enable();
         }
 
         private void HandleMoveInput(float delta)
@@ -248,10 +280,11 @@ namespace SG
         {
             if (inventory_Input)
             {
-                
                 inventoryFlag = !inventoryFlag;
                 if (inventoryFlag)
                 {
+                    interactFlag = true;
+
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     uiManager.OpenSelectWindow();
@@ -263,6 +296,8 @@ namespace SG
                 }
                 else
                 {
+                    interactFlag = false;
+
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
                     uiManager.CloseSelectWindow();
@@ -275,18 +310,23 @@ namespace SG
 
         private void HandleLockOnInput()
         {
-            if (lockOnInput && lockOnFlag == false)
+            if (lockOnInput && lockOnFlag && cameraHandler.nearestLockOnTarget.GetComponentInParent<NPCInteract>() == false)
             {
                 lockOnInput = false;
                 cameraHandler.HandleLockOn();
                 if (cameraHandler.nearestLockOnTarget != null)
                 {
+                    //size of bar, time to get to that size
+                    cinematicBars.ShowCinematicBars(200, .3f);
                     cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
                     lockOnFlag = true;
                 }
             }
+
             else if (lockOnInput && lockOnFlag)
             {
+                //time to hide bars
+                cinematicBars.HideCinematicBars(.3f);   
                 lockOnInput = false;
                 lockOnFlag = false;
                 cameraHandler.ClearLockOnTargets();
