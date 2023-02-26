@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Cinemachine;
 
 namespace SG
 {
@@ -13,6 +14,7 @@ namespace SG
         MouseLook mouseLook;
         CameraHandler cameraHandler;
         CinematicBars cinematicBars;
+        
 
         public NPC npc;
 
@@ -30,7 +32,9 @@ namespace SG
         public TextMeshProUGUI npcDialogueBox;
         public Button playerResponse;
 
-      public void Awake()
+        public CinemachineVirtualCamera interactionCamera;
+
+        public void awake()
         {
             playerResponse.onClick.AddListener(AdvanceDialogue);
             playerManager = FindObjectOfType<PlayerManager>();
@@ -40,7 +44,7 @@ namespace SG
             cinematicBars = FindObjectOfType<CinematicBars>();
         }
 
-        public void Start()
+        public void start()
         {
             dialogueUI.SetActive(false);
         }
@@ -50,7 +54,6 @@ namespace SG
             base.Interact(playerManager);
 
             InteractWithNPC();
-            LookAtNPC();
         }
 
 
@@ -59,6 +62,10 @@ namespace SG
             Debug.Log("You're talking to this NPC");
             if (isTalking == false)
             {
+                interactionCamera.Priority = 11;
+
+                LookAtNPC();
+
                 inputHandler.interactFlag = true;
                 playerManager.isInteracting = true;
 
@@ -67,40 +74,23 @@ namespace SG
             }
             else if (isTalking == true)
             {
-                inputHandler.interactFlag = false;
-
-                isTalking = false;
-                cinematicBars.HideCinematicBars(.3f);
-                mouseLook.TurnMouseOff();
-
-
-                dialogueUI.SetActive(false);
-                dialogueAdvance = 0;
-                dialogueLength = 0;
-
-                inputHandler.lockOnInput = false;
-                inputHandler.lockOnFlag = false;
-                cameraHandler.ClearLockOnTargets();
-
                 EndDialogue();
             }
-
         }
 
         public void LookAtNPC()
         {
-            Debug.Log("Looking at NPC");
-            //if (inputHandler.lockOnFlag == false)
-            //{
-            //    inputHandler.lockOnInput = false;
-            //    cameraHandler.HandleLockOn();
-            //    //might need logic in the if so I don't accidentally lock onto an enemy?
-            //    if (cameraHandler.nearestLockOnTarget != null)
-            //    {
-            //        cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
-            //        inputHandler.lockOnFlag = true;
-            //    }
-            //}
+            if(inputHandler.lockOnFlag == false)
+            {
+                cameraHandler.HandleLockOn();
+                if (cameraHandler.nearestLockOnTarget != null && cameraHandler.nearestLockOnTarget.GetComponentInParent<NPCInteract>() == true)
+                {
+                    //size of bar, time to get to that size
+                    cinematicBars.ShowCinematicBars(200, .3f);
+                    cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
+                    inputHandler.lockOnFlag = true;
+                }
+            }
         }
 
         void StartConversation()
@@ -128,6 +118,8 @@ namespace SG
         }
         void EndDialogue()
         {
+            interactionCamera.Priority = 0;
+
             cinematicBars.HideCinematicBars(.3f);
 
             mouseLook.TurnMouseOff();
@@ -139,9 +131,9 @@ namespace SG
 
             inputHandler.lockOnInput = false;
             inputHandler.lockOnFlag = false;
-            cameraHandler.ClearLockOnTargets();
-
             inputHandler.interactFlag = false;
+
+            cameraHandler.ClearLockOnTargets();
         }
 
     }

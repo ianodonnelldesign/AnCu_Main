@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 namespace SG
 {
@@ -12,6 +13,8 @@ namespace SG
         EnemyStatsManager enemyStats;
         EnemyAnimatorManager enemyAnimatorManager;
         BossCombatStanceState bossCombatStanceState;
+
+        public SceneField bossDeathScene;
 
         [Header("Second Phase FX")]
         public GameObject particleFX;

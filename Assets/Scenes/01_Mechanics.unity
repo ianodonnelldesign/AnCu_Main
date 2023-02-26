@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -959,7 +959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &116574936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,6 +974,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0.6
   interactableText: Talk to Cathbad
+  npc: {fileID: 0}
+  dialogueAdvance: 0
+  dialogueLength: 0
+  player: {fileID: 0}
+  dialogueUI: {fileID: 0}
+  npcName: {fileID: 0}
+  npcDialogueBox: {fileID: 0}
+  playerResponse: {fileID: 0}
+  interactionCamera: {fileID: 0}
 --- !u!136 &116574937
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5133,7 +5142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd2cbc073fcebb41a2087dece0f7a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 239161849}
   rightHandSlot01: 0
   rightHandSlot02: 1
   rightHandSlot03: 0
@@ -16125,7 +16134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd2cbc073fcebb41a2087dece0f7a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 1956695797}
   rightHandSlot01: 1
   rightHandSlot02: 0
   rightHandSlot03: 0
@@ -22627,7 +22636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd2cbc073fcebb41a2087dece0f7a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 99159588}
   rightHandSlot01: 0
   rightHandSlot02: 0
   rightHandSlot03: 0
@@ -23636,7 +23645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd2cbc073fcebb41a2087dece0f7a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 892900542}
   rightHandSlot01: 0
   rightHandSlot02: 0
   rightHandSlot03: 1
@@ -24885,6 +24894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1deb6dcbf1a21449e72c35ef81d4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offHandIdleAnimation: Left_Arm_Idle_001
   lastAttack: 
 --- !u!114 &919132148789174317
 MonoBehaviour:
@@ -24915,6 +24925,7 @@ MonoBehaviour:
   attackingWeapon: {fileID: 0}
   unarmedWeapon: {fileID: 11400000, guid: a53d4c242493a4d48bafa81075a32411, type: 2}
   rightHandSlot: {fileID: 0}
+  backSlot: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
 --- !u!114 &919132148789174321
 MonoBehaviour:
@@ -24961,14 +24972,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be18537a2b2d29549b745f69778b31f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedWeapon: {fileID: 0}
-  weaponsInRightHandSlots:
+  equippedItem: {fileID: 0}
+  itemsInRightHandSlots:
+  - {fileID: 11400000, guid: 4c4f0fa149adf68438a8528f5a39a028, type: 2}
+  - {fileID: 11400000, guid: a53d4c242493a4d48bafa81075a32411, type: 2}
   - {fileID: 11400000, guid: a53d4c242493a4d48bafa81075a32411, type: 2}
   - {fileID: 11400000, guid: 6779c9058fa174548b9eca5ee5a676ee, type: 2}
-  - {fileID: 11400000, guid: a7825ac8f060555488e632821661cb49, type: 2}
-  - {fileID: 11400000, guid: 4c4f0fa149adf68438a8528f5a39a028, type: 2}
-  currentRightWeaponIndex: 0
-  weaponsInventory: []
+  backSlot:
+  - {fileID: 0}
+  currentRightItemIndex: 0
+  inventory:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &919132148789174323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25002,6 +25027,7 @@ MonoBehaviour:
   lockOnInput: 0
   right_Stick_Right_Input: 0
   right_Stick_Left_Input: 0
+  zTarget_Input: 0
   d_Pad_Up: 0
   d_Pad_Down: 0
   d_Pad_Left: 0
@@ -25012,6 +25038,7 @@ MonoBehaviour:
   comboFlag: 0
   lockOnFlag: 0
   inventoryFlag: 0
+  interactFlag: 0
   criticalAttackRayCastStartPoint: {fileID: 229189702}
 --- !u!54 &919132148789174324
 Rigidbody:
@@ -25098,15 +25125,18 @@ MonoBehaviour:
   groundDetectionRayStartPoint: 0.5
   minimumDistanceNeededToBeginFall: 1
   groundDirectionRayDistance: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   inAirTimer: 0
   movementSpeed: 5
   walkingSpeed: 1
   sprintSpeed: 7
   rotationSpeed: 10
   fallingSpeed: 95
-  jumpHeight: 20
   rollStaminaCost: 15
   backstepStaminaCost: 15
+  sprintStaminaCost: 1
   characterCollider: {fileID: 919132148789174325}
   characterCollisionBlockerCollider: {fileID: 674665335}
 --- !u!137 &1036927613763612972
@@ -31187,6 +31217,7 @@ MonoBehaviour:
   physicalDamageAbsorptionHands: 0
   isDead: 0
   enemyHealthBar: {fileID: 0}
+  deadState: {fileID: 0}
   isBoss: 1
 --- !u!54 &3271891713736588919
 Rigidbody:
@@ -32191,6 +32222,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2d0fa999-fd4a-47d2-8f0e-191115de413c
     m_ActionName: PlayerQuickSlots/D-Pad Right[/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3d3832a1-433d-4f7c-b53c-ce6d90b6e103
+    m_ActionName: Player Actions/ZTarget[/Keyboard/x]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player Movement

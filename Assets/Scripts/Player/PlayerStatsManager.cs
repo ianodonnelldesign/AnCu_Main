@@ -13,6 +13,10 @@ namespace SG
         PlayerAnimatorManager playerAnimatorManager;
 
         DeathManager deathManager;
+        
+        [Header ("Player Info")]
+        public string characterName;
+        public int playerLevel;
 
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;

@@ -16,6 +16,7 @@ namespace SG
         public NavMeshAgent navmeshAgent;
         public Rigidbody enemyRigidBody;
 
+
         public bool isPreformingAction;
         public float rotationSpeed = 15;
         public float maximumAggroRadius = 1.5f;

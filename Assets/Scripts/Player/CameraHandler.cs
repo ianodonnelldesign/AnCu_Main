@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 namespace SG
 {
@@ -9,19 +10,20 @@ namespace SG
         InputHandler inputHandler;
         PlayerManager playerManager;
 
-        //the player, what the camera's looking at
+        //where the camera is moving to after the player moves
         public Transform targetTransform;
         //the actual camera's location
         public Transform cameraTransform;
-        //what the camera pivots on
+        //what the camera pivots on, how it rotates
         public Transform cameraPivotTransform;
         //the transform of the cameraHandler script
         private Transform cameraHandlerTransform;
+        //position of the camera's transform
         private Vector3 cameraTransformPosition;
         public LayerMask ignoreLayers;
         public LayerMask enviromentLayer;
         private Vector3 cameraFollowVelocity = Vector3.zero;
-        public Camera playerCamera;
+        public CinemachineVirtualCamera playerCamera;
 
         //left and right
         public float lookSpeed = 0.1f;
@@ -68,6 +70,7 @@ namespace SG
 
         public void FollowTarget(float delta)
         {
+            //lerps the camera to where we want it to go
             Vector3 targetPosition = Vector3.SmoothDamp(cameraHandlerTransform.position, targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
             cameraHandlerTransform.position = targetPosition;
 
@@ -76,7 +79,9 @@ namespace SG
 
         public void CameraFocus()
         {
-
+            //make the camera point to the side of the npc you're talking to
+            //make the camera move lower
+            //make the camera move to the right of the player
         }
 
         public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)

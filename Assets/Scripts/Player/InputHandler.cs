@@ -323,7 +323,7 @@ namespace SG
                 }
             }
 
-            else if (lockOnInput && lockOnFlag)
+            else if (lockOnInput && lockOnFlag == true && interactFlag == false)
             {
                 //time to hide bars
                 cinematicBars.HideCinematicBars(.3f);   

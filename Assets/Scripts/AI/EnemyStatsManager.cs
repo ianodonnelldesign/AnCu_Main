@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Utilities;
 
 namespace SG
 {
@@ -9,12 +11,19 @@ namespace SG
         EnemyAnimatorManager enemyAnimatorManager;
         EnemyBossManager enemyBossManager;
         public UIEnemyHealthBar enemyHealthBar;
+        EnemyManager enemyManager;
+
+        PlayerManager playerManager;
+
+        public DeadState deadState;
 
         public bool isBoss;
 
         private void Awake()
         {
+            playerManager = FindObjectOfType<PlayerManager>();
             enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
+            enemyManager = GetComponent<EnemyManager>();
             enemyBossManager = GetComponent<EnemyBossManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
@@ -80,6 +89,14 @@ namespace SG
             currentHealth = 0;
             enemyAnimatorManager.PlayTargetAnimation("Dead_01", true);
             isDead = true;
+            enemyManager.currentState = deadState;
+
+            if (isBoss && enemyBossManager != null)
+            {
+                playerManager.HandlePlayerInCutscene();
+                //transition to that boss's death scene
+                SceneManager.LoadScene(enemyBossManager.bossDeathScene);
+            }
         }
     }
 }

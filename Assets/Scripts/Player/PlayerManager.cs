@@ -12,6 +12,8 @@ namespace SG
         PlayerStatsManager playerStatsManager;
         PlayerAnimatorManager playerAnimatorManager;
         PlayerLocomotionManager playerLocomotion;
+        PlayerInventoryManager playerInventoryManager;
+        PlayerWeaponSlotManager playerWeaponSlotManager;
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -27,7 +29,11 @@ namespace SG
             animator = GetComponent<Animator>();
             playerStatsManager = GetComponent<PlayerStatsManager>();
             playerLocomotion = GetComponent<PlayerLocomotionManager>();
+            playerInventoryManager = GetComponent<PlayerInventoryManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
+            playerWeaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
+
+            WorldSaveGameManager.instance.player = this;
         }
 
         void Update()
@@ -148,6 +154,37 @@ namespace SG
             playerAnimatorManager.PlayTargetAnimation("Pass Through Fog", true);
         }
 
+        public void HandlePlayerInCutscene()
+        {
+            inputHandler.interactFlag = true;
+        }
+
+        public void SaveCharacterDataToCurrentSaveData(ref CharacterSaveData currentCharacterSaveData)
+        {
+            currentCharacterSaveData.characterName = playerStatsManager.characterName;
+            currentCharacterSaveData.characterLevel = playerStatsManager.playerLevel;
+
+            currentCharacterSaveData.xPosition = transform.position.x;
+            currentCharacterSaveData.yPosition = transform.position.y;
+            currentCharacterSaveData.zPosition = transform.position.z;
+
+            //  EQUIPMENT
+            currentCharacterSaveData.currentRightHandWeaponID = playerInventoryManager.equippedItem.itemID;
+
+        }
+
+        public void LoadCharacterDataFromCurrentCharacterSaveData(ref CharacterSaveData currentCharacterSaveData)
+        {
+            playerStatsManager.characterName = currentCharacterSaveData.characterName;
+            playerStatsManager.playerLevel = currentCharacterSaveData.characterLevel;
+
+            transform.position = new Vector3(currentCharacterSaveData.xPosition, currentCharacterSaveData.yPosition, currentCharacterSaveData.zPosition);
+
+            //  EQUIPMENT
+            playerInventoryManager.equippedItem = WorldItemDataBase.Instance.GetWeaponItemByID(currentCharacterSaveData.currentRightHandWeaponID);
+            playerWeaponSlotManager.LoadBothWeaponsOnSlots();
+
+        }
 
     }
 }
