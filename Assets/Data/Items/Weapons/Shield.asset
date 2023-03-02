@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 84b7506839abeba4bb796874b98807d1, type: 3}
   itemName: Shield
+  itemID: 1002
   modelPrefab: {fileID: 1430302641612189363, guid: e798645ad4d24f74885140cd7d9e86b9, type: 3}
   isUnarmed: 0
-  actionItemController: {fileID: 0}
   itemType: 5
   baseDamage: 25
   criticalDamageMuiltiplier: 4
-  poiseBreak: 0
-  offensivePoiseBonus: 0
+  poiseBreak: 1
+  offensivePoiseBonus: 1
   physicalDamageAbsorption: 50
-  baseStamina: 0
-  lightAttackMultiplier: 0
-  heavyAttackMultiplier: 0
+  baseStamina: 1
+  lightAttackMultiplier: 1
+  heavyAttackMultiplier: 1

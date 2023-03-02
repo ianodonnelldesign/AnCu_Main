@@ -123,10 +123,11 @@ namespace SG
 
             playerWeaponSlotManager.attackingWeapon = weapon;
 
+            //these are the same in case i ever want different actions with a shield out
             if (inputHandler.twoHandFlag)
             {
-                playerAnimatorManager.PlayTargetAnimation(th_action_01, true);
-                lastAttack = th_action_01;
+                playerAnimatorManager.PlayTargetAnimation(light_action_01, true);
+                lastAttack = light_action_01;
             }
             else
             {
@@ -141,9 +142,11 @@ namespace SG
 
             playerWeaponSlotManager.attackingWeapon = weapon;
 
+            //these are the same in case i ever want different actions with a shield out
             if (inputHandler.twoHandFlag)
             {
-
+                playerAnimatorManager.PlayTargetAnimation(heavy_action_01, true);
+                lastAttack = heavy_action_01;
             }
             else
             {
@@ -216,7 +219,7 @@ namespace SG
             if (playerManager.isBlocking)
                 return;
 
-            playerAnimatorManager.PlayTargetAnimation("Block Start", false, true);
+            playerAnimatorManager.PlayTargetAnimation("Block_Start", false, true);
             playerEquipmentManager.OpenBlockingCollider();
             playerManager.isBlocking = true;
         }

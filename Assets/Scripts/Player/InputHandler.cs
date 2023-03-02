@@ -95,6 +95,7 @@ namespace SG
 
         public void OnEnable()
         {
+
             if (inputActions == null)
             {
                 inputActions = new PlayerControls();
@@ -147,7 +148,7 @@ namespace SG
         private void LockInput()
         {
             uiManager.hudWindow.SetActive(false);
-            inputActions.PlayerActions.Inventory.Disable();
+            //dont want to disable Inventory because inventory will be pause/escape
             inputActions.PlayerMovement.Movement.Disable();
             inputActions.PlayerMovement.Camera.Disable();
         }
@@ -155,7 +156,7 @@ namespace SG
         private void UnlockInput()
         {
             uiManager.hudWindow.SetActive(true);
-            inputActions.PlayerActions.Inventory.Disable();
+            inputActions.PlayerActions.Inventory.Enable();
             inputActions.PlayerMovement.Movement.Enable();
             inputActions.PlayerMovement.Camera.Enable();
         }
@@ -233,11 +234,11 @@ namespace SG
             {
                 if (twoHandFlag)
                 {
-                    //if two handing handle weapon art
+                    //parry with the shield
                 }
                 else
                 {
-                    playerCombatManager.HandleTwoHandAction();
+                    playerCombatManager.HandleTwoHandAction(); //which doesn't do anything right now
                 }
             }
 
@@ -283,16 +284,16 @@ namespace SG
                 inventoryFlag = !inventoryFlag;
                 if (inventoryFlag)
                 {
-                    interactFlag = true;
-
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     uiManager.OpenSelectWindow();
+                    uiManager.inventoryWindow.SetActive(true);
+
                     uiManager.UpdateUI();
                     uiManager.hudWindow.SetActive(false);
-                    playerManager.isInteracting = true;
+                    //playerManager.isInteracting = true;
 
-                    uiManager.inventoryWindow.SetActive(true);
+                    interactFlag = true;
                 }
                 else
                 {
@@ -303,7 +304,7 @@ namespace SG
                     uiManager.CloseSelectWindow();
                     uiManager.CloseAllInventoryWindows();
                     uiManager.hudWindow.SetActive(true);
-                    playerManager.isInteracting = false;
+                    //playerManager.isInteracting = false;
                 }
             }
         }
@@ -357,6 +358,8 @@ namespace SG
 
         private void HandleTwoHandInput()
         {
+            //when you press the two hand button, get the shield out. If the shield is already out, put it away.
+
             if (twoHandMode_Input)
             {
                 twoHandMode_Input = false;
@@ -365,7 +368,15 @@ namespace SG
 
                 if (twoHandFlag)
                 {
-                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.equippedItem);
+                    //only have the right hand weapon out
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.equippedItem, false);
+                }
+                else
+                {
+                    //get the shield out too
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.equippedItem, false);
+                    weaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.equippedShield, true);
+
                 }
             }
         }

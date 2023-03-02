@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: cf0e81e69ddf1f7469b23999e508abd6, type: 3}
   itemName: Fists
+  itemID: 0
   modelPrefab: {fileID: 3421386151421257044, guid: ee4d692d186465d48b77f450034abaf8, type: 3}
   isUnarmed: 1
-  actionItemController: {fileID: 0}
   itemType: 2
   baseDamage: 25
   criticalDamageMuiltiplier: 2

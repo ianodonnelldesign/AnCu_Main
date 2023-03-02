@@ -14,26 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 40c750cbef9ea254e979b0642dcb5b32, type: 3}
   itemName: Sword
+  itemID: 1001
   modelPrefab: {fileID: 2592515959058927593, guid: 562572d29a8201049ac9183295b507ae, type: 3}
   isUnarmed: 0
+  itemType: 0
   baseDamage: 25
   criticalDamageMuiltiplier: 4
   poiseBreak: 5
   offensivePoiseBonus: 5
   physicalDamageAbsorption: 0
-  right_hand_idle: Right_Arm_Idle_001
-  left_hand_idle: Left_Arm_Idle_001
-  th_idle: TH_Idle_01
-  light_action_01: OH_Sword_Attack_01
-  light_action_02: OH_Sword_Attack_02
-  heavy_action_01: OH_Sword_Attack_03
-  th_action_01: OH_Sword_Attack_04
-  th_action_02: OH_Sword_Attack_05
-  item_art: 
   baseStamina: 10
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 1.5
-  isMeleeWeapon: 1
-  isShieldItem: 0
-  isConsumable: 0
-  isGearItem: 0

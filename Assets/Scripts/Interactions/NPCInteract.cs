@@ -34,14 +34,14 @@ namespace SG
 
         public CinemachineVirtualCamera interactionCamera;
 
-        public void awake()
+        protected override void Awake()
         {
             playerResponse.onClick.AddListener(AdvanceDialogue);
             playerManager = FindObjectOfType<PlayerManager>();
             mouseLook = FindObjectOfType<MouseLook>();
             cameraHandler = FindObjectOfType<CameraHandler>();
-            inputHandler = FindObjectOfType<InputHandler>();
             cinematicBars = FindObjectOfType<CinematicBars>();
+            inputHandler = FindObjectOfType<InputHandler>();
         }
 
         public void start()
@@ -80,7 +80,8 @@ namespace SG
 
         public void LookAtNPC()
         {
-            if(inputHandler.lockOnFlag == false)
+            Debug.Log(inputHandler);
+           if(inputHandler.lockOnFlag == false)
             {
                 cameraHandler.HandleLockOn();
                 if (cameraHandler.nearestLockOnTarget != null && cameraHandler.nearestLockOnTarget.GetComponentInParent<NPCInteract>() == true)

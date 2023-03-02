@@ -25,10 +25,13 @@ namespace SG
 
         [Header("Weapon Slots")]
         public WeaponHolderSlot rightHandSlot;
+        public WeaponHolderSlot leftHandSlot;
         public WeaponHolderSlot backSlot;
 
         [Header("Damage Colliders")]
         public DamageCollider rightHandDamageCollider;
+
+        private bool isShield;
 
         private void Awake()
         {
@@ -55,31 +58,53 @@ namespace SG
                 {
                     backSlot = weaponSlot;
                 }
+                else if (weaponSlot.isLeftHandSlot)
+                {
+                    leftHandSlot = weaponSlot;
+                }
             }
         }
 
         public void LoadBothWeaponsOnSlots()
         {
-            LoadWeaponOnSlot(playerInventoryManager.equippedItem);
+            LoadWeaponOnSlot(playerInventoryManager.equippedItem, true);
         }
 
-        public void LoadWeaponOnSlot(ActionItem weaponItem)
+        public void LoadWeaponOnSlot(ActionItem weaponItem, bool isShield)
         {
             if (weaponItem != null)
             {
-                if (inputHandler.twoHandFlag)
+                if(isShield)
                 {
+                    leftHandSlot.currentWeapon = weaponItem;
+                    leftHandSlot.LoadWeaponModel(weaponItem);
+                    //dont need to open a collider
+                    //don't need to update quickslots ui until it's hooked up
                 }
                 else
                 {
-                    animator.CrossFade("Both Arms Empty", 0.2f);
-                    backSlot.UnloadWeaponAndDestroy();
-                }
+                    if (inputHandler.twoHandFlag)
+                    {
+                        backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);
+                        leftHandSlot.UnloadWeaponAndDestroy();
+                        animator.CrossFade("Left_Arm_Idle_001", 0.2f);
+                    }
+                    else
+                    {
+                        animator.CrossFade("Both Arms Empty", 0.2f);
+                        backSlot.UnloadWeaponAndDestroy();
+                    }
 
-                rightHandSlot.currentWeapon = weaponItem;
-                rightHandSlot.LoadWeaponModel(weaponItem);
-                LoadRightWeaponDamageCollider();
-                quickSlotsUI.UpdateWeaponQuickSlotsUI(weaponItem);
+                    rightHandSlot.currentWeapon = weaponItem;
+                    rightHandSlot.LoadWeaponModel(weaponItem);
+                    LoadRightWeaponDamageCollider();
+                    quickSlotsUI.UpdateWeaponQuickSlotsUI(weaponItem);
+                }
+                
+
+
+
+                
                 //playerAnimatorManager.animator.runtimeAnimatorController = actionItem.actionItemController;
             }
             else

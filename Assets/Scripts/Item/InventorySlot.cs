@@ -74,7 +74,7 @@ namespace SG
 
             playerInventory.equippedItem = playerInventory.itemsInRightHandSlots[playerInventory.currentRightItemIndex];
 
-            weaponSlotManager.LoadWeaponOnSlot(playerInventory.equippedItem);
+            weaponSlotManager.LoadWeaponOnSlot(playerInventory.equippedItem, false);
 
             uiManager.equipmentWindowUI.LoadWeaponsOnEquipmentScreen(playerInventory);
             uiManager.ResetAllSelectedSlots();

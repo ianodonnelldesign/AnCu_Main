@@ -33,11 +33,11 @@ namespace SG
 
         [Header("Movement Stats")]
         [SerializeField]
-        float movementSpeed = 5;
+        float movementSpeed = 1;
         [SerializeField]
-        float walkingSpeed = 1;
+        float walkingSpeed = 5;
         [SerializeField]
-        float sprintSpeed = 7;
+        float sprintSpeed = 10;
         [SerializeField]
         float rotationSpeed = 10;
         [SerializeField]
@@ -78,7 +78,6 @@ namespace SG
             Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
         }
 
-        #region Movement
         Vector3 normalVector;
         Vector3 targetPosition;
 
@@ -158,11 +157,21 @@ namespace SG
 
             if (inputHandler.sprintFlag && inputHandler.moveAmount > 0.5)
             {
-                speed = sprintSpeed;
-                playerManager.isSprinting = true;
-                moveDirection *= speed;
-                playerStatsManager.TakeStaminaDamage(sprintStaminaCost);
+                if(playerManager.isBlocking)
+                {
+                    speed = walkingSpeed;
+                    playerManager.isSprinting = false;
+                    moveDirection *= speed;
+                }
+                else
+                {
+                    speed = sprintSpeed;
+                    playerManager.isSprinting = true;
+                    moveDirection *= speed;
+                    playerStatsManager.TakeStaminaDamage(sprintStaminaCost);
+                }
             }
+                    
             else
             {
                 if (inputHandler.moveAmount < 0.5)
@@ -324,10 +333,5 @@ namespace SG
             //}
         }
 
-
-
-
-
-        #endregion
     }
 }

@@ -34,6 +34,8 @@ namespace SG
             playerWeaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
 
             WorldSaveGameManager.instance.player = this;
+
+            
         }
 
         void Update()

@@ -10,10 +10,11 @@ namespace SG
 
         [Header("Quick Slot Items")]
         public ActionItem equippedItem;
+        public ActionItem equippedShield;
 
         [Header("Current Equipment")]
         public List<ActionItem> itemsInRightHandSlots;
-        public List<ActionItem> backSlot;
+        public List<ActionItem> shield;
 
         public int currentRightItemIndex = 0;
 
@@ -28,28 +29,31 @@ namespace SG
         private void Start()
         {
             equippedItem = itemsInRightHandSlots[currentRightItemIndex];
-            playerWeaponSlotManager.LoadWeaponOnSlot(equippedItem);        
+            equippedShield = shield[0];
+
+            playerWeaponSlotManager.LoadWeaponOnSlot(equippedItem, false);
+            playerWeaponSlotManager.LoadWeaponOnSlot(equippedShield, true);
         }
 
         public void QuickSlotOne()
         {
             equippedItem = itemsInRightHandSlots[0];
-            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[0]);
+            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[0], false);
         }
         public void QuickSlotTwo()
         {
             equippedItem = itemsInRightHandSlots[1];
-            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[1]);
+            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[1], false);
         }
         public void QuickSlotThree()
         {
             equippedItem = itemsInRightHandSlots[2];
-            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[2]);
+            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[2], false);
         }
         public void QuickSlotFour()
         {
             equippedItem = itemsInRightHandSlots[3];
-            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[3]);
+            playerWeaponSlotManager.LoadWeaponOnSlot(itemsInRightHandSlots[3], false);
         }
 
         //public void ChangeRightWeapon()

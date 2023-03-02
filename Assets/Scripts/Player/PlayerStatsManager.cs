@@ -24,8 +24,7 @@ namespace SG
         private void Awake()
         {
             playerManager = GetComponent<PlayerManager>();
-
-            deathManager = FindObjectOfType<DeathManager>();
+            deathManager = GetComponent<DeathManager>();
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
@@ -91,6 +90,8 @@ namespace SG
                 currentHealth = 0;
                 isDead = true;
                 playerAnimatorManager.PlayTargetAnimation("Dead_01", true);
+
+                Debug.Log(deathManager);
                 deathManager.PlayerDeath();
             }
         }
