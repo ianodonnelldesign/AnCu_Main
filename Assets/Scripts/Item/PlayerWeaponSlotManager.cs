@@ -101,10 +101,6 @@ namespace SG
                     quickSlotsUI.UpdateWeaponQuickSlotsUI(weaponItem);
                 }
                 
-
-
-
-                
                 //playerAnimatorManager.animator.runtimeAnimatorController = actionItem.actionItemController;
             }
             else
