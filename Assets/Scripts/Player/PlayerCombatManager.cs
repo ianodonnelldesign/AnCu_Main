@@ -20,10 +20,12 @@ namespace SG
 
         string light_action_01 = "OH_Light_Attack_01";
         string light_action_02 = "OH_Light_Attack_02";
+        string light_action_03 = "OH_Light_Attack_03";
         string heavy_action_01 = "OH_Heavy_Attack_01";
-        string th_action_01 = "TH_Attack_01";
-        string th_action_02 = "OH_Light_Attack_03";
-        //string unarmed_action = "Kick";
+        string heavy_action_02 = "OH_Heavy_Attack_02";
+        //string th_action_01 = "TH_Attack_01";
+        //string th_action_02 = "OH_Light_Attack_03";
+        string unarmed_action = "Kick";
         //string weapon_art = 
 
         public string offHandIdleAnimation = "Left_Arm_Idle_001";
@@ -47,7 +49,7 @@ namespace SG
 
         public void HandleLightAttackAction()
         {
-            if (playerInventoryManager.equippedItem.itemType == ItemType.Hurley || playerInventoryManager.equippedItem.itemType == ItemType.Unarmed)
+            if (playerInventoryManager.equippedItem.itemType == ItemType.Hurley)
             {
                 PerformLightAttackAction();
             }
@@ -58,6 +60,10 @@ namespace SG
             else if (playerInventoryManager.equippedItem.itemType == ItemType.Gear)
             {
                 PerformGearAction();
+            }
+            else if (playerInventoryManager.equippedItem.itemType == ItemType.Unarmed)
+            {
+                PerformUnarmedAction();
             }
         }
         public void HandleHeavyAttackAction()
@@ -166,11 +172,22 @@ namespace SG
                 if (lastAttack == light_action_01)
                 {
                     playerAnimatorManager.PlayTargetAnimation(light_action_02, true);
+                    lastAttack = light_action_02;
                 }
-                else if (lastAttack == th_action_01)
+                else if (lastAttack == light_action_02)
                 {
-                    playerAnimatorManager.PlayTargetAnimation(th_action_02, true);
+                    playerAnimatorManager.PlayTargetAnimation(light_action_03, true);
+                    lastAttack = light_action_03;
                 }
+                else if (lastAttack == heavy_action_01)
+                {
+                    playerAnimatorManager.PlayTargetAnimation(heavy_action_02, true);
+                    lastAttack = heavy_action_02;
+                }
+                //else if (lastAttack == th_action_01)
+                //{
+                //    playerAnimatorManager.PlayTargetAnimation(th_action_02, true);
+                //}
             }
         }
 
@@ -194,6 +211,18 @@ namespace SG
             Debug.Log("You alternately used the gear's action.");
         }
 
+        private void PerformUnarmedAction()
+        {
+            if (playerManager.isInteracting)
+                return;
+            
+            else
+            {
+                playerAnimatorManager.PlayTargetAnimation(unarmed_action, false);
+                lastAttack = unarmed_action;
+            }
+            
+        }
 
         private void PerformTHWeaponArt(bool isTwoHanding)
         {
