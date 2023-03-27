@@ -27,11 +27,11 @@ namespace SG
             }
         }
 
-        public void InstantiateBossParticleFX()
-        {
-            BossFXTransform bossFxTransform = GetComponentInChildren<BossFXTransform>();
-            GameObject phaseFX = Instantiate(enemyBossManager.particleFX, bossFxTransform.transform);
-        }
+        //public void InstantiateBossParticleFX()
+        //{
+        //    BossFXTransform bossFxTransform = GetComponentInChildren<BossFXTransform>();
+        //    GameObject phaseFX = Instantiate(enemyBossManager.particleFX, bossFxTransform.transform);
+        //}
 
         private void OnAnimatorMove()
         {
