@@ -311,7 +311,7 @@ namespace SG
 
         private void HandleLockOnInput()
         {
-            if (lockOnInput && lockOnFlag && cameraHandler.nearestLockOnTarget.GetComponentInParent<NPCInteract>() == false)
+            if (lockOnInput == true && lockOnFlag == false)
             {
                 lockOnInput = false;
                 cameraHandler.HandleLockOn();

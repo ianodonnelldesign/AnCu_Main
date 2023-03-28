@@ -5,7 +5,7 @@ using Utilities;
 
 namespace SG
 {
-    public class EnemyBossManager : MonoBehaviour
+    public class EnemyBossManager : CharacterManager
     {
         public string bossName;
 
