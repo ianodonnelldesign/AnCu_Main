@@ -11,11 +11,13 @@ namespace SG
         public Animator bossAnimationHandler;
         public GameObject deathScreen;
 
+        PlayerAnimatorManager playerAnimatorManager;
         InputHandler inputHandler;
         MouseLook mouseLook;
 
         private void Start()
         {
+            playerAnimatorManager = FindObjectOfType<PlayerAnimatorManager>();
             inputHandler = GetComponent<InputHandler>();
             mouseLook = FindObjectOfType<MouseLook>();
         }
@@ -30,11 +32,14 @@ namespace SG
 
         public void Respawn()
         {
-            deathScreen.SetActive(false);
             mouseLook.TurnMouseOff();
+
+            playerAnimatorManager.animator.SetTrigger("Respawn");
 
             inputHandler.interactFlag = false;
             deathAnimationHandler.SetTrigger("ButtonClicked");
+
+            deathScreen.SetActive(false);
         }
 
     }

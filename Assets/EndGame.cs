@@ -23,6 +23,6 @@ public class EndGame : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene(mainMenu);
+        SceneManager.LoadScene(sceneBuildIndex: 0);
     }
 }

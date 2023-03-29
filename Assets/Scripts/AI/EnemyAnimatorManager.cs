@@ -39,7 +39,7 @@ namespace SG
             enemyManager.enemyRigidBody.drag = 0;
             Vector3 deltaPosition = animator.deltaPosition;
             deltaPosition.y = 0;
-            Vector3 velocity = deltaPosition / delta;
+            Vector3 velocity = deltaPosition * delta;
             enemyManager.enemyRigidBody.velocity = velocity;
 
             if (enemyManager.isRotatingWithRootMotion)

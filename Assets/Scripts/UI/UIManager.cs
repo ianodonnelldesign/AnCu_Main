@@ -90,7 +90,7 @@ namespace SG
         public void MainMenu()
         {
             //maybe add confirmation screen
-            SceneManager.LoadScene(sceneBuildIndex: 0);
+            SceneManager.LoadScene(sceneBuildIndex: 6);
         }
 
         public void OpenSettingsWindow()
