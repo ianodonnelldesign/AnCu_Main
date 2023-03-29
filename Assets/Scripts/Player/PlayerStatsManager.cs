@@ -91,7 +91,6 @@ namespace SG
                 isDead = true;
                 playerAnimatorManager.PlayTargetAnimation("Dead_01", true);
 
-                Debug.Log(deathManager);
                 deathManager.PlayerDeath();
             }
         }

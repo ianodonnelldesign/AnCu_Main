@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Utilities;
 
 namespace SG
 {
     public class UIManager : MonoBehaviour
     {
+        public SceneField gameEndScene;
+
         public PlayerInventoryManager playerInventory;
         public EquipmentWindowUI equipmentWindowUI;
 
+        InputHandler inputHandler;
+
         [Header("UI Windows")]
         public GameObject hudWindow;
-        public GameObject selectWindow;
+        public GameObject pauseWindow;
         public GameObject inventoryWindow;
         public GameObject settingsWindow;
 
@@ -28,11 +34,12 @@ namespace SG
 
         private void Awake()
         {
-            
+            inputHandler = FindObjectOfType<InputHandler>();
         }
 
         private void Start()
         {
+            pauseWindow.SetActive(false);
             weaponInventorySlots = inventorySlotsParent.GetComponentsInChildren<InventorySlot>();
             equipmentWindowUI.LoadWeaponsOnEquipmentScreen(playerInventory);
         }
@@ -60,14 +67,30 @@ namespace SG
             #endregion
         }
 
-        public void OpenSelectWindow()
+        public void OpenPauseWindow()
         {
-            selectWindow.SetActive(true);
+            pauseWindow.SetActive(true);
+            Time.timeScale = 0f;
         }
 
-        public void CloseSelectWindow()
+        public void ClosePauseWindow()
         {
-            selectWindow.SetActive(false);
+            pauseWindow.SetActive(false);
+            Time.timeScale = 1f;
+
+            inputHandler.inventoryFlag = false;
+            inputHandler.interactFlag = false;
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            hudWindow.SetActive(true);
+        }
+
+        public void MainMenu()
+        {
+            //maybe add confirmation screen
+            SceneManager.LoadScene(sceneBuildIndex: 0);
         }
 
         public void OpenSettingsWindow()

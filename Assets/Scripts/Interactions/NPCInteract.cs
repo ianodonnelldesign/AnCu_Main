@@ -80,7 +80,7 @@ namespace SG
 
         public void LookAtNPC()
         {
-            Debug.Log(inputHandler);
+           Debug.Log(inputHandler);
            if(inputHandler.lockOnFlag == false)
             {
                 cameraHandler.HandleLockOn();

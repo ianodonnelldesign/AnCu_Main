@@ -286,8 +286,8 @@ namespace SG
                 {
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
-                    uiManager.OpenSelectWindow();
-                    uiManager.inventoryWindow.SetActive(true);
+                    uiManager.OpenPauseWindow();
+                    //uiManager.inventoryWindow.SetActive(true);
 
                     uiManager.UpdateUI();
                     uiManager.hudWindow.SetActive(false);
@@ -301,7 +301,7 @@ namespace SG
 
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
-                    uiManager.CloseSelectWindow();
+                    uiManager.ClosePauseWindow();
                     uiManager.CloseAllInventoryWindows();
                     uiManager.hudWindow.SetActive(true);
                     //playerManager.isInteracting = false;

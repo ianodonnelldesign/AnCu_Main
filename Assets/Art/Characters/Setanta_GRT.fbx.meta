@@ -8,32 +8,32 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Black
-    second: {fileID: 2100000, guid: 54f416824ffbeb6439978aedce67d3d8, type: 2}
+    second: {fileID: 2100000, guid: 6c91cbb56e63e5544b81a5abc8b9b496, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Boots
-    second: {fileID: 2100000, guid: 1076e2318b1d72a4f8239a44aff4abca, type: 2}
+    second: {fileID: 2100000, guid: 0a149cd5ba94d4e43a199fe9cc9098b2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Buckle
-    second: {fileID: 2100000, guid: b5420190e8f74d74ab01454e92a8f02d, type: 2}
+    second: {fileID: 2100000, guid: 1a87a6f34a456d646b6e5e0577daad15, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cloak
-    second: {fileID: 2100000, guid: 6b996e077fc8aa9488b878b97ade17c2, type: 2}
+    second: {fileID: 2100000, guid: 6888ddb9be47af449ba3364680d67b9f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Hair
-    second: {fileID: 2100000, guid: 1c86bdedd563fd64db60b53196353e07, type: 2}
+    second: {fileID: 2100000, guid: 1a87a6f34a456d646b6e5e0577daad15, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Head
-    second: {fileID: 2100000, guid: ab80899d0ffb9f84cab2d4f862660f73, type: 2}
+    second: {fileID: 2100000, guid: 88208f0662c2a2647ac2509690208e1d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -43,17 +43,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Pants
-    second: {fileID: 2100000, guid: d3dda30959f924646b20377bdb5a3284, type: 2}
+    second: {fileID: 2100000, guid: feb9184b15e579d419f17dad71417f5b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Skin
-    second: {fileID: 2100000, guid: 0b1684bd17a1db5408e62a61200e447e, type: 2}
+    second: {fileID: 2100000, guid: 88208f0662c2a2647ac2509690208e1d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Tunic
-    second: {fileID: 2100000, guid: 501aef377aa47254087be02f60766171, type: 2}
+    second: {fileID: 2100000, guid: 86f37d491f84ef344b58fe2a54df7da8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

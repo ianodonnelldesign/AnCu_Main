@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -34,6 +35,7 @@ public class AudioManager : MonoBehaviour
     {
         Play("Ulstermen");    
     }
+
     public void Play(string name)
     {
         Sound s = Array.Find(musicSounds, sound => sound.name == name);
@@ -47,4 +49,5 @@ public class AudioManager : MonoBehaviour
         }
 
     }
+
 }

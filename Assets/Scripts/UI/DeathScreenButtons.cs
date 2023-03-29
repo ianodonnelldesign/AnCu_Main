@@ -14,20 +14,29 @@ namespace SG
 
         public Animator deathAnimationHandler;
 
+        RetryBossFight retryBossFight;
+
+        private void Awake()
+        {
+            retryBossFight = FindObjectOfType<RetryBossFight>();
+        }
+
         public void MainMenu()
         {
-            SceneManager.LoadScene(mainMenu);
             deathAnimationHandler.SetTrigger("ButtonClicked");
+
+            SceneManager.LoadScene(mainMenu);
+
             gameObject.SetActive(false);
         }
 
-        public void Continue()
+        public void Retry()
         {
-            SceneManager.LoadScene(continueFromSave);
             deathAnimationHandler.SetTrigger("ButtonClicked");
+            
             gameObject.SetActive(false);
-            //will send player back to their previous save once saving works.
-            //for now since the only place you can die is the boss, I guess send them back to the forest with the scene changer.
+
+            retryBossFight.Retry();
         }
     }
 }

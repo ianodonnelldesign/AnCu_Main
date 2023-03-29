@@ -129,7 +129,6 @@ public class GrassComputeScript : MonoBehaviour
     void OnScene(SceneView scene)
     {
         view = scene;
-
     }
 
 #endif
@@ -371,7 +370,6 @@ public class GrassComputeScript : MonoBehaviour
             for (int i = 0; i < interactors.Length; i++)
             {
                 positions[i] = interactors[i].transform.position;
-
             }
             int shaderID = Shader.PropertyToID("_PositionsMoving");
             m_InstantiatedComputeShader.SetVectorArray(shaderID, positions);

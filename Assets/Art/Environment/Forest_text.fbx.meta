@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: grass_1
-    second: {fileID: 2100000, guid: 06b6813db103d984da73a91837bb48d2, type: 2}
+    second: {fileID: 2100000, guid: 9f48c4f29bc25ab4192a397597d98944, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -18,22 +18,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: rock_1
-    second: {fileID: 2100000, guid: b42284241cc88d44a886908d02e794bf, type: 2}
+    second: {fileID: 2100000, guid: f18232932ac451b49a1d95bff85ddfb9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: rock_2
-    second: {fileID: 2100000, guid: ba896c5bf17332647a5237c47314279d, type: 2}
+    second: {fileID: 2100000, guid: e8a80bf4eaac534409154d55f2adfc00, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: rock_2g
-    second: {fileID: 2100000, guid: 943418e75b1b2d7479aadfeac47e5583, type: 2}
+    second: {fileID: 2100000, guid: ce226936a20de334d80a264269a58ef4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: wood_2
-    second: {fileID: 2100000, guid: c58aad73383e3dc4b8bf3315e1014257, type: 2}
+    second: {fileID: 2100000, guid: 3fa51e0c293b01642af588b64c3c07cc, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

@@ -8,6 +8,7 @@ namespace SG
     public class DeathManager : MonoBehaviour
     {
         public Animator deathAnimationHandler;
+        public Animator bossAnimationHandler;
         public GameObject deathScreen;
 
         InputHandler inputHandler;
@@ -21,16 +22,19 @@ namespace SG
         public void PlayerDeath()
         {
             deathScreen.SetActive(true);
-
             mouseLook.TurnMouseOn();
+
             inputHandler.interactFlag = true;
             deathAnimationHandler.SetTrigger("PlayerIsDead");
-            Debug.Log("Setanta Died.");
         }
 
-        public void ChowsaintDeath()
+        public void Respawn()
         {
-            Debug.Log("Chowsaint was killed");
+            deathScreen.SetActive(false);
+            mouseLook.TurnMouseOff();
+
+            inputHandler.interactFlag = false;
+            deathAnimationHandler.SetTrigger("ButtonClicked");
         }
 
     }

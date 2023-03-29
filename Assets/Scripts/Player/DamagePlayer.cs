@@ -12,8 +12,6 @@ namespace SG
         {
             PlayerStatsManager playerStats = other.GetComponentInParent<PlayerStatsManager>();
 
-            Debug.Log("Touched the fire");
-
             if (playerStats != null)
             {
                 Debug.Log("Player took fire damage");

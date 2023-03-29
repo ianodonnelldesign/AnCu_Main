@@ -32,10 +32,6 @@ namespace SG
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
             playerWeaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
-
-            WorldSaveGameManager.instance.player = this;
-
-            
         }
 
         void Update()

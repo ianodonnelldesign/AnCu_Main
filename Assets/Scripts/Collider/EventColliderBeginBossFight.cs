@@ -15,8 +15,9 @@ namespace SG
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Player")
+            if (other.tag == "Player")
             {
+                gameObject.SetActive(this);
                 Debug.Log("Started the boss fight");
                 worldEventManager.ActivateBossFight();
             }

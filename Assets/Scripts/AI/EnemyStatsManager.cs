@@ -94,9 +94,10 @@ namespace SG
             if (isBoss && enemyBossManager != null)
             {
                 Debug.Log("You defeated a boss!");
-                //playerManager.HandlePlayerInCutscene();
+                playerManager.HandlePlayerInCutscene();
                 //transition to that boss's death scene
-                //SceneManager.LoadScene(enemyBossManager.bossDeathScene);
+                //after music ends
+                SceneManager.LoadScene(enemyBossManager.bossDeathScene);
             }
         }
     }
