@@ -59,8 +59,8 @@ MonoBehaviour:
     m_Bits: 9
   playerCamera: {fileID: 3971129447541638994}
   lookSpeed: 7
-  followSpeed: 0.1
-  pivotSpeed: 20
+  followSpeed: 0.2
+  pivotSpeed: 10
   minimumPivot: -35
   maximumPivot: 45
   cameraSphereRadius: 0.2

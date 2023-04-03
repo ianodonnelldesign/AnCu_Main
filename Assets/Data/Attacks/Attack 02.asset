@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionAnimation: OH_Sword_Attack_02
   canCombo: 0
-  comboAction: {fileID: 0}
+  comboAction: {fileID: 11400000, guid: cd171aba6f3f1c341bdc908b5051c580, type: 2}
   attackScore: 3
   recoveryTime: 2
   maximumAttackAngle: 35
   minimumAttackAngle: -35
   minimumDistanceNeededToAttack: 0
-  maximumDistanceNeededToAttack: 3
+  maximumDistanceNeededToAttack: 5

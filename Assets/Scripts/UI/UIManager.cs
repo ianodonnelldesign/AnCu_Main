@@ -89,8 +89,10 @@ namespace SG
 
         public void MainMenu()
         {
+            Time.timeScale = 1f;
+            pauseWindow.SetActive(false);
+
             //maybe add confirmation screen
-            SceneManager.LoadScene(sceneBuildIndex: 6);
         }
 
         public void OpenSettingsWindow()

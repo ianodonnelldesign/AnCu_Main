@@ -12,14 +12,14 @@ namespace SG
             {
                 enemyManager.isInteracting = true;
                 enemyManager.currentTarget = null;
-                enemyAnimatorManager.canRotate = false;
+                enemyManager.canRotate = false;
                 return this;
             }
             else
             {
                 enemyManager.isInteracting = true;
                 enemyManager.currentTarget = null;
-                enemyAnimatorManager.canRotate = false;
+                enemyManager.canRotate = false;
                 return this;
             }
         }

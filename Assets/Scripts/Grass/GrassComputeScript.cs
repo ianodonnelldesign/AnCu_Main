@@ -38,7 +38,6 @@ public class GrassComputeScript : MonoBehaviour
     public float windSpeed = 10;
     public float windStrength = 0.05f;
     // Interactor
-    public float affectRadius = 1.5f;
     public float affectStrength = 1;
     // LOD
     [Header("LOD")]
@@ -129,6 +128,7 @@ public class GrassComputeScript : MonoBehaviour
     void OnScene(SceneView scene)
     {
         view = scene;
+
     }
 
 #endif
@@ -327,7 +327,6 @@ public class GrassComputeScript : MonoBehaviour
         m_InstantiatedComputeShader.SetFloat("_WindSpeed", windSpeed);
         m_InstantiatedComputeShader.SetFloat("_WindStrength", windStrength);
 
-        m_InstantiatedComputeShader.SetFloat("_InteractorRadius", affectRadius);
         m_InstantiatedComputeShader.SetFloat("_InteractorStrength", affectStrength);
 
         m_InstantiatedComputeShader.SetFloat("_BladeRadius", bladeRadius);
@@ -370,6 +369,8 @@ public class GrassComputeScript : MonoBehaviour
             for (int i = 0; i < interactors.Length; i++)
             {
                 positions[i] = interactors[i].transform.position;
+                positions[i].w = interactors[i].radius;
+
             }
             int shaderID = Shader.PropertyToID("_PositionsMoving");
             m_InstantiatedComputeShader.SetVectorArray(shaderID, positions);

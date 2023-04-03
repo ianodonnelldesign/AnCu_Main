@@ -10,8 +10,8 @@ namespace SG
 
         public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
-            enemyAnimatorManager.animator.SetFloat("Vertical", 0);
-            enemyAnimatorManager.animator.SetFloat("Horizontal", 0);
+            enemyManager.animator.SetFloat("Vertical", 0);
+            enemyManager.animator.SetFloat("Horizontal", 0);
 
             Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
             float viewableAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.forward, Vector3.up);

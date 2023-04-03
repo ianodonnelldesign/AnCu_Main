@@ -20,6 +20,8 @@ namespace SG
                 gameObject.SetActive(this);
                 Debug.Log("Started the boss fight");
                 worldEventManager.ActivateBossFight();
+
+                AudioManager.Instance.StartCoroutine(AudioManager.Instance.PlayMusicSequence("GuardLoopIn", "GuardLoop"));
             }
         }
     }

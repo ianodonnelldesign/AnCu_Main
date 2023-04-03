@@ -17,14 +17,14 @@ namespace SG
         public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
             float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
-            enemyAnimatorManager.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
-            enemyAnimatorManager.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
+            enemyManager.animator.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
+            enemyManager.animator.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
             attackState.hasPerformedAttack = false;
 
             if (enemyManager.isInteracting)
             {
-                enemyAnimatorManager.animator.SetFloat("Vertical", 0);
-                enemyAnimatorManager.animator.SetFloat("Horizontal", 0);
+                enemyManager.animator.SetFloat("Vertical", 0);
+                enemyManager.animator.SetFloat("Horizontal", 0);
                 return this;
             }
 

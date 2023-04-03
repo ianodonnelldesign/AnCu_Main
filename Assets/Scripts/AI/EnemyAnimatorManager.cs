@@ -4,47 +4,55 @@ using UnityEngine;
 
 namespace SG
 {
-    public class EnemyAnimatorManager : AnimatorManager
+    public class EnemyAnimatorManager : CharacterAnimatorManager
     {
-        EnemyManager enemyManager;
-        EnemyBossManager enemyBossManager;
+        EnemyManager enemyCharacter;
+        EnemyBossManager bossManager;
 
         protected override void Awake()
         {
             base.Awake();
-            animator = GetComponent<Animator>();
-            enemyManager = GetComponent<EnemyManager>();
-            enemyBossManager = GetComponent<EnemyBossManager>();
+            enemyCharacter = GetComponent<EnemyManager>();
         }
 
         public void AwardSoulsOnDeath()
         {
-            PlayerStatsManager playerStats = FindObjectOfType<PlayerStatsManager>();
+            //PlayerStatsManager playerStats = FindObjectOfType<PlayerStatsManager>();
+            //SoulCountBar soulCountBar = FindObjectOfType<SoulCountBar>();
 
-            if (playerStats != null)
-            {
-                playerStats.AddSouls(characterStatsManager.soulsAwardedOnDeath);
-            }
+            //if (playerStats != null)
+            //{
+            //    playerStats.AddSouls(aiCharacter.aiCharacterStatsManager.soulsAwardedOnDeath);
+
+            //    if (soulCountBar != null)
+            //    {
+            //        soulCountBar.SetSoulCountText(playerStats.currentSoulCount);
+            //    }
+            //}
         }
 
-        //public void InstantiateBossParticleFX()
-        //{
-        //    BossFXTransform bossFxTransform = GetComponentInChildren<BossFXTransform>();
-        //    GameObject phaseFX = Instantiate(enemyBossManager.particleFX, bossFxTransform.transform);
-        //}
-
-        private void OnAnimatorMove()
+        public void InstantiateBossParticleFX()
         {
-            float delta = Time.deltaTime;
-            enemyManager.enemyRigidBody.drag = 0;
-            Vector3 deltaPosition = animator.deltaPosition;
-            deltaPosition.y = 0;
-            Vector3 velocity = deltaPosition * delta;
-            enemyManager.enemyRigidBody.velocity = velocity;
+            BossFXTransform bossFxTransform = GetComponentInChildren<BossFXTransform>();
+            GameObject phaseFX = Instantiate(bossManager.particleFX, bossFxTransform.transform);
+        }
 
-            if (enemyManager.isRotatingWithRootMotion)
+        public void PlayWeaponTrailFX()
+        {
+            //enemyCharacter.aiCharacterEffectsManager.PlayWeaponFX(false);
+        }
+
+        public override void OnAnimatorMove()
+        {
+            if (character.isInteracting == false)
+                return;
+
+            Vector3 velocity = character.animator.deltaPosition;
+            character.characterController.Move(velocity);
+
+            if (enemyCharacter.isRotatingWithRootMotion)
             {
-                enemyManager.transform.rotation *= animator.deltaRotation;
+                character.transform.rotation *= character.animator.deltaRotation;
             }
         }
     }

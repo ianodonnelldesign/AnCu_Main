@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2ced8746d112c4695f83e98cfb31c3, type: 3}
+  m_Name: Claw_Right
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: 
+  itemID: 0
+  modelPrefab: {fileID: 5784127236869470033, guid: 774e290ec38295e429c2a630b04cdcf9, type: 3}
+  isUnarmed: 0
+  itemType: 0
+  baseDamage: 10
+  criticalDamageMuiltiplier: 2
+  poiseBreak: 1
+  offensivePoiseBonus: 2
+  physicalDamageAbsorption: 10
+  baseStamina: 5
+  lightAttackMultiplier: 0
+  heavyAttackMultiplier: 0

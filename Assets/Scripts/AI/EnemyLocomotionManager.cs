@@ -4,25 +4,8 @@ using UnityEngine;
 
 namespace SG
 {
-    public class EnemyLocomotionManager : MonoBehaviour
+    public class EnemyLocomotionManager : CharacterLocomotionManager
     {
-        EnemyManager enemyManager;
-        EnemyAnimatorManager enemyAnimatorManager;
 
-        public CapsuleCollider characterCollider;
-        public CapsuleCollider characterCollisionBlockerCollider;
-
-        public LayerMask detectionLayer;
-
-        private void Awake()
-        {
-            enemyManager = GetComponent<EnemyManager>();
-            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
-        }
-
-        private void Start()
-        {
-            Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
-        }
     }
 }

@@ -8,18 +8,21 @@ namespace SG
     public class DeathManager : MonoBehaviour
     {
         public Animator deathAnimationHandler;
-        public Animator bossAnimationHandler;
         public GameObject deathScreen;
 
         PlayerAnimatorManager playerAnimatorManager;
         InputHandler inputHandler;
         MouseLook mouseLook;
 
+        UIBossHealthBar bossHealthBar;
+
         private void Start()
         {
             playerAnimatorManager = FindObjectOfType<PlayerAnimatorManager>();
             inputHandler = GetComponent<InputHandler>();
             mouseLook = FindObjectOfType<MouseLook>();
+            deathScreen.SetActive(false);
+            bossHealthBar = FindObjectOfType<UIBossHealthBar>();
         }
         public void PlayerDeath()
         {
@@ -28,6 +31,8 @@ namespace SG
 
             inputHandler.interactFlag = true;
             deathAnimationHandler.SetTrigger("PlayerIsDead");
+
+            bossHealthBar.SetHealthBarToInactive();
         }
 
         public void Respawn()
@@ -37,9 +42,9 @@ namespace SG
             playerAnimatorManager.animator.SetTrigger("Respawn");
 
             inputHandler.interactFlag = false;
-            deathAnimationHandler.SetTrigger("ButtonClicked");
 
-            deathScreen.SetActive(false);
+            deathAnimationHandler.SetTrigger("ButtonClicked");
+            deathAnimationHandler.ResetTrigger("PlayerIsDead");
         }
 
     }

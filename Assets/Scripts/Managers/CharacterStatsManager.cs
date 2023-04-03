@@ -21,6 +21,8 @@ namespace SG
         public int soulCount = 0;
         public int soulsAwardedOnDeath = 50;
 
+        public float moveSpeed = 1;
+
         [Header("Poise")]
         public float totalPoiseDefence; //The TOTAL poise during damage calculation
         public float offensivePoiseBonus; //The poise you GAIN during an attack with a weapon

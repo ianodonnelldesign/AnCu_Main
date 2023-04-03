@@ -27,6 +27,7 @@ namespace SG
 
         public GameObject player;
         public GameObject dialogueUI;
+        GameObject npcLockOn;
 
         public TextMeshProUGUI npcName;
         public TextMeshProUGUI npcDialogueBox;
@@ -36,6 +37,8 @@ namespace SG
 
         protected override void Awake()
         {
+            npcLockOn = this.transform.GetChild(0).gameObject;
+
             playerResponse.onClick.AddListener(AdvanceDialogue);
             playerManager = FindObjectOfType<PlayerManager>();
             mouseLook = FindObjectOfType<MouseLook>();
@@ -63,6 +66,7 @@ namespace SG
             if (isTalking == false)
             {
                 interactionCamera.Priority = 11;
+                interactionCamera.LookAt = npcLockOn.transform;
 
                 LookAtNPC();
 
@@ -87,7 +91,7 @@ namespace SG
                 if (cameraHandler.nearestLockOnTarget != null && cameraHandler.nearestLockOnTarget.GetComponentInParent<NPCInteract>() == true)
                 {
                     //size of bar, time to get to that size
-                    cinematicBars.ShowCinematicBars(200, .3f);
+                    cinematicBars.ShowCinematicBars(180, .3f);
                     cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
                     inputHandler.lockOnFlag = true;
                 }
@@ -96,7 +100,7 @@ namespace SG
 
         void StartConversation()
         {
-            cinematicBars.ShowCinematicBars(200, .3f);
+            cinematicBars.ShowCinematicBars(180, .3f);
 
             mouseLook.TurnMouseOn();
             npcDialogueBox.text = npc.npcDialogue[0];

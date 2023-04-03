@@ -13,6 +13,11 @@ namespace SG
         {
             deathScreenButtons.SetActive(true);
         }
+
+        public void FadeOutDeathScreen()
+        {
+            deathScreenAnimator.SetTrigger("ButtonClicked");
+        }
     }
 }
 

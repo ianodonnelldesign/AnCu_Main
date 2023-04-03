@@ -79,6 +79,7 @@ namespace SG
             cameraHandler = FindObjectOfType<CameraHandler>();
             playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
             cinematicBars = FindObjectOfType<CinematicBars>();
+            playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
         }
 
         public void Update()
@@ -95,7 +96,6 @@ namespace SG
 
         public void OnEnable()
         {
-
             if (inputActions == null)
             {
                 inputActions = new PlayerControls();
@@ -151,6 +151,13 @@ namespace SG
             //dont want to disable Inventory because inventory will be pause/escape
             inputActions.PlayerMovement.Movement.Disable();
             inputActions.PlayerMovement.Camera.Disable();
+
+            movementInput.x = 0;
+            movementInput.y = 0;
+            moveAmount = 0;
+
+            cameraInput.x = 0;
+            cameraInput.y = 0;
         }
 
         private void UnlockInput()

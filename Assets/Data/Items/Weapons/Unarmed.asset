@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2ced8746d112c4695f83e98cfb31c3, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: cf0e81e69ddf1f7469b23999e508abd6, type: 3}
+  itemIcon: {fileID: 21300000, guid: 611a65873e0e5af48baa05357bd65e43, type: 3}
   itemName: Fists
   itemID: 0
   modelPrefab: {fileID: 3421386151421257044, guid: ee4d692d186465d48b77f450034abaf8, type: 3}

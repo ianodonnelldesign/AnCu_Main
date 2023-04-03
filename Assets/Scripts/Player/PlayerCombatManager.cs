@@ -132,12 +132,12 @@ namespace SG
             //these are the same in case i ever want different actions with a shield out
             if (inputHandler.twoHandFlag)
             {
-                playerAnimatorManager.PlayTargetAnimation(light_action_01, true);
+                playerAnimatorManager.PlayTargetAnimation(light_action_01, true, false);
                 lastAttack = light_action_01;
             }
             else
             {
-                playerAnimatorManager.PlayTargetAnimation(light_action_01, true);
+                playerAnimatorManager.PlayTargetAnimation(light_action_01, true, false);
                 lastAttack = light_action_01;
             }
         }

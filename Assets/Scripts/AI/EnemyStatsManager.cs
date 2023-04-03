@@ -49,11 +49,13 @@ namespace SG
 
             if (!isBoss)
             {
+
                 enemyHealthBar.SetHealth(currentHealth);
             }
             else if (isBoss && enemyBossManager != null)
             {
                 enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+                
             }
         }
 
@@ -80,7 +82,14 @@ namespace SG
 
             if (currentHealth <= 0)
             {
-                HandleDeath();
+                if(isDead)
+                {
+                    return;
+                }
+                else
+                {
+                    HandleDeath();
+                }
             }
         }
 
@@ -93,11 +102,7 @@ namespace SG
 
             if (isBoss && enemyBossManager != null)
             {
-                Debug.Log("You defeated a boss!");
-                playerManager.HandlePlayerInCutscene();
-                //transition to that boss's death scene
-                //after music ends
-                SceneManager.LoadScene(enemyBossManager.bossDeathScene);
+                enemyBossManager.HandleBossDeath();
             }
         }
     }

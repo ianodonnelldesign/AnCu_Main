@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace SG
 {
@@ -11,6 +12,7 @@ namespace SG
 
         public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
+
             Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
             float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
             float viewableAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.forward, Vector3.up);
@@ -22,13 +24,14 @@ namespace SG
 
             if (enemyManager.isPreformingAction)
             {
-                enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                enemyManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
                 return this;
             }
 
             if (distanceFromTarget > enemyManager.maximumAggroRadius)
             {
-                enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                enemyManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                enemyManager.characterController.Move(targetDirection * enemyStats.moveSpeed / 1000f);
             }
 
             if (distanceFromTarget <= enemyManager.maximumAggroRadius)

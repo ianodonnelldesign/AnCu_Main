@@ -33,14 +33,14 @@ namespace SG
         public bool isPhaseShifting;
         public float comboLikelyHood;
 
-        private void Awake()
+        protected override void Awake()
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyAnimationManager = GetComponent<EnemyAnimatorManager>();
             enemyStatsManager = GetComponent<EnemyStatsManager>();
             enemyRigidBody = GetComponent<Rigidbody>();
             navmeshAgent = GetComponentInChildren<NavMeshAgent>();
-            navmeshAgent.enabled = false;
+            navmeshAgent.enabled = true;
         }
 
         private void Start()
@@ -53,13 +53,13 @@ namespace SG
             HandleRecoveryTimer();
             HandleStateMachine();
 
-            isRotatingWithRootMotion = enemyAnimationManager.animator.GetBool("isRotatingWithRootMotion");
-            isInteracting = enemyAnimationManager.animator.GetBool("isInteracting");
-            isPhaseShifting = enemyAnimationManager.animator.GetBool("isPhaseShifting");
-            isInvulnerable = enemyAnimationManager.animator.GetBool("isInvulnerable");
-            canDoCombo = enemyAnimationManager.animator.GetBool("canDoCombo");
-            canRotate = enemyAnimationManager.animator.GetBool("canRotate");
-            enemyAnimationManager.animator.SetBool("isDead", enemyStatsManager.isDead);
+            isRotatingWithRootMotion = animator.GetBool("isRotatingWithRootMotion");
+            isInteracting = animator.GetBool("isInteracting");
+            isPhaseShifting = animator.GetBool("isPhaseShifting");
+            isInvulnerable = animator.GetBool("isInvulnerable");
+            canDoCombo = animator.GetBool("canDoCombo");
+            canRotate = animator.GetBool("canRotate");
+            animator.SetBool("isDead", enemyStatsManager.isDead);
         }
 
         private void LateUpdate()

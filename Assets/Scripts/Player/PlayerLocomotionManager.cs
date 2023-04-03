@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 namespace SG
 {
     public class PlayerLocomotionManager : MonoBehaviour
     {
         CameraHandler cameraHandler;
+
         PlayerManager playerManager;
         PlayerStatsManager playerStatsManager;
-        Transform cameraObject;
         InputHandler inputHandler;
         public Vector3 moveDirection;
 
@@ -17,9 +18,11 @@ namespace SG
         public Transform myTransform;
         [HideInInspector]
         public PlayerAnimatorManager playerAnimatorManager;
-
         public new Rigidbody rigidbody;
-        public GameObject normalCamera;
+
+
+        public CinemachineVirtualCamera normalCamera;
+        Transform cameraObject;
 
         [Header("Ground & Air Detection Stats")]
         [SerializeField]
@@ -41,17 +44,20 @@ namespace SG
         [SerializeField]
         float rotationSpeed = 10;
         [SerializeField]
-        float fallingSpeed = 65;
+        float fallingSpeed = 100;
 
-        //[Header("Jumping")]
-        //[SerializeField] 
-        //float jumpHeight = 20;
+        [Header("Jumping")]
+        [SerializeField] 
+        float jumpHeight = 10f;
 
         [Header("Stamina Costs")]
         [SerializeField]
         public int rollStaminaCost = 10;
         public int backstepStaminaCost = 10;
         public int sprintStaminaCost = 1;
+
+        [Header("Dodging")]
+        float rollDistance = 2f;
 
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockerCollider;
@@ -69,8 +75,8 @@ namespace SG
 
         void Start()
         {
-            cameraObject = Camera.main.transform;
-            myTransform = transform;
+            cameraObject = normalCamera.transform;
+            myTransform = gameObject.transform;
             playerAnimatorManager.Initialize();
 
             playerManager.isGrounded = true;
@@ -215,6 +221,7 @@ namespace SG
                 if (inputHandler.moveAmount > 0)
                 {
                     playerAnimatorManager.PlayTargetAnimation("Rolling", true);
+
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = rollRotation;
@@ -242,8 +249,8 @@ namespace SG
 
             if (playerManager.isInAir)
             {
-                rigidbody.AddForce(-Vector3.up * fallingSpeed);
-                rigidbody.AddForce(moveDirection * fallingSpeed / 10f);
+                rigidbody.AddForce(-Vector3.up * fallingSpeed * 10f);
+                rigidbody.AddForce(moveDirection * fallingSpeed / 2f);
             }
 
             Vector3 dir = moveDirection;
@@ -270,7 +277,7 @@ namespace SG
                     }
                     else
                     {
-                        playerAnimatorManager.PlayTargetAnimation("Empty", false);
+                        playerAnimatorManager.PlayTargetAnimation("Land", false);
                         inAirTimer = 0;
                     }
 
@@ -316,21 +323,18 @@ namespace SG
             if (playerStatsManager.currentStamina <= 0)
                 return;
 
-            //if (inputHandler.jump_Input)
-            //{
-            //    moveDirection = cameraObject.forward * inputHandler.vertical;
-            //    moveDirection += cameraObject.right * inputHandler.horizontal;
-            //    moveDirection.y = 0;
-            //    moveDirection.Normalize();
-            //    moveDirection *= jumpHeight;
+            if (inputHandler.jump_Input)
+            {
+                moveDirection = cameraObject.forward * inputHandler.vertical;
+                moveDirection += cameraObject.right * inputHandler.horizontal;
+                moveDirection.y = 0;
+                moveDirection.Normalize();
 
-            //    rigidbody.AddForce(moveDirection, ForceMode.Impulse);
+                playerAnimatorManager.PlayTargetAnimation("Jump", true);
 
-            //    playerAnimatorManager.PlayTargetAnimation("Jump", false);
-
-            //    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-            //    myTransform.rotation = jumpRotation;
-            //}
+                Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                myTransform.rotation = jumpRotation;
+            }
         }
 
     }
