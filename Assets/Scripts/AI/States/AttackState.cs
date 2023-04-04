@@ -14,7 +14,7 @@ namespace SG
         bool willDoComboOnNextAttack = false;
         public bool hasPerformedAttack = false;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, AICharacterAnimatorManager enemyAnimatorManager)
         {
             float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
 
@@ -44,14 +44,14 @@ namespace SG
             return rotateTowardsTargetState;
         }
 
-        private void AttackTarget(EnemyAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
+        private void AttackTarget(AICharacterAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
         {
             enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
             enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
             hasPerformedAttack = true;
         }
 
-        private void AttackTargetWithCombo(EnemyAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
+        private void AttackTargetWithCombo(AICharacterAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
         {
             willDoComboOnNextAttack = false;
             enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);

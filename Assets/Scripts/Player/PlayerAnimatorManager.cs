@@ -18,7 +18,7 @@ namespace SG
         public void Initialize()
         {
             inputHandler = GetComponentInParent<InputHandler>();
-            animator = GetComponentInChildren<Animator>();
+            animator = GetComponentInParent<Animator>();
             playerManager = GetComponentInParent<PlayerManager>();
             playerStatsManager = GetComponentInParent<PlayerStatsManager>();
             playerLocomotionManager = GetComponentInParent<PlayerLocomotionManager>();

@@ -15,7 +15,7 @@ namespace SG
 
         public PursueTargetState pursueTargetState;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, AICharacterAnimatorManager enemyAnimatorManager)
         {
             if (isSleeping && enemyManager.isInteracting == false)
             {

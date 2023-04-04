@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Attack 02
   m_EditorClassIdentifier: 
   actionAnimation: OH_Sword_Attack_02
-  canCombo: 0
+  canCombo: 1
   comboAction: {fileID: 11400000, guid: cd171aba6f3f1c341bdc908b5051c580, type: 2}
   attackScore: 3
   recoveryTime: 2

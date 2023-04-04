@@ -8,21 +8,19 @@ namespace SG
 {
     public class EnemyStatsManager : CharacterStatsManager
     {
-        EnemyAnimatorManager enemyAnimatorManager;
+        AICharacterAnimatorManager enemyAnimatorManager;
         EnemyBossManager enemyBossManager;
         public UIEnemyHealthBar enemyHealthBar;
         EnemyManager enemyManager;
 
         PlayerManager playerManager;
 
-        public DeadState deadState;
-
         public bool isBoss;
 
         private void Awake()
         {
             playerManager = FindObjectOfType<PlayerManager>();
-            enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
+            enemyAnimatorManager = GetComponent<AICharacterAnimatorManager>();
             enemyManager = GetComponent<EnemyManager>();
             enemyBossManager = GetComponent<EnemyBossManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
@@ -82,28 +80,30 @@ namespace SG
 
             if (currentHealth <= 0)
             {
-                if(isDead)
-                {
-                    return;
-                }
-                else
-                {
-                    HandleDeath();
-                }
+                HandleDeath();
+                //if(isDead)
+                //{
+                //    return;
+                //}
+                //else
+                //{
+                //    HandleDeath();
+                //}
             }
         }
 
         private void HandleDeath()
         {
+            Debug.Log("Enemy died, and death is being handled");
             currentHealth = 0;
             enemyAnimatorManager.PlayTargetAnimation("Dead_01", true);
             isDead = true;
-            enemyManager.currentState = deadState;
-
+            
             if (isBoss && enemyBossManager != null)
             {
                 enemyBossManager.HandleBossDeath();
             }
+
         }
     }
 }

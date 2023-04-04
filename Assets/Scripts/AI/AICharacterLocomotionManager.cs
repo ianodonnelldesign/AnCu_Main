@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SG
 {
-    public class EnemyLocomotionManager : CharacterLocomotionManager
+    public class AICharacterLocomotionManager : CharacterLocomotionManager
     {
 
     }

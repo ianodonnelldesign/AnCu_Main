@@ -62,7 +62,7 @@ namespace SG
         {
             float delta = Time.fixedDeltaTime;
 
-            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            playerLocomotion.HandleFalling();
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRotation(delta);
         }

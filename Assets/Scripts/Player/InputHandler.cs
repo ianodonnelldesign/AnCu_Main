@@ -135,7 +135,7 @@ namespace SG
         public void TickInput(float delta)
         {
             HandleMoveInput(delta);
-            HandleSprintInput(delta);
+            HandleSprintInput();
             HandleRollInput();
             HandleCombatInput(delta);
             HandleQuickSlotsInput();
@@ -177,24 +177,29 @@ namespace SG
             mouseY = cameraInput.y;
         }
 
-        private void HandleSprintInput(float delta)
+        private void HandleSprintInput()
         {
             if (sprint_Input)
             {
+                playerManager.isSprinting = true;
+
                 if (playerStatsManager.currentStamina <= 0)
                 {
                     sprint_Input = false;
                     sprintFlag = false;
+                    playerManager.isSprinting = false;
                 }
 
                 if (moveAmount > 0.5f && playerStatsManager.currentStamina > 0)
                 {
                     sprintFlag = true;
+                    playerManager.isSprinting = true;
                 }
             }
             else
             {
                 sprintFlag = false;
+                playerManager.isSprinting = false;
             }
         }
 

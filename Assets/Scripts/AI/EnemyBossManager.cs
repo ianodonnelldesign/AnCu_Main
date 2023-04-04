@@ -13,7 +13,7 @@ namespace SG
         public IEnumerator handleBossDeath;
         UIBossHealthBar bossHealthBar;
         EnemyStatsManager enemyStats;
-        EnemyAnimatorManager enemyAnimatorManager;
+        AICharacterAnimatorManager enemyAnimatorManager;
         BossCombatStanceState bossCombatStanceState;
 
         PlayerManager playerManager;
@@ -28,7 +28,7 @@ namespace SG
             playerManager = FindObjectOfType<PlayerManager>();
             bossHealthBar = FindObjectOfType<UIBossHealthBar>();
             enemyStats = GetComponent<EnemyStatsManager>();
-            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyAnimatorManager = GetComponentInChildren<AICharacterAnimatorManager>();
             bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
         }
 

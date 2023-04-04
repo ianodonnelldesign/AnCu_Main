@@ -6,7 +6,7 @@ namespace SG
 {
     public class DeadState : State
     {
-        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, AICharacterAnimatorManager enemyAnimatorManager)
         {
             if (enemyManager.currentTarget != null)
             {

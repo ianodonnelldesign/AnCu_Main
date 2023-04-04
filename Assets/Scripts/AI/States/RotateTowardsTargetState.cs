@@ -8,7 +8,7 @@ namespace SG
     {
         public CombatStanceState combatStanceState;
 
-        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+        public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, AICharacterAnimatorManager enemyAnimatorManager)
         {
             enemyManager.animator.SetFloat("Vertical", 0);
             enemyManager.animator.SetFloat("Horizontal", 0);

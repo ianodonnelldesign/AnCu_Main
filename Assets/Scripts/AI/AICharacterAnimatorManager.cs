@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SG
 {
-    public class EnemyAnimatorManager : CharacterAnimatorManager
+    public class AICharacterAnimatorManager : CharacterAnimatorManager
     {
         EnemyManager enemyCharacter;
         EnemyBossManager bossManager;

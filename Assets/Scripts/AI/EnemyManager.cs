@@ -7,8 +7,8 @@ namespace SG
 {
     public class EnemyManager : CharacterManager
     {
-        EnemyLocomotionManager enemyLocomotionManager;
-        EnemyAnimatorManager enemyAnimationManager;
+        AICharacterLocomotionManager enemyLocomotionManager;
+        AICharacterAnimatorManager enemyAnimationManager;
         EnemyStatsManager enemyStatsManager;
 
         public State currentState;
@@ -16,6 +16,7 @@ namespace SG
         public NavMeshAgent navmeshAgent;
         public Rigidbody enemyRigidBody;
 
+        DeadState deadState;
 
         public bool isPreformingAction;
         public float rotationSpeed = 15;
@@ -35,8 +36,8 @@ namespace SG
 
         protected override void Awake()
         {
-            enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
-            enemyAnimationManager = GetComponent<EnemyAnimatorManager>();
+            enemyLocomotionManager = GetComponent<AICharacterLocomotionManager>();
+            enemyAnimationManager = GetComponent<AICharacterAnimatorManager>();
             enemyStatsManager = GetComponent<EnemyStatsManager>();
             enemyRigidBody = GetComponent<Rigidbody>();
             navmeshAgent = GetComponentInChildren<NavMeshAgent>();
