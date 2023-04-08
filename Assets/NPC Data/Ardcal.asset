@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Ardcal
   m_EditorClassIdentifier: 
   npcName: Ardcal
-  npcDialogue: []
+  npcDialogueSet:
+  - BlahBlah1
   playerDialogue: []

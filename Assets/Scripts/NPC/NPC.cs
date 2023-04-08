@@ -6,7 +6,7 @@ using TMPro;
 namespace SG
 
 {
-    [CreateAssetMenu(fileName = "NPC File", menuName = "NPC Files Archive")]
+    [CreateAssetMenu(fileName = "NPC File", menuName = "NPC/NPC Dialogue Set")]
 
     public class NPC : ScriptableObject
     {
@@ -14,12 +14,9 @@ namespace SG
 
         [TextArea(3, 15)]
         public string[] npcDialogue;
-        
+
         [TextArea(3, 15)]
         public string[] playerDialogue;
-
-        
-
     }
 
 }

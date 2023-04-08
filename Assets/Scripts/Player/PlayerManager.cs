@@ -6,33 +6,18 @@ namespace SG
 {
     public class PlayerManager : CharacterManager
     {
-        //InputHandler inputHandler;
-        //Animator animator;
-        //CameraHandler cameraHandler;
-        //PlayerStatsManager playerStatsManager;
-        //PlayerAnimatorManager playerAnimatorManager;
-        //PlayerLocomotionManager playerLocomotion;
-        //PlayerInventoryManager playerInventoryManager;
-        //PlayerWeaponSlotManager playerWeaponSlotManager;
-
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableGameObject;
 
+        public bool talkedToCathbad = false;
+        public bool talkedToKing = false;
+        public bool doneTalking = false;
 
         protected override void Awake()
         {
             base.Awake();
-            //cameraHandler = FindObjectOfType<CameraHandler>();
-            //backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
-            //inputHandler = GetComponent<InputHandler>();
-            //playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
-            //animator = GetComponent<Animator>();
-            //playerStatsManager = GetComponent<PlayerStatsManager>();
-            //playerLocomotion = GetComponent<PlayerLocomotionManager>();
-            //playerInventoryManager = GetComponent<PlayerInventoryManager>();
             interactableUI = FindObjectOfType<InteractableUI>();
-            //playerWeaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
         }
 
         void Update()
@@ -95,22 +80,18 @@ namespace SG
             }
         }
 
-
-
         public void CheckForInteractableObject()
         {
-            //RaycastHit hit;
-
             float interactRange = 3f;
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
-            
+
             foreach (Collider collider in colliderArray)
             {
                 if (collider.tag == "Interactable")
                 {
                     Interactable interactableObject = collider.GetComponent<Interactable>();
 
-                    if(interactableObject != null)
+                    if (interactableObject != null)
                     {
                         string interactableText = interactableObject.interactableText;
                         interactableUI.interactableText.text = interactableText;
@@ -121,54 +102,21 @@ namespace SG
                             collider.GetComponent<Interactable>().Interact(this);
                         }
                     }
-                else
-                {
-                    if (interactableUIGameObject != null)
-                    {
-                        interactableUIGameObject.SetActive(false);
-                    }
 
-                    if (itemInteractableGameObject != null && inputHandler.interact_Input)
-                    {
-                        itemInteractableGameObject.SetActive(false);
-                    }
                 }
-                }
-                
             }
+        }
 
-
-            //if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 2f, cameraHandler.ignoreLayers))
-            //{
-            //    if (hit.collider.tag == "Interactable")
-            //    {
-            //        Interactable interactableObject = hit.collider.GetComponent<Interactable>();
-
-            //        if (interactableObject != null)
-            //        {
-            //            string interactableText = interactableObject.interactableText;
-            //            interactableUI.interactableText.text = interactableText;
-            //            interactableUIGameObject.SetActive(true);
-
-            //            if (inputHandler.interact_Input)
-            //            {
-            //                hit.collider.GetComponent<Interactable>().Interact(this);
-            //            }
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    if (interactableUIGameObject != null)
-            //    {
-            //        interactableUIGameObject.SetActive(false);
-            //    }
-
-            //    if (itemInteractableGameObject != null && inputHandler.interact_Input)
-            //    {
-            //        itemInteractableGameObject.SetActive(false);
-            //    }
-            //}
+        public void OnTriggerExit(Collider other)
+        {
+            if (interactableUIGameObject != null)
+            {
+                interactableUIGameObject.SetActive(false);
+            }
+            if (itemInteractableGameObject != null && inputHandler.interact_Input)
+            {
+                itemInteractableGameObject.SetActive(false);
+            }
         }
 
         public void OpenChestInteraction(Transform playerStandsHereWhenOpeningChest)

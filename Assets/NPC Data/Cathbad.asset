@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb5426d92fb38af43812bc157876a45b, type: 3}
-  m_Name: Cathbad
+  m_Script: {fileID: 11500000, guid: 84753f1726282ba47b3cc3ff9ac6d971, type: 3}
+  m_Name: CATHBAD
   m_EditorClassIdentifier: 
-  npcName: Cathbad
-  npcDialogue:
-  - Hello!
-  - Did you figure out how to convert strings to TextMeshProUGUI?
-  - Looks like it worked!
-  playerDialogue: []
+  currentNPCDialogueSet: 0
+  npcDialogues:
+  - {fileID: 11400000, guid: 18873af93dde66a469b1a4614442a1a0, type: 2}
+  - {fileID: 11400000, guid: e1c70f66ac960544396ed3d806f516ab, type: 2}

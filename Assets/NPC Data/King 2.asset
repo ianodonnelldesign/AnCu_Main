@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5426d92fb38af43812bc157876a45b, type: 3}
+  m_Name: King 2
+  m_EditorClassIdentifier: 
+  npcName: King Conchobar
+  npcDialogue:
+  - skipping class?
+  - can't do that, cant jsut fight and play all the time
+  - go back to your lessons then when you're done come with us to the forge tonight
+  - make sure you get there before dark
+  playerDialogue: []

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb5426d92fb38af43812bc157876a45b, type: 3}
-  m_Name: Cullan
+  m_Script: {fileID: 11500000, guid: 84753f1726282ba47b3cc3ff9ac6d971, type: 3}
+  m_Name: CULLAN
   m_EditorClassIdentifier: 
-  npcName: Cullan
-  npcDialogue: []
-  playerDialogue: []
+  currentNPCDialogueSet: 0
+  npcDialogues:
+  - {fileID: 11400000, guid: 7cae57e738e5eb94e86d478402ab4c50, type: 2}

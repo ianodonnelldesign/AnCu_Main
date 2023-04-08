@@ -7,6 +7,7 @@ namespace SG
     public class EventColliderBeginBossFight : MonoBehaviour
     {
         WorldEventManager worldEventManager;
+        bool fightStarted = false;
 
         private void Awake()
         {
@@ -17,11 +18,18 @@ namespace SG
         {
             if (other.tag == "Player")
             {
-                gameObject.SetActive(this);
-                Debug.Log("Started the boss fight");
-                worldEventManager.ActivateBossFight();
+                if (fightStarted == false)
+                {
+                    fightStarted = true;
 
-                AudioManager.Instance.StartCoroutine(AudioManager.Instance.PlayMusicSequence("GuardLoopIn", "GuardLoop"));
+                    gameObject.SetActive(this);
+                    Debug.Log("Started the boss fight");
+                    worldEventManager.ActivateBossFight();
+
+                    AudioManager.Instance.StartCoroutine(AudioManager.Instance.PlayMusicSequence("GuardLoopIn", "GuardLoop"));
+                }
+                else
+                return;
             }
         }
     }

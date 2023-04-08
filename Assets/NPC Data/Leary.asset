@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Leary
   m_EditorClassIdentifier: 
   npcName: Leary
-  npcDialogue: []
+  npcDialogueSet:
+  - BlahBlah1
   playerDialogue: []

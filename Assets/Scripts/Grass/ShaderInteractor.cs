@@ -2,5 +2,9 @@ using UnityEngine;
 
 public class ShaderInteractor : MonoBehaviour
 {
-    public float radius = 1f;
+    // Update is called once per frame
+    void Update()
+    {
+        Shader.SetGlobalVector("_PositionMoving", transform.position);
+    }
 }

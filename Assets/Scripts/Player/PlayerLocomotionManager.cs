@@ -25,12 +25,6 @@ namespace SG
         Transform cameraObject;
 
         [Header("Ground & Air Detection Stats")]
-        [SerializeField]
-        float groundDetectionRayStartPoint = 0.5f;
-        [SerializeField]
-        float minimumDistanceNeededToBeginFall = 1f;
-        [SerializeField]
-        float groundDirectionRayDistance = 0.2f;
         public LayerMask groundLayer;
         public float inAirTimer;
 
@@ -261,12 +255,15 @@ namespace SG
 
                 if (inputHandler.moveAmount > 0)
                 {
+                    moveDirection.Normalize();
                     playerAnimatorManager.PlayTargetAnimation("Rolling", false);
-                    player.characterController.Move(moveDirection * rollDistance / Time.deltaTime);
-
+                    
+                    player.characterController.Move(moveDirection * rollDistance * Time.deltaTime);
                     moveDirection.y = 0;
+
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = rollRotation;
+
                     playerStatsManager.TakeStaminaDamage(rollStaminaCost);
                 }
                 else
@@ -402,9 +399,9 @@ namespace SG
                 moveDirection.Normalize();
 
                 playerAnimatorManager.PlayTargetAnimation("Jump", false);
-                player.characterController.Move(-Vector3.down * jumpHeight / Time.deltaTime);
+                player.characterController.Move(-Vector3.down);
 
-                Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                Quaternion jumpRotation = Quaternion.LookRotation(moveDirection * jumpHeight * Time.deltaTime);
                 myTransform.rotation = jumpRotation;
             }
         }

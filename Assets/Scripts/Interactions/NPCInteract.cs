@@ -10,13 +10,15 @@ namespace SG
     public class NPCInteract : Interactable
     {
         InputHandler inputHandler;
-        PlayerManager playerManager;
+        public PlayerManager playerManager;
         MouseLook mouseLook;
         CameraHandler cameraHandler;
         CinematicBars cinematicBars;
         
 
-        public NPC npc;
+        NPC npc;
+        public NPCDialogueList npcDialogueList;
+        public int currentNPCDialogueSet;
 
         bool isTalking = false;
 
@@ -39,6 +41,7 @@ namespace SG
         {
             npcLockOn = this.transform.GetChild(0).gameObject;
 
+
             playerResponse.onClick.AddListener(AdvanceDialogue);
             playerManager = FindObjectOfType<PlayerManager>();
             mouseLook = FindObjectOfType<MouseLook>();
@@ -52,6 +55,10 @@ namespace SG
             dialogueUI.SetActive(false);
         }
 
+        private void Update()
+        {
+            npc = npcDialogueList.npcDialogues[currentNPCDialogueSet];
+        }
         public override void Interact(PlayerManager playerManager)
         {
             base.Interact(playerManager);
@@ -62,7 +69,6 @@ namespace SG
 
         public void InteractWithNPC()
         {
-            Debug.Log("You're talking to this NPC");
             if (isTalking == false)
             {
                 interactionCamera.Priority = 11;
@@ -113,16 +119,21 @@ namespace SG
         {
             if (dialogueLength > dialogueAdvance)
             {
-                dialogueAdvance++;
+                dialogueAdvance += 1;
                 npcDialogueBox.text = npc.npcDialogue[dialogueAdvance];
             }
-            else
-            {
-                EndDialogue();
+            else if (isTalking == true)
+            { 
+                EndDialogue(); 
             }
         }
-        void EndDialogue()
+        public void EndDialogue()
         {
+            if (playerManager.talkedToCathbad)
+            {
+                npcDialogueList.currentNPCDialogueSet += 1;
+            }
+
             interactionCamera.Priority = 0;
 
             cinematicBars.HideCinematicBars(.3f);
@@ -141,7 +152,11 @@ namespace SG
             cameraHandler.ClearLockOnTargets();
         }
 
+        public void ChangeDialogueSet()
+        {
+
+        }
+
     }
 
 }
-
