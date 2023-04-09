@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Leary
   m_EditorClassIdentifier: 
   npcName: Leary
-  npcDialogueSet:
-  - BlahBlah1
+  npcDialogue:
+  - Zzzzzzzzzz...
+  - zzzzzz...*snort* Huh?
+  - What is it? Oh, yeah I was listening.
+  - Long! Wave! Like a light jog!
+  - ...
   playerDialogue: []

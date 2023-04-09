@@ -7,17 +7,24 @@ using Cinemachine;
 
 namespace SG
 {
-    public class CullanData : NPCInteract
+    public class CullanData : MonoBehaviour
     {
+        PlayerManager player;
+        NPCInteract npcInteract;
+
+        private void Awake()
+        {
+            player = FindObjectOfType<PlayerManager>();
+            npcInteract = GetComponent<NPCInteract>();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if(other.tag == "Player")
             {
-                InteractWithNPC();
+                npcInteract.InteractWithNPC();
             }
         }
-        //if something is true, remove cullan so the player can get by
-
     }
 
 }

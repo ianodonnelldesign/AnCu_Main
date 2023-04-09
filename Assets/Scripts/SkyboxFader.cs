@@ -20,7 +20,6 @@ public class SkyboxFader : MonoBehaviour
         {
             if (other.tag == "Player")
             {
-                Debug.Log("Player entered skybox collider");
                 RenderSettings.skybox = targetSkybox;
 
                 newLights.SetActive(true);

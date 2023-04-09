@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Siomon
   m_EditorClassIdentifier: 
   npcName: Siomon
-  npcDialogueSet:
-  - BlahBlah1
+  npcDialogue:
+  - After this lesson I'm gonna beat you at Hurling. You're not gonna score at all
+    this time!
   playerDialogue: []

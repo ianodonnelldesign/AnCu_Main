@@ -10,9 +10,12 @@ namespace SG
         public GameObject interactableUIGameObject;
         public GameObject itemInteractableGameObject;
 
+        [Header("NPC Talking Data")]
         public bool talkedToCathbad = false;
         public bool talkedToKing = false;
         public bool doneTalking = false;
+
+        public string isTalkingTo;
 
         protected override void Awake()
         {
@@ -82,12 +85,13 @@ namespace SG
 
         public void CheckForInteractableObject()
         {
+
             float interactRange = 3f;
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
 
             foreach (Collider collider in colliderArray)
             {
-                if (collider.tag == "Interactable")
+                if (collider.CompareTag("Interactable"))
                 {
                     Interactable interactableObject = collider.GetComponent<Interactable>();
 
@@ -102,22 +106,25 @@ namespace SG
                             collider.GetComponent<Interactable>().Interact(this);
                         }
                     }
-
                 }
             }
         }
 
-        public void OnTriggerExit(Collider other)
+        private void OnTriggerExit(Collider other)
         {
-            if (interactableUIGameObject != null)
+            if(other.CompareTag("LookRange"))
             {
-                interactableUIGameObject.SetActive(false);
-            }
-            if (itemInteractableGameObject != null && inputHandler.interact_Input)
-            {
-                itemInteractableGameObject.SetActive(false);
+                if(interactableUIGameObject != null)
+                {
+                    interactableUIGameObject.SetActive(false);
+                }
+                if (itemInteractableGameObject != null && inputHandler.interact_Input)
+                {
+                    interactableUIGameObject.SetActive(false);
+                }
             }
         }
+
 
         public void OpenChestInteraction(Transform playerStandsHereWhenOpeningChest)
         {

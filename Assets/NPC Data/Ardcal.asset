@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Ardcal
   m_EditorClassIdentifier: 
   npcName: Ardcal
-  npcDialogueSet:
-  - BlahBlah1
+  npcDialogue:
+  - Strong! Brave! Weren't you listening? Don't you know the words?
+  - Game! Like a fighting dog!
   playerDialogue: []

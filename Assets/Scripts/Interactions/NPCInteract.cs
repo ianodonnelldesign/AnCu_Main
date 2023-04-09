@@ -14,11 +14,12 @@ namespace SG
         MouseLook mouseLook;
         CameraHandler cameraHandler;
         CinematicBars cinematicBars;
-        
+
+        NPCDialogueSetManager npcDialogueSetManager;
 
         NPC npc;
         public NPCDialogueList npcDialogueList;
-        public int currentNPCDialogueSet;
+        public int currentNPCDialogueSet = 0;
 
         bool isTalking = false;
 
@@ -41,7 +42,7 @@ namespace SG
         {
             npcLockOn = this.transform.GetChild(0).gameObject;
 
-
+            npcDialogueSetManager = FindObjectOfType<NPCDialogueSetManager>();
             playerResponse.onClick.AddListener(AdvanceDialogue);
             playerManager = FindObjectOfType<PlayerManager>();
             mouseLook = FindObjectOfType<MouseLook>();
@@ -90,7 +91,6 @@ namespace SG
 
         public void LookAtNPC()
         {
-           Debug.Log(inputHandler);
            if(inputHandler.lockOnFlag == false)
             {
                 cameraHandler.HandleLockOn();
@@ -106,6 +106,7 @@ namespace SG
 
         void StartConversation()
         {
+            playerManager.isTalkingTo = npc.npcName;
             cinematicBars.ShowCinematicBars(180, .3f);
 
             mouseLook.TurnMouseOn();
@@ -124,16 +125,12 @@ namespace SG
             }
             else if (isTalking == true)
             { 
-                EndDialogue(); 
+                EndDialogue();
+                ChangeDialogueSet();
             }
         }
         public void EndDialogue()
         {
-            if (playerManager.talkedToCathbad)
-            {
-                npcDialogueList.currentNPCDialogueSet += 1;
-            }
-
             interactionCamera.Priority = 0;
 
             cinematicBars.HideCinematicBars(.3f);
@@ -154,7 +151,7 @@ namespace SG
 
         public void ChangeDialogueSet()
         {
-
+            npcDialogueSetManager.ChangeDialogueSet();
         }
 
     }
