@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utilities;
+using UnityEngine.EventSystems;
 
 namespace SG
 {
@@ -31,6 +32,9 @@ namespace SG
         public GameObject inventorySlotPrefab;
         public Transform inventorySlotsParent;
         InventorySlot[] weaponInventorySlots;
+
+        [Header("Menu Buttons")]
+        public GameObject pauseFirstButton;
 
         private void Awake()
         {
@@ -71,6 +75,8 @@ namespace SG
         {
             pauseWindow.SetActive(true);
             Time.timeScale = 0f;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         }
 
         public void ClosePauseWindow()

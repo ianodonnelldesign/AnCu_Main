@@ -4,30 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Cinemachine;
+using UnityEngine.EventSystems;
 
 namespace SG
 {
     public class NPCInteract : Interactable
     {
+        [Header("Player Manager")]
         InputHandler inputHandler;
         public PlayerManager playerManager;
         MouseLook mouseLook;
         CameraHandler cameraHandler;
         CinematicBars cinematicBars;
 
+        MorriganData morriganData;
         NPCDialogueSetManager npcDialogueSetManager;
 
+        [Header("NPC Data")]
         NPC npc;
         public NPCDialogueList npcDialogueList;
         public int currentNPCDialogueSet = 0;
 
         bool isTalking = false;
 
+        [Header("Dialogue Info")]
         float distance;
         // private float currentResponseTracker = 0;
         public int dialogueAdvance = 0;
         public int dialogueLength = 0;
 
+        [Header("UI Elements")]
         public GameObject player;
         public GameObject dialogueUI;
         GameObject npcLockOn;
@@ -35,12 +41,15 @@ namespace SG
         public TextMeshProUGUI npcName;
         public TextMeshProUGUI npcDialogueBox;
         public Button playerResponse;
+        public GameObject dialogueFirstButton;
 
         public CinemachineVirtualCamera interactionCamera;
 
         protected override void Awake()
         {
             npcLockOn = this.transform.GetChild(0).gameObject;
+
+            morriganData = FindObjectOfType<MorriganData>();
 
             npcDialogueSetManager = FindObjectOfType<NPCDialogueSetManager>();
             playerResponse.onClick.AddListener(AdvanceDialogue);
@@ -59,9 +68,15 @@ namespace SG
         private void Update()
         {
             npc = npcDialogueList.npcDialogues[currentNPCDialogueSet];
+            if (inputHandler.interact_Input && isTalking)
+            {
+                inputHandler.interact_Input = false;
+                AdvanceDialogue();
+            }
         }
         public override void Interact(PlayerManager playerManager)
         {
+            inputHandler.interact_Input = false;
             base.Interact(playerManager);
 
             InteractWithNPC();
@@ -85,7 +100,7 @@ namespace SG
             }
             else if (isTalking == true)
             {
-                EndDialogue();
+                AdvanceDialogue();
             }
         }
 
@@ -114,6 +129,8 @@ namespace SG
             isTalking = true;
             // currentResponseTracker = 0;
             dialogueUI.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(dialogueFirstButton);
             npcName.text = npc.npcName;
         }
         public void AdvanceDialogue()
@@ -122,6 +139,8 @@ namespace SG
             {
                 dialogueAdvance += 1;
                 npcDialogueBox.text = npc.npcDialogue[dialogueAdvance];
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(dialogueFirstButton);
             }
             else if (isTalking == true)
             { 
@@ -152,6 +171,7 @@ namespace SG
         public void ChangeDialogueSet()
         {
             npcDialogueSetManager.ChangeDialogueSet();
+            morriganData.MoveMorrigan();
         }
 
     }

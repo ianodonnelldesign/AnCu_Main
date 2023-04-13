@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84753f1726282ba47b3cc3ff9ac6d971, type: 3}
+  m_Name: MORRIGAN_
+  m_EditorClassIdentifier: 
+  currentNPCDialogueSet: 0
+  npcDialogues:
+  - {fileID: 11400000, guid: faf4a5fb5ea4001468f550f195533b05, type: 2}
+  - {fileID: 11400000, guid: a9efdd04c332ab245acf93ef38dcfae4, type: 2}
+  - {fileID: 11400000, guid: 668f44496bc34ef4db435880cb77deaf, type: 2}
+  - {fileID: 11400000, guid: 98817fe5002d43a4085e92e6362a548a, type: 2}
+  - {fileID: 11400000, guid: a741f092e1cdd4d4388b1963862d2942, type: 2}
+  - {fileID: 11400000, guid: 5e06ede7a508adf4cbfb38fdd574a2e0, type: 2}

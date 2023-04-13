@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 namespace SG
 {
@@ -16,15 +17,26 @@ namespace SG
         AICharacterAnimatorManager enemyAnimatorManager;
         BossCombatStanceState bossCombatStanceState;
 
-        PlayerManager playerManager;
+        public Animator bossHealthUI;
 
-        public SceneField bossDeathScene;
+        public GameObject boss;
+        public GameObject deathLocation;
+        public GameObject bossDeathTimeline;
+        public CinemachineVirtualCamera timelineCamera;
+
+        public EnemyManager enemyManager;
+
+        PlayerManager playerManager;
 
         [Header("Second Phase FX")]
         public GameObject particleFX;
 
         protected override void Awake()
         {
+            inputHandler = FindObjectOfType<InputHandler>();
+
+            enemyManager = FindObjectOfType<EnemyManager>();
+            bossDeathTimeline.SetActive(false);
             playerManager = FindObjectOfType<PlayerManager>();
             bossHealthBar = FindObjectOfType<UIBossHealthBar>();
             enemyStats = GetComponent<EnemyStatsManager>();
@@ -40,14 +52,14 @@ namespace SG
 
         private void Update()
         {
-            if (AudioManager.Instance.musicSource.isPlaying == false)
-            {
-                SceneManager.LoadScene(bossDeathScene);
-            }
-            else if (AudioManager.Instance.musicSource.isPlaying)
-            {
+            //if (AudioManager.Instance.musicSource.isPlaying == false)
+            //{
 
-            }
+            //}
+            //else if (AudioManager.Instance.musicSource.isPlaying)
+            //{
+
+            //}
         }
 
         public void UpdateBossHealthBar(int currentHealth, int maxHealth)
@@ -72,9 +84,22 @@ namespace SG
 
         public void HandleBossDeath()
         {
+            enemyManager.detectionRadius = 0;
+            GetComponent<AICharacterLocomotionManager>().enabled = false;
+
+            bossHealthUI.SetTrigger("bossIsDead");
+
+            timelineCamera.Priority = 11;
+
+            bossDeathTimeline.SetActive(true);
+            boss.transform.position = deathLocation.transform.position;
+            boss.transform.eulerAngles = deathLocation.transform.eulerAngles;
+
             //playerManager.HandlePlayerInCutscene();
             AudioManager.Instance.FadeOutMusic("GuardLoop", 3f, 0f);
             AudioManager.Instance.PlayMusic("GuardLoopOut");
+
+            enemyStats.bossHasDied = true;
         }
     }
 }

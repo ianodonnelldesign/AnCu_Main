@@ -68,6 +68,8 @@ namespace SG
 
         private void Awake()
         {
+            interactFlag = true;
+
             playerCombatManager = GetComponent<PlayerCombatManager>();
             playerInventoryManager = GetComponent<PlayerInventoryManager>();
             playerManager = GetComponent<PlayerManager>();
@@ -135,8 +137,8 @@ namespace SG
         public void TickInput(float delta)
         {
             HandleMoveInput(delta);
-            HandleSprintInput();
-            HandleRollInput();
+            HandleSprintInput(delta);
+            HandleRollInput(delta);
             HandleCombatInput(delta);
             HandleQuickSlotsInput();
             HandleInventoryInput();
@@ -151,6 +153,9 @@ namespace SG
             //dont want to disable Inventory because inventory will be pause/escape
             inputActions.PlayerMovement.Movement.Disable();
             inputActions.PlayerMovement.Camera.Disable();
+            inputActions.PlayerActions.Jump.Disable();
+            inputActions.PlayerActions.Roll.Disable();
+
 
             movementInput.x = 0;
             movementInput.y = 0;
@@ -166,6 +171,8 @@ namespace SG
             inputActions.PlayerActions.Inventory.Enable();
             inputActions.PlayerMovement.Movement.Enable();
             inputActions.PlayerMovement.Camera.Enable();
+            inputActions.PlayerActions.Jump.Enable();
+            inputActions.PlayerActions.Roll.Enable();
         }
 
         private void HandleMoveInput(float delta)
@@ -177,7 +184,7 @@ namespace SG
             mouseY = cameraInput.y;
         }
 
-        private void HandleSprintInput()
+        private void HandleSprintInput(float delta)
         {
             if (sprint_Input)
             {
@@ -203,23 +210,22 @@ namespace SG
             }
         }
 
-        private void HandleRollInput()
+        private void HandleRollInput(float delta)
         {
             if(roll_Input)
             {
-                if(playerStatsManager.currentStamina <= 0)
+                roll_Input = false;
+                if (playerStatsManager.currentStamina <= 0)
                 {
-                    roll_Input = false;
                     rollFlag = false;
                 }
                 else
                 {
                     sprintFlag = false;
 
-                    if (playerStatsManager.currentStamina >= 15f)
+                    if (playerStatsManager.currentStamina >= playerLocomotionManager.rollStaminaCost)
                     {
                         rollFlag = true;
-                        roll_Input = false;
                     }
                 }
             }
@@ -323,49 +329,49 @@ namespace SG
 
         private void HandleLockOnInput()
         {
-            if (lockOnInput == true && lockOnFlag == false)
-            {
-                lockOnInput = false;
-                cameraHandler.HandleLockOn();
-                if (cameraHandler.nearestLockOnTarget != null)
-                {
-                    //size of bar, time to get to that size
-                    cinematicBars.ShowCinematicBars(200, .3f);
-                    cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
-                    lockOnFlag = true;
-                }
-            }
+            //if (lockOnInput == true && lockOnFlag == false)
+            //{
+            //    lockOnInput = false;
+            //    cameraHandler.HandleLockOn();
+            //    if (cameraHandler.nearestLockOnTarget != null)
+            //    {
+            //        //size of bar, time to get to that size
+            //        cinematicBars.ShowCinematicBars(200, .3f);
+            //        cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
+            //        lockOnFlag = true;
+            //    }
+            //}
 
-            else if (lockOnInput && lockOnFlag == true && interactFlag == false)
-            {
-                //time to hide bars
-                cinematicBars.HideCinematicBars(.3f);   
-                lockOnInput = false;
-                lockOnFlag = false;
-                cameraHandler.ClearLockOnTargets();
-            }
+            //else if (lockOnInput && lockOnFlag == true && interactFlag == false)
+            //{
+            //    //time to hide bars
+            //    cinematicBars.HideCinematicBars(.3f);   
+            //    lockOnInput = false;
+            //    lockOnFlag = false;
+            //    cameraHandler.ClearLockOnTargets();
+            //}
 
-            if (lockOnFlag && right_Stick_Left_Input)
-            {
-                right_Stick_Left_Input = false;
-                cameraHandler.HandleLockOn();
-                if (cameraHandler.leftLockTarget != null)
-                {
-                    cameraHandler.currentLockOnTarget = cameraHandler.leftLockTarget;
-                }
-            }
+            //if (lockOnFlag && right_Stick_Left_Input)
+            //{
+            //    right_Stick_Left_Input = false;
+            //    cameraHandler.HandleLockOn();
+            //    if (cameraHandler.leftLockTarget != null)
+            //    {
+            //        cameraHandler.currentLockOnTarget = cameraHandler.leftLockTarget;
+            //    }
+            //}
 
-            if (lockOnFlag && right_Stick_Right_Input)
-            {
-                right_Stick_Right_Input = false;
-                cameraHandler.HandleLockOn();
-                if (cameraHandler.rightLockTarget != null)
-                {
-                    cameraHandler.currentLockOnTarget = cameraHandler.rightLockTarget;
-                }
-            }
+            //if (lockOnFlag && right_Stick_Right_Input)
+            //{
+            //    right_Stick_Right_Input = false;
+            //    cameraHandler.HandleLockOn();
+            //    if (cameraHandler.rightLockTarget != null)
+            //    {
+            //        cameraHandler.currentLockOnTarget = cameraHandler.rightLockTarget;
+            //    }
+            //}
 
-            cameraHandler.SetCameraHeight();
+            //cameraHandler.SetCameraHeight();
         }
 
         private void HandleTwoHandInput()

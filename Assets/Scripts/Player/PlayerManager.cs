@@ -15,6 +15,10 @@ namespace SG
         public bool talkedToKing = false;
         public bool doneTalking = false;
 
+        public bool talkedToCullanAgain = false;
+        public bool talkedToKingAgain = false;
+        public bool talkedToCathbadAgain = false;
+
         public string isTalkingTo;
 
         protected override void Awake()
@@ -85,44 +89,43 @@ namespace SG
 
         public void CheckForInteractableObject()
         {
+            RaycastHit hit;
 
             float interactRange = 3f;
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
 
-            foreach (Collider collider in colliderArray)
-            {
-                if (collider.CompareTag("Interactable"))
+                if (Physics.SphereCast(transform.position, 1.5f, transform.forward, out hit, 2f))
                 {
-                    Interactable interactableObject = collider.GetComponent<Interactable>();
-
-                    if (interactableObject != null)
+                    if (hit.collider.CompareTag("Interactable"))
                     {
-                        string interactableText = interactableObject.interactableText;
-                        interactableUI.interactableText.text = interactableText;
-                        interactableUIGameObject.SetActive(true);
+                        Interactable interactableObject = hit.collider.GetComponent<Interactable>();
 
-                        if (inputHandler.interact_Input)
+                        if (interactableObject != null)
                         {
-                            collider.GetComponent<Interactable>().Interact(this);
+                            string interactableText = interactableObject.interactableText;
+                            interactableUI.interactableText.text = interactableText;
+                            interactableUIGameObject.SetActive(true);
+
+                            if (inputHandler.interact_Input)
+                            {
+                                inputHandler.interact_Input = false;
+                                hit.collider.GetComponent<Interactable>().Interact(this);
+                            }
                         }
                     }
                 }
-            }
-        }
+                else
+                {
+                    if (interactableUIGameObject != null)
+                    {
+                        interactableUIGameObject.SetActive(false);
+                    }
+                    if (itemInteractableGameObject != null)
+                    {
+                        interactableUIGameObject.SetActive(false);
+                    }
+                }
 
-        private void OnTriggerExit(Collider other)
-        {
-            if(other.CompareTag("LookRange"))
-            {
-                if(interactableUIGameObject != null)
-                {
-                    interactableUIGameObject.SetActive(false);
-                }
-                if (itemInteractableGameObject != null && inputHandler.interact_Input)
-                {
-                    interactableUIGameObject.SetActive(false);
-                }
-            }
         }
 
 

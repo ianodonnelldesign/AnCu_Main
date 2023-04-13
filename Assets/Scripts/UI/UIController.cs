@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace SG
 {
     public class UIController : MonoBehaviour
     {
+        [Header("Sliders")]
         public Slider _musicSlider, _sfxSlider;
 
+        [Header("Menus")]
         public GameObject volumeWindow;
         public GameObject pauseBorder;
+        public GameObject optionsFirstButton;
+        public GameObject pauseFirstButton;
 
+        [Header("Icons")]
         [SerializeField] private Sprite[] musicSprites;
         [SerializeField] private Sprite[] sfxSprites;
 
@@ -51,11 +57,17 @@ namespace SG
         {
             volumeWindow.SetActive(true);
             pauseBorder.SetActive(false);
+
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(optionsFirstButton);
         }
         public void CloseVolume()
         {
             volumeWindow.SetActive(false);
             pauseBorder.SetActive(true);
+
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         }
 
         public void ToggleMusic()

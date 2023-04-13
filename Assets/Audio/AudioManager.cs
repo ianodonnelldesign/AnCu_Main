@@ -78,10 +78,18 @@ namespace SG
                 musicSource.Play();
 
                 yield return new WaitForSeconds(track1.clip.length);
-                
-                musicSource.clip = track2.source.clip;
-                musicSource.Play();
-                musicSource.loop = track2.loop;
+
+                if (musicSource.clip.name == track1.clip.name)
+                {
+                    musicSource.clip = track2.source.clip;
+                    musicSource.Play();
+                    musicSource.loop = track2.loop;
+                }
+                //else
+                //{
+                //    yield break;
+                //}
+
             }
         }
 

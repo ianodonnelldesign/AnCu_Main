@@ -23,8 +23,13 @@ namespace SG
         {
             bossFightIsActive = true;
             bossHasBeenAwakened = true;
+
+            //play the animation for the bossfight here instead
+            //play the wake up animation
             bossHealthBar.SetUIHealthBarToActive();
-            //Activate Fog Wall(s)
+
+            //turn on the timeline
+
         }
 
         public void BossHasBeenDefeated()

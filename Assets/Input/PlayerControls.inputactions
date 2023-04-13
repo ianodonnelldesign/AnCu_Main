@@ -291,8 +291,30 @@
                 },
                 {
                     "name": "",
+                    "id": "0eab2806-ad0f-4ad7-881f-bbce20d28926",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LightAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b10861f9-bd26-499d-a95d-f4c1872217d6",
                     "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeavyAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb16d60d-f264-4ba5-93b2-c02aa93a4c95",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -313,8 +335,30 @@
                 },
                 {
                     "name": "",
+                    "id": "634afeff-8707-43a6-852f-2a783beafd22",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4c781352-dc64-4c0a-bdde-e89e08badb2b",
                     "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d42a0400-214a-441d-b7ef-2adf3c386326",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -335,6 +379,17 @@
                 },
                 {
                     "name": "",
+                    "id": "1edbbb9c-e5ee-4493-a2b1-82d07c8bb11d",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "71ec9021-98bc-44b6-8b75-d31b4cee88f3",
                     "path": "<Keyboard>/g",
                     "interactions": "",
@@ -346,8 +401,30 @@
                 },
                 {
                     "name": "",
+                    "id": "1d24b00d-b026-4f29-953d-0b7a09174dca",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LockOn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "bd4a1aed-186d-4512-ba3c-35ba0b22be5e",
                     "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TwoHand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2b78551-ca82-4df8-a619-7010a0679cf0",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -379,6 +456,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4fd26093-9328-49d8-98d1-642de9832749",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Parry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "95a411d0-52b6-460c-a62f-ff5c7b8895d6",
                     "path": "<Keyboard>/q",
                     "interactions": "Hold",
@@ -390,8 +478,30 @@
                 },
                 {
                     "name": "",
+                    "id": "3cf39382-924b-4e20-9999-0c1abb108ab2",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e2fdffa0-bdfa-4e38-81a2-58b2dbd2858d",
                     "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "745dff40-1145-4e48-a90f-fbdc0e1cf450",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -414,6 +524,17 @@
                     "name": "",
                     "id": "bf797daf-834e-45f1-b738-1902297ea83b",
                     "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74ce93f9-19b9-4e6c-89a2-eb108e5980d5",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

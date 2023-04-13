@@ -12,6 +12,9 @@ namespace SG
         PlayerManager player;
         NPCInteract npcInteract;
 
+        public BoxCollider blocker;
+        public BoxCollider trigger;
+
         private void Awake()
         {
             player = FindObjectOfType<PlayerManager>();

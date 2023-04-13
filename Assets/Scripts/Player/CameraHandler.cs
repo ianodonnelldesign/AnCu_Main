@@ -74,15 +74,10 @@ namespace SG
             Vector3 targetPosition = Vector3.SmoothDamp(cameraHandlerTransform.position, targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
             cameraHandlerTransform.position = targetPosition;
 
-            HandleCameraCollisions(delta);
+            //HandleCameraCollisions(delta);
         }
 
-        public void CameraFocus()
-        {
-            //make the camera point to the side of the npc you're talking to
-            //make the camera move lower
-            //make the camera move to the right of the player
-        }
+
 
         public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
         {
@@ -124,28 +119,28 @@ namespace SG
             }
         }
 
-        private void HandleCameraCollisions(float delta)
-        {
-            targetPosition = defaultPosition;
-            RaycastHit hit;
-            Vector3 direction = cameraTransform.position - cameraPivotTransform.position;
-            direction.Normalize();
+        //private void HandleCameraCollisions(float delta)
+        //{
+        //    targetPosition = defaultPosition;
+        //    RaycastHit hit;
+        //    Vector3 direction = cameraTransform.position - cameraPivotTransform.position;
+        //    direction.Normalize();
 
-            if (Physics.SphereCast(cameraPivotTransform.position, cameraSphereRadius, direction, out hit, Mathf.Abs(targetPosition)
-                , ignoreLayers))
-            {
-                float dis = Vector3.Distance(cameraPivotTransform.position, hit.point);
-                targetPosition = -(dis - cameraCollisionOffSet);
-            }
+        //    if (Physics.SphereCast(cameraPivotTransform.position, cameraSphereRadius, direction, out hit, Mathf.Abs(targetPosition)
+        //        , ignoreLayers))
+        //    {
+        //        float dis = Vector3.Distance(cameraPivotTransform.position, hit.point);
+        //        targetPosition = -(dis - cameraCollisionOffSet);
+        //    }
 
-            if (Mathf.Abs(targetPosition) < minimumCollisionOffset)
-            {
-                targetPosition = -minimumCollisionOffset;
-            }
+        //    if (Mathf.Abs(targetPosition) < minimumCollisionOffset)
+        //    {
+        //        targetPosition = -minimumCollisionOffset;
+        //    }
 
-            cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
-            cameraTransform.localPosition = cameraTransformPosition;
-        }
+        //    cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
+        //    cameraTransform.localPosition = cameraTransformPosition;
+        //}
 
         public void HandleLockOn()
         {

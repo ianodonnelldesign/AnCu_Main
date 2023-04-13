@@ -725,7 +725,7 @@ ModelImporter:
       takeName: Roll
       internalID: -2341027594253812581
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -753,8 +753,8 @@ ModelImporter:
       name: Backstep
       takeName: Backstep
       internalID: 2339608109321446245
-      firstFrame: 0
-      lastFrame: 29
+      firstFrame: 5
+      lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -843,7 +843,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

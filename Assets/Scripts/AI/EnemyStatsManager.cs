@@ -13,9 +13,12 @@ namespace SG
         public UIEnemyHealthBar enemyHealthBar;
         EnemyManager enemyManager;
 
+        public DeadState deadState;
+
         PlayerManager playerManager;
 
         public bool isBoss;
+        public bool bossHasDied;
 
         private void Awake()
         {
@@ -47,13 +50,11 @@ namespace SG
 
             if (!isBoss)
             {
-
                 enemyHealthBar.SetHealth(currentHealth);
             }
             else if (isBoss && enemyBossManager != null)
             {
                 enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
-                
             }
         }
 
@@ -64,46 +65,42 @@ namespace SG
 
         public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
         {
-
             base.TakeDamage(damage, damageAnimation = "Damage_01");
 
             if (!isBoss)
             {
                 enemyHealthBar.SetHealth(currentHealth);
+                enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
             }
             else if (isBoss && enemyBossManager != null)
             {
                 enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+                enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
             }
-
-            enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {
+                enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
                 HandleDeath();
-                //if(isDead)
-                //{
-                //    return;
-                //}
-                //else
-                //{
-                //    HandleDeath();
-                //}
             }
         }
 
         private void HandleDeath()
         {
-            Debug.Log("Enemy died, and death is being handled");
-            currentHealth = 0;
-            enemyAnimatorManager.PlayTargetAnimation("Dead_01", true);
-            isDead = true;
-            
-            if (isBoss && enemyBossManager != null)
+            if(bossHasDied == false)
             {
-                enemyBossManager.HandleBossDeath();
-            }
+                Debug.Log("Enemy died, and death is being handled");
+                currentHealth = 0;
+                enemyAnimatorManager.PlayTargetAnimation("Dead_01", true);
 
+                enemyManager.currentState = deadState;
+                enemyManager.isInteracting = true;
+
+                if (isBoss && enemyBossManager != null)
+                {
+                    enemyBossManager.HandleBossDeath();
+                }
+            }
         }
     }
 }

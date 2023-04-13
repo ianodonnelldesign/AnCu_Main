@@ -15,3 +15,4 @@ MonoBehaviour:
   currentNPCDialogueSet: 0
   npcDialogues:
   - {fileID: 11400000, guid: 7cae57e738e5eb94e86d478402ab4c50, type: 2}
+  - {fileID: 11400000, guid: 44fc91596f0f42b429fcd215836c8bb9, type: 2}
