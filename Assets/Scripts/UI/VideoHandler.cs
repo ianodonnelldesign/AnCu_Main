@@ -8,8 +8,6 @@ using Utilities;
 
 public class VideoHandler : MonoBehaviour
 {
-    public Button skipIntro;
-
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] SceneField newGameStart;
 
@@ -20,6 +18,6 @@ public class VideoHandler : MonoBehaviour
 
     void AutoSceneTransition(VideoPlayer vp)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(newGameStart);
     }
 }
