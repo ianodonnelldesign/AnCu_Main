@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Cathbad
   npcDialogue:
-  - Be game! Like a fighting dog!
+  - 'Be Strong! Be Game! Like a fighting dog!
+
+'
   playerDialogue: []

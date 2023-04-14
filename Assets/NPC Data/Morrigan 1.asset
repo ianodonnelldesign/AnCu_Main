@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Morrigan
   npcDialogue:
-  - You are as bright as your are beatiful, Setanta.
+  - "(Ah, Setanta\u2026)\r\n"
+  - "(A black rose, a wild flower I will help grow\u2026)\r\n"
   playerDialogue: []

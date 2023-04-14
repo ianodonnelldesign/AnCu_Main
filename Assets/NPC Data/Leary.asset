@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Leary
   npcDialogue:
-  - Zzzzzzzzzz...
-  - zzzzzz...*snort* Huh?
-  - What is it? Oh, yeah I was listening.
-  - Long! Wave! Like a light jog!
+  - "Zzzzzzzzzz\u2026"
+  - "\u2026zzzzzz\u2026 Huh?\r\n"
+  - 'What is it? Oh, yeah I was listening.
+
+'
+  - "Uhm\u2026 Long! Wave! Take a light jog!\r\n"
   - ...
+  - "\u2026zzzzzz"
   playerDialogue: []

@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Cathbad
   npcDialogue:
-  - 'dialogue 5
+  - "I shouldn\u2019t have told you that fortune\u2026 Though I suppose it\u2019s
+    better that I keep my promises.\r\n"
+  - 'It worked out fine, but be more careful of running off to fulfill prophecies
+    in the future
 
 '
+  - "What? You want to replace Cullan\u2019s guard dog?\r\n"
+  - "I can\u2019t say I approve, but if the King is alright with it\u2026\r\n"
+  - "Then Cullan\u2019s hound you shall be.\r\n"
   playerDialogue: []

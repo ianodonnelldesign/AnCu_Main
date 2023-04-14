@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Cathbad
   npcDialogue:
-  - dialogue 4
+  - "Not the most bright of fortunes, but whether good, or ill, that is today\u2019s
+    fortune.\r\n"
   playerDialogue: []

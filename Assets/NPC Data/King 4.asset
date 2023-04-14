@@ -14,5 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: King Conchobar
   npcDialogue:
-  - You protected yourself
+  - "I am glad you\u2019re alright boy. I don\u2019t think even I was as strong as
+    that when I was your age\r\n"
+  - "Don\u2019t worry about Cullan\u2026 He\u2019s upset but you were just defending
+    yourself\u2026\r\n"
+  - 'What? You want to be his new guard dog?
+
+'
+  - "AAH HA HA! What a grand idea! Cullan\u2019s new hound.\r\n"
+  - 'CU CHULAINN! AAH HA HA!
+
+'
   playerDialogue: []

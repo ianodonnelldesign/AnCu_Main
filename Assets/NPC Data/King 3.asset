@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: King Conchobar
   npcDialogue:
-  - make sure you get there before dark
+  - "Come to Cullan\u2019s forge after your lessons, make sure you get there before
+    dark.\r\n"
   playerDialogue: []

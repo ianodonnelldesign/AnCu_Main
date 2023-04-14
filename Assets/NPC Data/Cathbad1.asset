@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Cathbad
   npcDialogue:
-  - late for class
-  - come sing the war song
-  - brave speedy
+  - "Ah, here\u2019s Setanta. Nice of you to join us.\r\n"
+  - 'Come join your classmates, and sing the war song with us.
+
+'
   - game like a fighting dog
   playerDialogue: []

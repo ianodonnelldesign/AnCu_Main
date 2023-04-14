@@ -14,8 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Cathbad
   npcDialogue:
-  - ask me anything
-  - bones and stones
-  - ask me anything
-  - famous forever
+  - "Back from wherever it was you went? You certainly don\u2019t seem to value learning
+    Setanta. \r\n"
+  - 'But here, let me show you that learning is good for things as well as fighting.
+
+'
+  - 'Ask me anything you want, and I will tell you the answer.
+
+'
+  - "\u2026"
+  - "\u201CWhat today is good for\u201D eh? Well, let\u2019s see what the stones
+    and bones say!\r\n"
+  - "\u2026 "
+  - "\u2026 \u2026 "
+  - "The one who takes up arms this day shall be splendid and renowned, and the tales
+    of his deeds shall be told forever\u2026 but his life will be short, and fleeting\u2026\r\n"
   playerDialogue: []

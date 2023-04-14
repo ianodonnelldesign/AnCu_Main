@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Morrigan
   npcDialogue:
-  - I have been waiting a long time for this day Setanta.
-  - You need not fear the love I feel nor the will I have to see you shine.
+  - "(You have no idea what you are\u2026)\r\n"
+  - "(And who you can be\u2026)\r\n"
   playerDialogue: []

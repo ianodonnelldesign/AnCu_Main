@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Cullan
   npcDialogue:
-  - MY APES!
-  - line 2
-  - 'line 3
+  - 'My dog! Who will protect my family now? Who will keep us safe at night?
 
 '
+  - "\u2026 What? You\u2019ll be our guard dog?\r\n"
+  - "You arrogant boy! You\u2026!\r\n"
+  - "\u2026 Fine. If that is your wish, and the King approves, You will be my family\u2019s
+    Cu.\r\n"
   playerDialogue: []

@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Siomon
   npcDialogue:
-  - After this lesson I'm gonna beat you at Hurling. You're not gonna score at all
-    this time!
+  - "You should\u2019ve gotten up earlier to practice for today\u2019s hurling game.\r\n"
+  - "There\u2019s 150 people playing games today.\r\n"
+  - 'Not even you could score against all 150 of us!
+
+'
+  - "Bwahah! You\u2019re not gonna score at all this time!\r\n"
   playerDialogue: []

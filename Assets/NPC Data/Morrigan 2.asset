@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Morrigan
   npcDialogue:
-  - The Black Rose. A wild flower I have come to help grow.
+  - '(There are those in this world who would keep you from being yourself.)
+
+'
   playerDialogue: []

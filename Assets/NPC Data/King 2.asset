@@ -14,8 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: King Conchobar
   npcDialogue:
-  - skipping class?
-  - can't do that, cant jsut fight and play all the time
-  - go back to your lessons then when you're done come with us to the forge tonight
-  - make sure you get there before dark
+  - "Hm? What could my nephew want now? You\u2019re not here skipping class are you?\r\n"
+  - "Come now Setanta, you can\u2019t spend all of your time playing. \r\n"
+  - 'A warrior needs to learn to swing a sword, as well as when to swing it.
+
+'
+  - 'How about this, go back to Father Cathbad and finish your lessons for the day.
+
+'
+  - "Then after you\u2019re done, come with us to Cullan\u2019s forge tonight. We\u2019re
+    having a feast!\r\n"
+  - 'Just make sure you get there before dark.
+
+'
   playerDialogue: []

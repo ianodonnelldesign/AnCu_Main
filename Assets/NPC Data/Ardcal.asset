@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Ardcal
   npcDialogue:
-  - Strong! Brave! Weren't you listening? Don't you know the words?
-  - Game! Like a fighting dog!
+  - "Strong! Brave! Like a fighting dog!\r"
+  - "Huh? Weren\u2019t you listening?\r\n"
+  - "Pay attention when Father Cathbad is talking!\r"
+  - 'Speedy! Strong!
+
+'
   playerDialogue: []

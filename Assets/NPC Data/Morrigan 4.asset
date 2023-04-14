@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Morrigan
   npcDialogue:
-  - Think of me as the mother you never had.
-  - I am not here to hurt you.
+  - '(Trust in me.)
+
+'
+  - '(And you will see your destiny unfold.)
+
+'
   playerDialogue: []

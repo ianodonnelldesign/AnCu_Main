@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Deichtire
   npcDialogue:
-  - start1
-  - start2
-  - start3
-  - start4
+  - "\u2026"
+  - "\u2026 \u2026"
+  - 'Setanta!
+
+'
+  - "Setanta get up! You\u2019re late for class!\r\n"
+  - 'If your father knew you spent most of your mornings sleeping in, he surely would
+    not approve.
+
+'
   playerDialogue: []

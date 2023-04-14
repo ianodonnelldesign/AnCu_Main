@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Morrigan
   npcDialogue:
-  - KA KAW!
+  - 'KA KRAA! KRAW!
+
+'
   playerDialogue: []

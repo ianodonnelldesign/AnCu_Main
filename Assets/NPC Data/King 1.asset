@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: King Conchobar
   npcDialogue:
-  - nows not good time
+  - "Hm? I\u2019m busy right now, Setanta.\r\n"
   playerDialogue: []

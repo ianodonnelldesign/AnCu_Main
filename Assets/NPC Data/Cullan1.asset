@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Cullan
   npcDialogue:
-  - "You! Boy!\t"
-  - dont you have stuff to do
-  - come back after your lessons
+  - 'You boy! What are you doing?
+
+'
+  - "Don\u2019t you have lessons to be attending? Play can wait for after learning
+    can\u2019t it? \r\n"
+  - 'Come along later, after your lessons.
+
+'
   playerDialogue: []
