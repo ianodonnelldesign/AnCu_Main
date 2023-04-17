@@ -20,6 +20,13 @@ public class SkyboxFader : MonoBehaviour
         {
             if (other.tag == "Player")
             {
+                if (newLights.name == "Tig Lights")
+                {
+                    RenderSettings.ambientIntensity = 0.7f;
+                }
+                else
+                    return;
+
                 RenderSettings.skybox = targetSkybox;
 
                 newLights.SetActive(true);

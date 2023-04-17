@@ -28,5 +28,6 @@ MonoBehaviour:
   - "\u2026 "
   - "\u2026 \u2026 "
   - "The one who takes up arms this day shall be splendid and renowned, and the tales
-    of his deeds shall be told forever\u2026 but his life will be short, and fleeting\u2026\r\n"
+    of his deeds shall be told forever\u2026 "
+  - "But his life will be short, and fleeting\u2026\r\n"
   playerDialogue: []

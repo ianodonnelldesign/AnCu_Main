@@ -76,7 +76,6 @@ namespace SG
             if (playerManager.talkedToCathbadAgain && playerManager.talkedToKingAgain && playerManager.talkedToCullanAgain && king.currentNPCDialogueSet == 3)
             {
                 king.currentNPCDialogueSet = 4;
-                king.InteractWithNPC();
             }
 
             else if (playerManager.talkedToCathbadAgain && playerManager.talkedToKingAgain && playerManager.talkedToCullanAgain && king.currentNPCDialogueSet == 4)

@@ -18,11 +18,11 @@ MonoBehaviour:
   modelPrefab: {fileID: 5784127236869470033, guid: 774e290ec38295e429c2a630b04cdcf9, type: 3}
   isUnarmed: 0
   itemType: 0
-  baseDamage: 10
+  baseDamage: 7
   criticalDamageMuiltiplier: 2
   poiseBreak: 1
-  offensivePoiseBonus: 2
-  physicalDamageAbsorption: 10
-  baseStamina: 5
+  offensivePoiseBonus: 0
+  physicalDamageAbsorption: 50
+  baseStamina: 7
   lightAttackMultiplier: 0
   heavyAttackMultiplier: 0

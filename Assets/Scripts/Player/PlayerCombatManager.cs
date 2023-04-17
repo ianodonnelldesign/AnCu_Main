@@ -181,7 +181,7 @@ namespace SG
                 }
                 else if (lastAttack == heavy_action_01)
                 {
-                    playerAnimatorManager.PlayTargetAnimation(heavy_action_02, true);
+                    playerAnimatorManager.PlayTargetAnimation(heavy_action_01, true);
                     lastAttack = heavy_action_02;
                 }
                 //else if (lastAttack == th_action_01)

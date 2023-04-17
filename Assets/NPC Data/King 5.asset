@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: King Conchobar
   npcDialogue:
-  - dialogue 4
+  - Three cheers for our new Cu Chulainn!
   playerDialogue: []
