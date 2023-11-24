@@ -486,7 +486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab34ef425ff3fc6478df881fef54724a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoPlayer: {fileID: 0}
+  skipButton: {fileID: 1368385367}
+  videoPlayer: {fileID: 1335288277}
   newGameStart:
     sceneAsset: {fileID: 102900000, guid: 4aa0336dbe3a001478733bd605c35bfa, type: 3}
     sceneName: Scenes/_EndGame
@@ -738,7 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -749,7 +750,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.7294118, g: 0.1254902, b: 0.19215687, a: 1}
     m_HighlightedColor: {r: 1, g: 0.17204303, b: 0.26344097, a: 1}
     m_PressedColor: {r: 0.7294118, g: 0.1254902, b: 0.19215687, a: 1}
-    m_SelectedColor: {r: 0.7294118, g: 0.1254902, b: 0.19215687, a: 1}
+    m_SelectedColor: {r: 1, g: 0.17254902, b: 0.2627451, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
